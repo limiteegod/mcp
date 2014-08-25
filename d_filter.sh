@@ -1,5 +1,5 @@
 #! /bin/sh -
-tomcatHome=../tomcat-filter
+tomcatHome=/home/liming/app/tomcat
 rm -rf $tomcatHome/webapps/mcp-filter/*
 rm -rf $tomcatHome/webapps/mcp/*
 cp -r ./mcp-order-filter/build/libs/. $tomcatHome/webapps/mcp-filter/.
