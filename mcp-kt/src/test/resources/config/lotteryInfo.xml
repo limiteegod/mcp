@@ -1,0 +1,28 @@
+<lotterys>
+    <lottery code="F04" type="2" name="快3" status="1" period="" publishDesc="" offset="10">
+        <play code="01" name="三不同" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tnsDanShiCheck" validator="com.mcp.kt.validator.TnsDanShiValidator" offset="10"/>
+        </play>
+        <play code="02" name="二同单选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="twsDanShiCheck" validator="com.mcp.kt.validator.TwsDanShiValidator" offset="10"/>
+        </play>
+        <play code="03" name="三同单选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tsDanShiCheck" validator="com.mcp.kt.validator.TsDanShiValidator" offset="10"/>
+        </play>
+        <play code="04" name="和值" status="1" price="200">
+            <bet code="01" name="普通" status="1" check="hezhiPuTongCheck" validator="com.mcp.kt.validator.HezhiPuTongValidator" offset="10"/>
+        </play>
+        <play code="05" name="二不同" status="1" price="200">
+            <bet code="01" name="普通" status="1" check="twnsPuTongCheck" validator="com.mcp.kt.validator.TwnsPuTongValidator" offset="10"/>
+        </play>
+        <play code="06" name="二同复选" status="1" price="200">
+            <bet code="01" name="普通" status="1" check="twsFuShiPuTongCheck" validator="com.mcp.kt.validator.TwsFuShiPuTongValidator" offset="10"/>
+        </play>
+        <play code="07" name="三同通选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tsAllDanShiCheck" validator="com.mcp.kt.validator.TsAllDanShiValidator" offset="10"/>
+        </play>
+        <play code="08" name="三连通选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tlAllDanShiCheck" validator="com.mcp.kt.validator.TlAllDanShiValidator" offset="10"/>
+        </play>
+    </lottery>
+</lotterys>

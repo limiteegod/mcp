@@ -1,0 +1,18 @@
+<root>
+
+    <!--登录-->
+	<group code="I" package="" req="" rep="" host="site.filter" type="Http" port="8081">
+        <cmd code="01" path="/forecast-filter/main/interface.htm">
+        </cmd>
+    </group>
+
+    <group code="AD" package="" req="" rep="" host="site.filter" type="Http" port="8081">
+        <cmd code="03" path="/forecast-filter/main/interface.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+    </group>
+
+</root>

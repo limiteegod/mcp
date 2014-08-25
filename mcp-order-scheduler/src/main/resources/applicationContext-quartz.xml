@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 要调用的工作类 -->
+	<bean id="quartzJob" class="com.mcp.scheduler.quartz.QuartzJob"></bean>
+	
+	<bean id="closeTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="quartzJob" />
+		</property>
+		<property name="targetMethod">
+			<value>close</value>
+		</property>
+	</bean>
+	
+	<bean id="scloseTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="quartzJob" />
+		</property>
+		<property name="targetMethod">
+			<value>sClose</value>
+		</property>
+	</bean>
+	
+	<bean id="openTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>open</value>
+        </property>
+    </bean>
+    
+    <bean id="exportDataTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>exportData</value>
+        </property>
+    </bean>
+    
+    <bean id="drawTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>draw</value>
+        </property>
+    </bean>
+    
+    <bean id="prizeTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>prize</value>
+        </property>
+    </bean>
+    
+    <bean id="auditTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>audit</value>
+        </property>
+    </bean>
+    
+    <bean id="sealTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>seal</value>
+        </property>
+    </bean>
+	
+	<!-- 日结 -->
+	<bean id="dailyClearTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="quartzJob" />
+		</property>
+		<property name="targetMethod">
+			<value>dailyClear</value>
+		</property>
+	</bean>
+	
+	<!-- 日结触发时间 -->
+	<bean id="dailyClearTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="dailyClearTask" />
+		</property>
+		<property name="cronExpression">
+			<!--<value>0 56 19 * * ?</value>-->
+            <value>0 30 0 * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 停售时间 -->
+	<bean id="closeTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="closeTask" />
+		</property>
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 停售时间 -->
+	<bean id="scloseTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="scloseTask" />
+		</property>
+		<property name="cronExpression">
+			<value>0/10 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 开售时间 -->
+    <bean id="openTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="openTask" />
+        </property>
+        <!-- 每分钟扫描一次 -->
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
+    
+    <!-- 数据导出时间 -->
+    <bean id="exportDataTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="exportDataTask" />
+        </property>
+        <!-- 每分钟扫描一次 -->
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
+    
+    <!-- 开奖时间 -->
+    <bean id="drawTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="drawTask" />
+        </property>
+        <!-- 每分钟扫描一次 -->
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
+    
+    <!-- 返奖时间 -->
+    <bean id="prizeTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="prizeTask" />
+        </property>
+        <!-- 每分钟扫描一次 -->
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
+    
+    <!-- 结算时间 -->
+    <bean id="auditTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="auditTask" />
+        </property>
+        <!-- 每分钟扫描一次 -->
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
+    
+    <!-- 封存时间 -->
+    <bean id="sealTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="sealTask" />
+        </property>
+        <!-- 每分钟扫描一次 -->
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
+    
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="closeTime" />
+				<ref bean="scloseTime" />
+				<ref bean="openTime" />
+				<ref bean="exportDataTime" />
+				<ref bean="drawTime" />
+				<ref bean="prizeTime" />
+				<ref bean="auditTime" />
+				<ref bean="sealTime" />
+				<ref bean="dailyClearTime" />
+			</list>
+		</property>
+	</bean>
+</beans>

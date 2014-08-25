@@ -1,0 +1,67 @@
+ext {
+	mainClass = 'com.mcp.deploy.cmd.TestP12'
+}
+
+dependencies {
+	compile project(':mcp-deploy-core')
+    compile project(':mcp-jc')
+}
+
+task copyToLib(dependsOn: configurations.runtime.buildDependencies, type: Copy) {
+	into "$buildDir/libs/lib"
+	from configurations.runtime {
+		exclude 'mcp*.jar', 'scheme*.jar', 'rmi*.jar', 'mq*.jar'
+	}
+}
+
+task copyToRLib(dependsOn: configurations.runtime.buildDependencies, type: Copy) {
+	into "$buildDir/libs/rlib"
+	from configurations.runtime {
+		include 'mcp*.jar', 'scheme*.jar', 'rmi*.jar', 'mq*.jar'
+	}
+}
+
+task copyConfig(type: Copy) {
+	into "$buildDir/libs/config"
+	from 'src/main/config/nor'
+	from 'src/main/config/' + target
+}
+
+task copyResourcesConfig(type: Copy) {
+	into "$buildDir/libs/config"
+	from "src/main/resources"
+}
+
+jar.doFirst {
+	StringBuffer cPath = new StringBuffer()
+	cPath.append("./ ")
+	cPath.append("./config/ ")
+	FileCollection collection = files{file("$buildDir/libs/rlib").listFiles()}
+	collection.each {File file ->
+		cPath.append("./rlib/")
+		cPath.append(file.name)
+		cPath.append(" ")
+	}
+	collection = files{file("$buildDir/libs/lib").listFiles()}
+	collection.each {File file ->
+		cPath.append("./lib/")
+		cPath.append(file.name)
+		cPath.append(" ")
+	}
+	project.ext.classPath = cPath.toString()
+
+	manifest.attributes(["Class-Path":project.ext.classPath])
+}
+
+jar {
+	exclude '*.xml', '*.properties', 'config'
+	manifest {
+		attributes 'Main-Class': mainClass
+	}
+}
+
+copyConfig.dependsOn copyResourcesConfig
+
+project.jar.dependsOn copyToLib
+project.jar.dependsOn copyToRLib
+project.jar.dependsOn copyConfig

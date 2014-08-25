@@ -1,0 +1,65 @@
+<!-- 使用的消息定义 -->
+<messages>
+	<!-- 新增方案 -->
+	<message code="1000" name="MSG_TYPE_NEW_ZH_SCHEME" queue="schemeQueue">
+		<response code="01">
+            <filter code="01">
+                <name value="schemezh">
+                </name>
+            </filter>
+        </response>
+	</message>
+	<!-- 新增定投方案 -->
+	<message code="1001" name="MSG_TYPE_NEW_DT_SCHEME" queue="schemeQueue">
+		<response code="01">
+            <filter code="01">
+            </filter>
+        </response>
+	</message>
+	<!-- 方案中奖信息 -->
+	<message code="1100" name="MSG_TYPE_SCHEME_BONUS" queue="schemeQueue">
+		<response code="01">
+            <filter code="01">
+            </filter>
+        </response>
+	</message>
+	<!-- 期次状态改变-->
+	<message code="1010" name="MSG_TYPE_TERM_CHANGE" queue="schemeQueue">
+		<response code="01">
+            <filter code="01">
+            </filter>
+        </response>
+	</message>
+	<!-- 新增订单，高频 -->
+	<message code="2000" name="MSG_TYPE_NEWORDER_GAOPIN" queue="orderQueue">
+		<response code="01">
+            <filter code="01">
+            </filter>
+        </response>
+	</message>
+	<!-- 新增订单，普通 -->
+	<message code="2001" name="MSG_TYPE_NEWORDER_NORMAL" queue="orderQueue">
+		<response code="01">
+            <filter code="01">
+            	<name value="torder">
+                </name>
+                <name value="tticket">
+                </name>
+            </filter>
+        </response>
+	</message>
+	<!-- 新增订单，竞彩 -->
+	<message code="2002" name="MSG_TYPE_NEWORDER_JINGCAI" queue="orderQueue">
+		<response code="01">
+            <filter code="01">
+            </filter>
+        </response>
+	</message>
+	<!-- 我中啦，订单号取票 -->
+	<message code="4000" name="MSG_TYPE_PRINT_ORDER_ID" queue="wzlQueue">
+		<response code="01">
+            <filter code="01">
+            </filter>
+        </response>
+	</message>
+</messages>

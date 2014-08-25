@@ -1,0 +1,7 @@
+dependencies {
+	compile project(':mcp-order-model')
+	compile project(':scheme-core')
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3-beta2'
+	compile group: 'javax.servlet', name: 'servlet-api', version: '2.4'
+    compile group: 'org.springframework.data', name: 'spring-data-commons', version: '1.6.4.RELEASE'
+}

@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="messageListener"
+		class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+		<constructor-arg>
+			<bean class="com.mcp.scheduler.mq.consumer.McpMessageConsumer">
+			</bean>
+		</constructor-arg>
+		<property name="messageConverter" ref="messageConverter" />
+		<property name="defaultListenerMethod" value="consume" />
+	</bean>
+
+	<bean id="listenerContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsFactory" />
+		<property name="destination" ref="wzlQueue" />
+		<property name="messageListener" ref="messageListener" />
+	</bean>
+	
+</beans>

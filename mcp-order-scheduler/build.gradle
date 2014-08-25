@@ -1,0 +1,87 @@
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.11'
+
+	compile project(':mcp-order-service')
+	compile project(':rmi')
+	compile project(':scheme-service')
+	compile project(':mcp-order-batch')
+	
+	compile project(':mcp-dlt')
+	compile project(':mcp-esf')
+	compile project(':mcp-fsd')
+	compile project(':mcp-jc')
+	compile project(':mcp-jqc')
+	compile project(':mcp-pls')
+	compile project(':mcp-plw')
+	compile project(':mcp-qlc')
+	compile project(':mcp-qxc')
+	compile project(':mcp-sfc')
+	compile project(':mcp-ssq')
+    compile project(':mcp-kt')
+
+	compile group: 'org.quartz-scheduler', name: 'quartz', version: '1.8.5'
+	compile group: 'org.springframework.batch', name: 'spring-batch-core', version: '2.1.9.RELEASE'
+	compile group: 'org.springframework.batch', name: 'spring-batch-infrastructure', version: '2.1.9.RELEASE'
+    
+	compile group: 'org.springframework', name: 'spring-beans', version: springVersion
+	compile group: 'org.springframework', name: 'spring-aop', version: springVersion
+	compile group: 'org.springframework', name: 'spring-context', version: springVersion
+	compile group: 'org.springframework', name: 'spring-orm', version: springVersion
+	compile group: 'org.springframework', name: 'spring-tx', version: springVersion
+	compile group: 'org.springframework', name: 'spring-context-support', version: springVersion
+	compile group: 'org.springframework', name: 'spring-core', version: springVersion
+	compile group: 'org.springframework', name: 'spring-jdbc', version: springVersion
+}
+
+task copyToLib(dependsOn: configurations.runtime.buildDependencies, type: Copy) {
+	into "$buildDir/libs/lib"
+	from configurations.runtime {
+		exclude 'mcp*.jar', 'scheme*.jar', 'rmi*.jar', 'mq*.jar'
+	}
+}
+
+task copyToRLib(dependsOn: configurations.runtime.buildDependencies, type: Copy) {
+	into "$buildDir/libs/rlib"
+	from configurations.runtime {
+		include 'mcp*.jar', 'scheme*.jar', 'rmi*.jar', 'mq*.jar'
+	}
+}
+
+task copyConfig(type: Copy) {
+	into "$buildDir/libs/config"
+    from 'src/main/resources'
+	from 'src/main/config/nor'
+	from 'src/main/config/' + target
+}
+
+jar.doFirst {
+	StringBuffer cPath = new StringBuffer()
+	cPath.append("./ ")
+	cPath.append("./config/ ")
+	FileCollection collection = files{file("$buildDir/libs/rlib").listFiles()}
+	collection.each {File file ->
+		cPath.append("./rlib/")
+		cPath.append(file.name)
+		cPath.append(" ")
+	}
+	collection = files{file("$buildDir/libs/lib").listFiles()}
+	collection.each {File file ->
+		cPath.append("./lib/")
+		cPath.append(file.name)
+		cPath.append(" ")
+	}
+	project.ext.classPath = cPath.toString()
+
+	manifest.attributes(["Class-Path":project.ext.classPath])
+}
+
+jar {
+    exclude '*.xml', '*.properties', 'config', 'META-INF'
+	manifest {
+		attributes 'Main-Class': 'com.mcp.scheduler.main.AppMain'
+	}
+}
+
+project.jar.dependsOn copyToLib
+project.jar.dependsOn copyToRLib
+project.jar.dependsOn copyConfig

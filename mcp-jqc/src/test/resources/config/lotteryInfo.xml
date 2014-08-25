@@ -1,0 +1,8 @@
+<lotterys>
+    <lottery code="T54" type="1" name="进球彩" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="四场进球" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="jqcScDanShiCheck" validator="com.mcp.jqc.validator.JqcScDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="jqcScFuShiCheck" validator="com.mcp.jqc.validator.JqcScFuShiValidator" offset="180"/>
+        </play>
+    </lottery>
+</lotterys>

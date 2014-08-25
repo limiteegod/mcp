@@ -1,0 +1,10 @@
+<lotterys>
+    
+    <lottery code="T02" type="1" name="七星彩" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="一般投注" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="qxcDanShiCheck" validator="com.mcp.qxc.validator.QxcDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="qxcFuShiCheck" validator="com.mcp.qxc.validator.QxcFuShiValidator" offset="180"/>
+        </play>
+    </lottery>
+
+</lotterys>

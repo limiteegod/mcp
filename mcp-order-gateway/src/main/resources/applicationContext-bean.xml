@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="schemeInter" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="rmi://${rmi.scheme.host}:${rmi.scheme.port}/${rmi.scheme.name}"/>
+		<property name="serviceInterface" value="com.mcp.rmi.inter.SchemeInter"/>
+		<property name="lookupStubOnStartup" value="false"/>
+		<property name="refreshStubOnConnectFailure" value="true"/>
+	</bean>
+	
+</beans>

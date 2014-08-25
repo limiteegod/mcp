@@ -1,0 +1,37 @@
+<lotterys>
+    <lottery code="T51" type="3" name="竞彩足球" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="让球胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="02" name="胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="03" name="比分" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="04" name="总进球" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="05" name="胜负半全场" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="06" name="混合投注" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="11" name="单场-胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="12" name="单场-让球胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="13" name="单场-比分" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="14" name="单场-总进球" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="15" name="单场-胜负半全场" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+    </lottery>
+</lotterys>

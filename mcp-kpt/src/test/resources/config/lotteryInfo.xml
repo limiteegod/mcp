@@ -1,0 +1,57 @@
+<lotterys>
+    <lottery code="T07" type="2" name="快乐扑克3" status="1" period="" publishDesc="" offset="10">
+        <play code="01" name="同花包选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.ThAllValidator" offset="10"/>
+        </play>
+        <play code="02" name="同花单选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.ThOneValidator" offset="10"/>
+        </play>
+        <play code="03" name="同花顺包选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.ThsAllValidator" offset="10"/>
+        </play>
+        <play code="04" name="同花顺单选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.ThsOneValidator" offset="10"/>
+        </play>
+        <play code="05" name="顺子包选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.SzAllValidator" offset="10"/>
+        </play>
+        <play code="06" name="顺子单选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.SzOneValidator" offset="10"/>
+        </play>
+        <play code="07" name="豹子包选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.BzAllValidator" offset="10"/>
+        </play>
+        <play code="08" name="豹子单选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.BzOneValidator" offset="10"/>
+        </play>
+        <play code="09" name="对子包选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.DzAllValidator" offset="10"/>
+        </play>
+        <play code="10" name="对子单选" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.DzOneValidator" offset="10"/>
+        </play>
+        <play code="11" name="任选一" status="1" price="200">
+            <bet code="00" name="普通" status="1" check="" validator="com.mcp.kpt.validator.ZyValidator" offset="10"/>
+        </play>
+        <play code="12" name="任选二" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="" validator="com.mcp.kpt.validator.ZeDsValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="" validator="com.mcp.kpt.validator.ZeFsValidator" offset="10"/>
+        </play>
+        <play code="13" name="任选三" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="" validator="com.mcp.kpt.validator.ZsDsValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="" validator="com.mcp.kpt.validator.ZsFsValidator" offset="10"/>
+        </play>
+        <play code="14" name="任选四" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="" validator="com.mcp.kpt.validator.ZsiDsValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="" validator="com.mcp.kpt.validator.ZsiFsValidator" offset="10"/>
+        </play>
+        <play code="15" name="任选五" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="" validator="com.mcp.kpt.validator.ZwDsValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="" validator="com.mcp.kpt.validator.ZwFsValidator" offset="10"/>
+        </play>
+        <play code="16" name="任选六" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="" validator="com.mcp.kpt.validator.ZlDsValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="" validator="com.mcp.kpt.validator.ZlFsValidator" offset="10"/>
+        </play>
+    </lottery>
+</lotterys>

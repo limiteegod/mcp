@@ -1,0 +1,234 @@
+<lotterys>
+    <lottery code="T01" type="1" name="大乐透" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="一般投注" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="dltDanShiCheck" validator="com.mcp.dlt.validator.DanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="dltFuShiCheck" validator="com.mcp.dlt.validator.FuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="dltDanTuoCheck" validator="com.mcp.dlt.validator.DanTuoValidator" offset="180"/>
+        </play>
+        <play code="05" name="追加" status="1" price="300">
+            <bet code="00" name="单式" status="1" check="dltDanShiCheck" validator="com.mcp.dlt.validator.DanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="dltFuShiCheck" validator="com.mcp.dlt.validator.FuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="dltDanTuoCheck" validator="com.mcp.dlt.validator.DanTuoValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="T02" type="1" name="七星彩" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="一般投注" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="qxcDanShiCheck" validator="com.mcp.qxc.validator.QxcDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="qxcFuShiCheck" validator="com.mcp.qxc.validator.QxcFuShiValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="T03" type="1" name="排列三" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="直选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="plsZhiXuanDanShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="plsZhiXuanFuShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanFuShiValidator" offset="180"/>
+            <bet code="03" name="和值" status="1" check="plsZhiXuanHeZhiCheck" validator="com.mcp.pls.validator.PlsZhiXuanHeZhiValidator" offset="180"/>
+            <bet code="04" name="组合复式" status="1" check="plsZhiXuanZuHeFuShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanZuHeFuShiValidator" offset="180"/>
+            <bet code="05" name="组合胆拖" status="1" check="plsZhiXuanZuHeDanTuoCheck" validator="com.mcp.pls.validator.PlsZhiXuanZuHeDanTuoValidator" offset="180"/>
+            <bet code="06" name="跨度复式" status="1" check="plsZhiXuanKuaDuFuShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanKuaDuFuShiValidator" offset="180"/>
+        </play>
+        <play code="02" name="组选三" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="plsZuSanFuShiCheck" validator="com.mcp.pls.validator.PlsZuSanFuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="plsZuSanDanTuoCheck" validator="com.mcp.pls.validator.PlsZuSanDanTuoValidator" offset="180"/>
+            <bet code="06" name="跨度" status="1" check="plsZuSanKuaDuCheck" validator="com.mcp.pls.validator.PlsZuSanKuaDuValidator" offset="180"/>
+        </play>
+        <play code="03" name="组选六" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="plsZuLiuFuShiCheck" validator="com.mcp.pls.validator.PlsZuLiuFuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="plsZuLiuDanTuoCheck" validator="com.mcp.pls.validator.PlsZuLiuDanTuoValidator" offset="180"/>
+            <bet code="06" name="跨度" status="1" check="plsZuLiuKuaDuCheck" validator="com.mcp.pls.validator.PlsZuLiuKuaDuValidator" offset="180"/>
+        </play>
+        <play code="04" name="组选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="plsZuXuanDanShiCheck" validator="com.mcp.pls.validator.PlsZuXuanDanShiValidator" offset="180"/>
+            <bet code="03" name="和值" status="1" check="plsZuXuanHeZhiCheck" validator="com.mcp.pls.validator.PlsZuXuanHeZhiValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="T04" type="1" name="排列五" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="一般投注" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="plwDanShiCheck" validator="com.mcp.plw.validator.PlwDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="plwFuShiCheck" validator="com.mcp.plw.validator.PlwFuShiValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="T05" type="2" name="11选5" status="1" period="" publishDesc="" offset="10">
+        <play code="21" name="任选一" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="esfZyFuShiCheck" validator="com.mcp.esf.validator.EsfZyFuShiValidator" offset="10"/>
+        </play>
+        <play code="22" name="任选二" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfZtDanShiCheck" validator="com.mcp.esf.validator.EsfZtDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfZtFuShiCheck" validator="com.mcp.esf.validator.EsfZtFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfZtDanTuoCheck" validator="com.mcp.esf.validator.EsfZtDanTuoValidator" offset="10"/>
+        </play>
+        <play code="23" name="任选三" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfZthDanShiCheck" validator="com.mcp.esf.validator.EsfZthDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfZthFuShiCheck" validator="com.mcp.esf.validator.EsfZthFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfZthDanTuoCheck" validator="com.mcp.esf.validator.EsfZthDanTuoValidator" offset="10"/>
+        </play>
+        <play code="24" name="任选四" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfZfDanShiCheck" validator="com.mcp.esf.validator.EsfZfDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfZfFuShiCheck" validator="com.mcp.esf.validator.EsfZfFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfZfDanTuoCheck" validator="com.mcp.esf.validator.EsfZfDanTuoValidator" offset="10"/>
+        </play>
+        <play code="25" name="任选五" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfZfiveDanShiCheck" validator="com.mcp.esf.validator.EsfZfiveDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfZfiveFuShiCheck" validator="com.mcp.esf.validator.EsfZfiveFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfZfiveDanTuoCheck" validator="com.mcp.esf.validator.EsfZfiveDanTuoValidator" offset="10"/>
+        </play>
+        <play code="26" name="任选六" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfZsixDanShiCheck" validator="com.mcp.esf.validator.EsfZsixDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfZsixFuShiCheck" validator="com.mcp.esf.validator.EsfZsixFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfZsixDanTuoCheck" validator="com.mcp.esf.validator.EsfZsixDanTuoValidator" offset="10"/>
+        </play>
+        <play code="27" name="任选七" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfZsevenDanShiCheck" validator="com.mcp.esf.validator.EsfZsevenDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfZsevenFuShiCheck" validator="com.mcp.esf.validator.EsfZsevenFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfZsevenDanTuoCheck" validator="com.mcp.esf.validator.EsfZsevenDanTuoValidator" offset="10"/>
+        </play>
+        <play code="28" name="任选八" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfZeightDanShiCheck" validator="com.mcp.esf.validator.EsfZeightDanShiValidator" offset="10"/>
+        </play>
+        <play code="29" name="前二组选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfQtzuDanShiCheck" validator="com.mcp.esf.validator.EsfQtzuDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfQtzuFuShiCheck" validator="com.mcp.esf.validator.EsfQtzuFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfQtzuDanTuoCheck" validator="com.mcp.esf.validator.EsfQtzuDanTuoValidator" offset="10"/>
+            <bet code="03" name="和值" status="1" check="esfQtzuHeZhiCheck" validator="com.mcp.esf.validator.EsfQtzuHeZhiValidator" offset="10"/>
+            <bet code="06" name="跨度" status="1" check="esfQtzuKuaDuCheck" validator="com.mcp.esf.validator.EsfQtzuKuaDuValidator" offset="10"/>
+        </play>
+        <play code="30" name="前二直选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfQtzhiDanShiCheck" validator="com.mcp.esf.validator.EsfQtzhiDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfQtzhiFuShiCheck" validator="com.mcp.esf.validator.EsfQtzhiFuShiValidator" offset="10"/>
+            <bet code="07" name="定位" status="1" check="esfQtzhiDingWeiCheck" validator="com.mcp.esf.validator.EsfQtzhiDingWeiValidator" offset="10"/>
+            <bet code="03" name="和值" status="1" check="esfQtzhiHeZhiCheck" validator="com.mcp.esf.validator.EsfQtzhiHeZhiValidator" offset="10"/>
+            <bet code="06" name="跨度" status="1" check="esfQtzhiKuaDuCheck" validator="com.mcp.esf.validator.EsfQtzhiKuaDuValidator" offset="10"/>
+        </play>
+        <play code="31" name="前三组选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfQthzuDanShiCheck" validator="com.mcp.esf.validator.EsfQthzuDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfQthzuFuShiCheck" validator="com.mcp.esf.validator.EsfQthzuFuShiValidator" offset="10"/>
+            <bet code="02" name="胆拖" status="1" check="esfQthzuDanTuoCheck" validator="com.mcp.esf.validator.EsfQthzuDanTuoValidator" offset="10"/>
+            <bet code="03" name="和值" status="1" check="esfQthzuHeZhiCheck" validator="com.mcp.esf.validator.EsfQthzuHeZhiValidator" offset="10"/>
+            <bet code="06" name="跨度" status="1" check="esfQthzuKuaDuCheck" validator="com.mcp.esf.validator.EsfQthzuKuaDuValidator" offset="10"/>
+        </play>
+        <play code="32" name="前三直选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="esfQthzhiDanShiCheck" validator="com.mcp.esf.validator.EsfQthzhiDanShiValidator" offset="10"/>
+            <bet code="01" name="复式" status="1" check="esfQthzhiFuShiCheck" validator="com.mcp.esf.validator.EsfQthzhiFuShiValidator" offset="10"/>
+            <bet code="07" name="定位" status="1" check="esfQthzhiDingWeiCheck" validator="com.mcp.esf.validator.EsfQthzhiDingWeiValidator" offset="10"/>
+            <bet code="03" name="和值" status="1" check="esfQthzhiHeZhiCheck" validator="com.mcp.esf.validator.EsfQthzhiHeZhiValidator" offset="10"/>
+            <bet code="06" name="跨度" status="1" check="esfQthzhiKuaDuCheck" validator="com.mcp.esf.validator.EsfQthzhiKuaDuValidator" offset="10"/>
+        </play>
+    </lottery>
+    
+    <lottery code="F01" type="1" name="双色球" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="标准" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="ssqDanShiCheck" validator="com.mcp.ssq.validator.SsqDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="ssqFuShiCheck" validator="com.mcp.ssq.validator.SsqFuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="ssqDanTuoCheck" validator="com.mcp.ssq.validator.SsqDanTuoValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="F02" type="1" name="福彩3d" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="直选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="fsdZhiXuanDanShiCheck" validator="com.mcp.fsd.validator.FsdZhiXuanDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="fsdZhiXuanFuShiCheck" validator="com.mcp.fsd.validator.FsdZhiXuanFuShiValidator" offset="180"/>
+            <bet code="03" name="和值" status="1" check="fsdZhiXuanHeZhiCheck" validator="com.mcp.fsd.validator.FsdZhiXuanHeZhiValidator" offset="180"/>
+        </play>
+        <play code="02" name="组选三" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="fsdZuSanFuShiCheck" validator="com.mcp.fsd.validator.FsdZuSanFuShiValidator" offset="180"/>
+        </play>
+        <play code="03" name="组选六" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="fsdZuLiuFuShiCheck" validator="com.mcp.fsd.validator.FsdZuLiuFuShiValidator" offset="180"/>
+        </play>
+        <play code="04" name="组选" status="1" price="200">
+            <bet code="03" name="和值" status="1" check="fsdZuXuanHeZhiCheck" validator="com.mcp.fsd.validator.FsdZuXuanHeZhiValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="F03" type="1" name="七乐彩" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="标准" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="qlcDanShiCheck" validator="com.mcp.qlc.validator.QlcDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="qlcFuShiCheck" validator="com.mcp.qlc.validator.QlcFuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="qlcDanTuoCheck" validator="com.mcp.qlc.validator.QlcDanTuoValidator" offset="180"/>
+        </play>
+    </lottery>
+
+    <lottery code="F04" type="2" name="快3" status="1" period="" publishDesc="" offset="10">
+        <play code="01" name="三不同" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tnsDanShiCheck" validator="com.mcp.kt.validator.TnsDanShiValidator" offset="10"/>
+        </play>
+        <play code="02" name="二同单选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="twsDanShiCheck" validator="com.mcp.kt.validator.TwsDanShiValidator" offset="10"/>
+        </play>
+        <play code="03" name="三同单选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tsDanShiCheck" validator="com.mcp.kt.validator.TsDanShiValidator" offset="10"/>
+        </play>
+        <play code="04" name="和值" status="1" price="200">
+            <bet code="01" name="普通" status="1" check="hezhiPuTongCheck" validator="com.mcp.kt.validator.HezhiPuTongValidator" offset="10"/>
+        </play>
+        <play code="05" name="二不同" status="1" price="200">
+            <bet code="01" name="普通" status="1" check="twnsPuTongCheck" validator="com.mcp.kt.validator.TwnsPuTongValidator" offset="10"/>
+        </play>
+        <play code="06" name="二同复选" status="1" price="200">
+            <bet code="01" name="普通" status="1" check="twsFuShiPuTongCheck" validator="com.mcp.kt.validator.TwsFuShiPuTongValidator" offset="10"/>
+        </play>
+        <play code="07" name="三同通选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tsAllDanShiCheck" validator="com.mcp.kt.validator.TsAllDanShiValidator" offset="10"/>
+        </play>
+        <play code="08" name="三连通选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="tlAllDanShiCheck" validator="com.mcp.kt.validator.TlAllDanShiValidator" offset="10"/>
+        </play>
+    </lottery>
+    
+    <lottery code="T51" type="3" name="竞彩足球" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="让球胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="02" name="胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="03" name="比分" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="04" name="总进球" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="05" name="胜负半全场" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="06" name="混合投注" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="11" name="单场-胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="12" name="单场-让球胜平负" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="13" name="单场-比分" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="14" name="单场-总进球" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+        <play code="15" name="单场-胜负半全场" status="1" price="200">
+        	<bet code="00" name="默认" status="1" check="defaultJcCheck" validator="com.mcp.jc.validator.JcDefaultValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="T53" type="1" name="胜负彩" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="十四场" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="sfcSscDanShiCheck" validator="com.mcp.sfc.validator.SfcSscDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="sfcSscFuShiCheck" validator="com.mcp.sfc.validator.SfcSscFuShiValidator" offset="180"/>
+        </play>
+        <play code="02" name="任九场" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="sfcRjcDanShiCheck" validator="com.mcp.sfc.validator.SfcRjcDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="sfcRjcFuShiCheck" validator="com.mcp.sfc.validator.SfcRjcFuShiValidator" offset="180"/>
+        </play>
+    </lottery>
+    
+    <lottery code="T54" type="1" name="进球彩" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="四场进球" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="jqcScDanShiCheck" validator="com.mcp.jqc.validator.JqcScDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="jqcScFuShiCheck" validator="com.mcp.jqc.validator.JqcScFuShiValidator" offset="180"/>
+        </play>
+    </lottery>
+</lotterys>

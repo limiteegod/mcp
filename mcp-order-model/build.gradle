@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':mcp-order-core')
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.0.Final'
+}

@@ -1,0 +1,89 @@
+<services>
+	<!--用户相关操作-->
+    <!--todo  api.xml文件中的前缀"/mcp"需要抽取出来，放入配置文件。-->
+    <!--todo 删除htm后缀-->
+
+    <service cmd="A01" path="/mcp/account/register.htm" />
+	<service cmd="A02" path="/mcp/account/query.htm" />
+	<service cmd="A03" path="/mcp/account/modifyPassword.htm" />
+	<service cmd="A04" path="/mcp/account/login.htm" />
+	<service cmd="A05" path="/mcp/account/modifyInfo.htm" />
+	<service cmd="A06" path="/mcp/account/channelLogin.htm" />
+	<service cmd="A07" path="/mcp/account/channelQuery.htm" />
+
+	<service cmd="T01" path="/mcp/trade/lot.htm" />
+	<service cmd="T02" path="/mcp/trade/afford.htm" />
+	<service cmd="T03" path="/mcp/trade/clot.htm" />
+    <service cmd="T04" path="/mcp/trade/cValidate.htm" />
+	<service cmd="T05" path="/mcp/jctrade/jcLot.htm" />
+    <service cmd="T06" path="/mcp/jctrade/cJcLot.htm" />
+
+	<service cmd="P01" path="/mcp/print/getOrders.htm" />
+	<service cmd="P02" path="/mcp/print/printBack.htm" />
+	<service cmd="P03" path="/mcp/print/getAllToPrize.htm" />
+	<service cmd="P04" path="/mcp/print/prizeBack.htm" />
+	<service cmd="P05" path="/mcp/print/login.htm" />
+	<service cmd="P06" path="/mcp/print/printByOrderId.htm" />
+	<service cmd="P07" path="/mcp/print/regUser.htm" />
+	<service cmd="P08" path="/mcp/print/printBackByOrder.htm" />
+	<service cmd="P09" path="/mcp/print/printPaper.htm" />
+    <service cmd="P10" path="/mcp/print/resetTakeAway.htm" />
+    <service cmd="P11" path="/mcp/print/printFailure.htm" />
+    <service cmd="P12" path="/mcp/print/getPrintQueen.htm" />
+
+	<service cmd="Q01" path="/mcp/query/getGameTerm.htm" />
+	<service cmd="Q02" path="/mcp/query/getScheme.htm" />
+	<service cmd="Q03" path="/mcp/query/getBetHistory.htm" />
+	<service cmd="Q04" path="/mcp/query/getBetAccountLog.htm" />
+	<service cmd="Q05" path="/mcp/query/getStation.htm" />
+	<service cmd="Q07" path="/mcp/query/getSystemTime.htm" />
+	<service cmd="Q08" path="/mcp/query/infoCollect.htm" />
+	<service cmd="Q09" path="/mcp/query/getFiles.htm" />
+	<service cmd="Q10" path="/mcp/query/getTicket.htm" />
+	<service cmd="Q11" path="/mcp/query/getGamesByStatus.htm" />
+	<service cmd="Q12" path="/mcp/query/getMessages.htm" />
+	<service cmd="Q13" path="/mcp/query/getPromotions.htm" />
+	<service cmd="Q14" path="/mcp/query/getJcMatches.htm" />
+    <service cmd="Q15" path="/mcp/query/cGetBetHistory.htm" />
+    <service cmd="Q16" path="/mcp/query/cGetTerm.htm" />
+    <service cmd="Q17" path="/mcp/query/cGetNotifyMsg.htm" />
+	
+	<service cmd="R01" path="/mcp/resource/sendShortMsg.htm" />
+	<service cmd="R02" path="/mcp/resource/findBackPsd.htm" />
+	<service cmd="R03" path="/mcp/resource/bindBank.htm" />
+	<service cmd="R04" path="/mcp/resource/bindPhone.htm" />
+	
+	<service cmd="N04" path="/mcp/notify/termNotify.htm" />
+	<service cmd="N05" path="/mcp/notify/printNotify.htm" />
+	<service cmd="N06" path="/mcp/notify/receiptNotify.htm" />
+	<service cmd="N07" path="/mcp/notify/oddsNotify.htm" />
+	
+	<service cmd="C01" path="/mcp/cash/prizeToRecharge.htm" />
+	<service cmd="C02" path="/mcp/cash/rechargeAtStation.htm" />
+	<service cmd="C03" path="/mcp/cash/prizeToOut.htm" />
+    <service cmd="C04" path="/mcp/cash/coupon.htm" />
+    <service cmd="C05" path="/mcp/cash/getCoupon.htm" />
+	
+	<service cmd="S01" path="/mcp/scheme/zh.htm" />
+	<service cmd="S02" path="/mcp/scheme/query.htm" />
+	<service cmd="S03" path="/mcp/scheme/cancel.htm" />
+    <service cmd="S04" path="/mcp/scheme/hm.htm" />
+    <service cmd="S05" path="/mcp/scheme/joinHm.htm" />
+	
+	<service cmd="J01" path="/mcp/jbank/login.htm" />
+	<service cmd="J02" path="/mcp/jbank/getUser.htm" />
+	<service cmd="J03" path="/mcp/jbank/modifyInfo.htm" />
+	<service cmd="J04" path="/mcp/jbank/register.htm" />
+	<service cmd="J05" path="/mcp/jbank/affordFromBank.htm" />
+	<service cmd="J06" path="/mcp/jbank/getCurTerm.htm" />
+	<service cmd="J07" path="/mcp/jbank/getCurTermOrders.htm" />
+	<service cmd="J08" path="/mcp/jbank/getLastTermHit.htm" />
+
+    <service cmd="AD01" path="/mcp/admin/login.htm" />
+    <service cmd="AD02" path="/mcp/admin/addToPrintQueen.htm" />
+    <service cmd="AD03" path="/mcp/admin/getTermReportInfo.htm" />
+    <service cmd="AD04" path="/mcp/admin/getTermInfo.htm" />
+
+    <service cmd="AP01" path="/mcp/admin/operation/query.htm" />
+
+</services>

@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 队列 -->
+	<bean id="defaultQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="com.mcp.default"></constructor-arg>
+	</bean>
+	
+	<!-- 发送给方案引擎的队列 -->
+	<bean id="schemeQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="com.mcp.scheme"></constructor-arg>
+	</bean>
+	
+	<!-- 发送给订单引擎的队列 -->
+	<bean id="orderQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="com.mcp.order"></constructor-arg>
+	</bean>
+	
+	<!-- 发给我中啦，请求出票的队列 -->
+	<bean id="wzlQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="com.mcp.print.wzl"></constructor-arg>
+	</bean>
+	
+	<!-- a pooling based JMS provider -->
+	<bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+		destroy-method="stop">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="${mq.uri}"/>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Spring JMS Template -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="messageConverter" ref="messageConverter" />
+		<property name="connectionFactory">
+			<ref local="jmsFactory" />
+		</property>
+	</bean>
+	
+	<!-- 消息转换 -->
+	<bean id="messageConverter" class="com.mcp.mq.converter.McpMessageConverter" />
+	
+</beans>

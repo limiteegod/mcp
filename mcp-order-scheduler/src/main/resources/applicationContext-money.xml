@@ -1,0 +1,99 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <!-- 渠道购买彩票  -->
+    <!-- <bean id="moneyHandlerRC00102" class="com.mcp.order.dao.finance.MoneyHandlerRC00102"></bean> -->
+    
+    <!-- 渠道购买彩票，投注站收款  -->
+    <!-- <bean id="moneyHandlerRS00003" class="com.mcp.order.dao.finance.MoneyHandlerRS00003"></bean> -->
+	
+	<!-- 投注站奖金收入 -->
+	<bean id="moneyHandlerRS00005" class="com.mcp.order.dao.finance.MoneyHandlerRS00005"></bean>
+	
+	<!-- 彩民在投注站现场充值  -->
+    <bean id="moneyHandlerRU00000" class="com.mcp.order.dao.finance.MoneyHandlerRU00000"></bean>
+    
+    <!-- 彩民在投注站提现  -->
+    <bean id="moneyHandlerRU00101" class="com.mcp.order.dao.finance.MoneyHandlerRU00101"></bean>
+    
+    <!-- 彩民在投注站，购买彩票  -->
+    <bean id="moneyHandlerRU00100" class="com.mcp.order.dao.finance.MoneyHandlerRU00100"></bean>
+    
+    <!-- 彩民在投注站，购买彩票，出票失败，投注站退款给彩民  -->
+    <bean id="moneyHandlerRU00001" class="com.mcp.order.dao.finance.MoneyHandlerRU00001"></bean>
+    
+    <!-- 投注站结算账户收入，充值  -->
+    <bean id="moneyHandlerRS00001" class="com.mcp.order.dao.finance.MoneyHandlerRS00001"></bean>
+    
+    <!-- 投注站结算账户支出，提款  -->
+    <bean id="moneyHandlerRS00100" class="com.mcp.order.dao.finance.MoneyHandlerRS00100"></bean>
+    
+    <!-- 彩民收入，投注站返奖  -->
+    <bean id="moneyHandlerRU00002" class="com.mcp.order.dao.finance.MoneyHandlerRU00002"></bean>
+    
+    <!-- 渠道商预冲额度 -->
+    <!-- <bean id="moneyHandlerRC00000" class="com.mcp.order.dao.finance.MoneyHandlerRC00000"></bean> -->
+    
+    <!-- 渠道商提款 -->
+    <!-- <bean id="moneyHandlerRC00100" class="com.mcp.order.dao.finance.MoneyHandlerRC00100"></bean> -->
+    
+    <!-- 平台结算账户，借款 -->
+    <bean id="moneyHandlerRP00000" class="com.mcp.order.dao.finance.MoneyHandlerRP00000"></bean>
+    
+    <!-- 平台结算账户，提款-->
+    <bean id="moneyHandlerRP00100" class="com.mcp.order.dao.finance.MoneyHandlerRP00100"></bean>
+    
+    <!-- 平台结算账户收入，代理商支付业务费用 -->
+    <bean id="moneyHandlerRP00001" class="com.mcp.order.dao.finance.MoneyHandlerRP00001"></bean>
+    
+    <!-- 代理商结算账户支出，支付业务费用 -->
+    <!-- <bean id="moneyHandlerRC00101" class="com.mcp.order.dao.finance.MoneyHandlerRC00101"></bean> -->
+    
+    <!-- 平台结算账户收入，投注站支付业务费用 -->
+    <bean id="moneyHandlerRP00002" class="com.mcp.order.dao.finance.MoneyHandlerRP00002"></bean>
+    
+    <!-- 投注站结算账户支出，支付业务费用 -->
+    <bean id="moneyHandlerRS00101" class="com.mcp.order.dao.finance.MoneyHandlerRS00101"></bean>
+    
+    <!-- 平台结算账户支出，返点给代理商 -->
+    <bean id="moneyHandlerRP00101" class="com.mcp.order.dao.finance.MoneyHandlerRP00101"></bean>
+    
+    <!-- 代理商结算账户收入，返点 -->
+    <!-- <bean id="moneyHandlerRC00001" class="com.mcp.order.dao.finance.MoneyHandlerRC00001"></bean> -->
+
+    <!-- 投注站结算账户支出，退款给代理商 -->
+    <bean id="moneyHandlerRS00102" class="com.mcp.order.dao.finance.MoneyHandlerRS00102"></bean>
+    
+    <!-- 代理商结算账户收入，投注站退款 -->
+    <!-- <bean id="moneyHandlerRC00002" class="com.mcp.order.dao.finance.MoneyHandlerRC00002"></bean> -->
+
+    <!-- 平台活动支出 -->
+    <bean id="moneyHandlerRP00104" class="com.mcp.order.dao.finance.MoneyHandlerRP00104"></bean>
+    
+    <!-- 投注站结算账户收入，平台返点 -->
+    <bean id="moneyHandlerRS00002" class="com.mcp.order.dao.finance.MoneyHandlerRS00002"></bean>
+    
+    <!-- 投注站收入，出票收入 -->
+    <bean id="moneyHandlerRS00003" class="com.mcp.order.dao.finance.MoneyHandlerRS00003"></bean>
+    
+    <!-- 彩民充值，通过网银、支付宝等第三方渠道 -->
+    <bean id="moneyHandlerRU01000" class="com.mcp.order.dao.finance.MoneyHandlerRU01000"></bean>
+    
+    <!-- 彩民平台业务账户，退款收入 -->
+    <bean id="moneyHandlerRU01101" class="com.mcp.order.dao.finance.MoneyHandlerRU01101"></bean>
+    
+    <!-- 投注站结算账户，彩民投注 -->
+    <bean id="moneyHandlerRS00000" class="com.mcp.order.dao.finance.MoneyHandlerRS00000"></bean>
+    
+    <!-- 彩民平台业务账户，第三方投注支出 -->
+    <bean id="moneyHandlerRU01100" class="com.mcp.order.dao.finance.MoneyHandlerRU01100"></bean>
+    
+    <!-- 彩民奖金账户中奖收入 -->
+    <bean id="moneyHandlerRU02000" class="com.mcp.order.dao.finance.MoneyHandlerRU02000"></bean>
+    
+    <!-- 彩民奖金账户支出 -->
+    <bean id="moneyHandlerRU02100" class="com.mcp.order.dao.finance.MoneyHandlerRU02100"></bean>
+    
+</beans>

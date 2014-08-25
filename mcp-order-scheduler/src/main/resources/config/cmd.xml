@@ -1,0 +1,47 @@
+<root>
+	<group code="N" package="com.mcp.order.inter.notify" req="" rep="">
+        <cmd code="01">
+            <response code="01">
+                <filter code="01">
+                    <name value="term">
+                        <property value="id"/>
+                        <property value="code"/>
+                        <property value="nextCode"/>
+                        <property value="name"/>
+                        <property value="gameCode"/>
+                        <property value="prizePool"/>
+                        <property value="openTime"/>
+                        <property value="endTime"/>
+                        <property value="winningNumber"/>
+                        <property value="status"/>
+                        <property value="detailInfo"/>
+                        <property value="concedePoints"/>
+                        <property value="matchTime"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02">
+            <response code="01">
+                <filter code="01">
+                    <name value="torder">
+                    	<property value="id"/>
+                    	<property value="termCode"/>
+                    	<property value="schemeId"/>
+                    	<property value="gameCode"/>
+                    	<property value="outerId"/>
+                    	<property value="amount"/>
+                    	<property value="ticketCount"/>
+                    	<property value="bonus"/>
+                    	<property value="acceptTime"/>
+                    	<property value="printTime"/>
+                    	<property value="status"/>
+                    	<property value="multiple"/>
+                    	<property value="numbers"/>
+                    	<property value="dNumber"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+	</group>
+</root>

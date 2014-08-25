@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+
+
+
+
+		http://www.springframework.org/schema/batch 
+		http://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
+
+		
+	<bean id="zhBetTasklet" class="com.mcp.scheme.scheduler.task.zh.ZhBetTasklet" scope="step">
+    	<property name="termCode" value="#{jobParameters['termCode']}" />
+    	<property name="gameCode" value="#{jobParameters['gameCode']}" />
+    	<property name="nextTermCode" value="#{jobParameters['nextTermCode']}" />
+    </bean>
+    
+    <batch:job id="zhTermDrawJob">
+    	<batch:step id="zhTermDrawJob_step1">
+	        <batch:tasklet ref="zhBetTasklet" transaction-manager="batchManager">
+	        </batch:tasklet>
+	    </batch:step>
+    </batch:job>
+    
+</beans>

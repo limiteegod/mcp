@@ -1,0 +1,33 @@
+<beans:beans xmlns="http://www.springframework.org/schema/batch"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:bean="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
+	
+	<bean:bean id="jobRepository"
+		class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+		<bean:property name="transactionManager" ref="batchManager" />
+	</bean:bean>
+	
+	<bean:bean id="batchManager"
+		class="org.springframework.batch.support.transaction.ResourcelessTransactionManager">
+	</bean:bean>
+	
+	<!-- 异步任务执行类 -->
+	<bean:bean id="jobLauncher"
+		class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<bean:property name="jobRepository" ref="jobRepository" />
+		<bean:property name="taskExecutor">
+			<bean:bean class="org.springframework.core.task.SimpleAsyncTaskExecutor"></bean:bean>
+		</bean:property>
+	</bean:bean>
+	
+	<!-- 同步任务执行类 -->
+	<bean:bean id="syncJobLauncher"
+        class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <bean:property name="jobRepository" ref="jobRepository" />
+    </bean:bean>
+	
+</beans:beans>

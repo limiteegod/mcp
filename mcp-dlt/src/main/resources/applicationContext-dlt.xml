@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 单式算奖 -->
+	<bean id="dltDanShiCheck" class="com.mcp.dlt.check.DanShiCheck" scope="prototype"></bean>	
+    
+    <!-- 复式算奖 -->
+    <bean id="dltFuShiCheck" class="com.mcp.dlt.check.FuShiCheck" scope="prototype"></bean>
+    
+    <!-- 胆拖算奖 -->
+    <bean id="dltDanTuoCheck" class="com.mcp.dlt.check.DanTuoCheck" scope="prototype"></bean>
+</beans>

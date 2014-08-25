@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="2.0">
+	<persistence-unit name="SimplePU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.mcp.order.model.ts.Customer</class>
+		<class>com.mcp.order.model.ts.Game</class>
+		<class>com.mcp.order.model.ts.Term</class>
+		<class>com.mcp.order.model.ts.TTicket</class>
+		<class>com.mcp.order.model.ts.TOrder</class>
+		<class>com.mcp.order.model.admin.Area</class>
+		<class>com.mcp.order.model.admin.Conservator</class>
+		<class>com.mcp.order.model.admin.Station</class>
+		<class>com.mcp.order.model.admin.BetShop</class>
+		<class>com.mcp.order.model.admin.TerminalVersion</class>
+		<class>com.mcp.order.model.admin.Terminal</class>
+		<class>com.mcp.order.model.admin.StationGame</class>
+		<class>com.mcp.order.model.admin.StationGameTerminal</class>
+		<class>com.mcp.order.model.admin.ClientFileVersion</class>
+		<class>com.mcp.order.model.ts.CustomerAccount</class>
+		<class>com.mcp.order.model.ts.Payment</class>
+		<class>com.mcp.order.model.ts.CustomerPresent</class>
+		<class>com.mcp.order.model.ts.GameGrade</class>
+		<class>com.mcp.order.model.admin.CPlatform</class>
+		<class>com.mcp.order.model.admin.AreaGames</class>
+		<class>com.mcp.order.model.ts.MoneyLog</class>
+		<class>com.mcp.order.model.ts.TermLog</class>
+		<class>com.mcp.order.model.ts.Promotion</class>
+		<class>com.mcp.order.model.jc.JOdds</class>
+		<class>com.mcp.order.model.ts.WithDraw</class>
+        <class>com.mcp.order.model.report.Coupon</class>
+        <class>com.mcp.order.model.admin.Admini</class>
+        <class>com.mcp.order.model.admin.Operation</class>
+        <class>com.mcp.order.model.admin.UserOperation</class>
+	</persistence-unit>
+</persistence>

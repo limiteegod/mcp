@@ -1,0 +1,5 @@
+dependencies {
+	compile project(':mcp-order-dao')
+	compile project(':mcp-order-mongo')
+	compile project(':mcp-order-inter')
+}

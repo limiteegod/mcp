@@ -1,0 +1,10 @@
+<root>
+	<group code="E" package="com.mcp.order.inter" req="" rep="">
+		<cmd code="01">
+			<response code="01">
+			    <filter code="01">
+			    </filter>
+			</response>
+		</cmd>
+	</group>
+</root>

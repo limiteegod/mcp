@@ -1,0 +1,12 @@
+<lotterys>
+    <lottery code="T53" type="1" name="胜负彩" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="十四场" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="sfcSscDanShiCheck" validator="com.mcp.sfc.validator.SfcSscDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="sfcSscFuShiCheck" validator="com.mcp.sfc.validator.SfcSscFuShiValidator" offset="180"/>
+        </play>
+        <play code="02" name="任九场" status="1" price="300">
+            <bet code="00" name="单式" status="1" check="sfcRjcDanShiCheck" validator="com.mcp.sfc.validator.SfcRjcDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="sfcRjcFuShiCheck" validator="com.mcp.sfc.validator.SfcRjcFuShiValidator" offset="180"/>
+        </play>
+    </lottery>
+</lotterys>

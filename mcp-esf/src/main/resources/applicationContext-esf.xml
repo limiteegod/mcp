@@ -1,0 +1,125 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 任一复式算奖 -->
+    <bean id="esfZyFuShiCheck" class="com.mcp.esf.check.EsfZyFuShiCheck"></bean>    
+    
+    <!-- 任二单式算奖 -->
+    <bean id="esfZtDanShiCheck" class="com.mcp.esf.check.EsfZtDanShiCheck"></bean>
+    
+    <!-- 任二复式算奖 -->
+    <bean id="esfZtFuShiCheck" class="com.mcp.esf.check.EsfZtFuShiCheck"></bean>    
+    
+    <!-- 任二胆拖算奖 -->
+    <bean id="esfZtDanTuoCheck" class="com.mcp.esf.check.EsfZtDanTuoCheck"></bean>
+    
+    <!-- 任三单式算奖 -->
+    <bean id="esfZthDanShiCheck" class="com.mcp.esf.check.EsfZthDanShiCheck"></bean>
+    
+    <!-- 任三复式算奖 -->
+    <bean id="esfZthFuShiCheck" class="com.mcp.esf.check.EsfZthFuShiCheck"></bean>    
+    
+    <!-- 任三胆拖算奖 -->
+    <bean id="esfZthDanTuoCheck" class="com.mcp.esf.check.EsfZthDanTuoCheck"></bean>
+    
+    <!-- 任四单式算奖 -->
+    <bean id="esfZfDanShiCheck" class="com.mcp.esf.check.EsfZfDanShiCheck"></bean>
+    
+    <!-- 任四复式算奖 -->
+    <bean id="esfZfFuShiCheck" class="com.mcp.esf.check.EsfZfFuShiCheck"></bean>    
+    
+    <!-- 任四胆拖算奖 -->
+    <bean id="esfZfDanTuoCheck" class="com.mcp.esf.check.EsfZfDanTuoCheck"></bean>
+    
+    <!-- 任五单式算奖 -->
+    <bean id="esfZfiveDanShiCheck" class="com.mcp.esf.check.EsfZfiveDanShiCheck"></bean>
+    
+    <!-- 任五复式算奖 -->
+    <bean id="esfZfiveFuShiCheck" class="com.mcp.esf.check.EsfZfiveFuShiCheck"></bean>    
+    
+    <!-- 任五胆拖算奖 -->
+    <bean id="esfZfiveDanTuoCheck" class="com.mcp.esf.check.EsfZfiveDanTuoCheck"></bean>
+    
+    <!-- 任六单式算奖 -->
+    <bean id="esfZsixDanShiCheck" class="com.mcp.esf.check.EsfZsixDanShiCheck"></bean>
+    
+    <!-- 任六复式算奖 -->
+    <bean id="esfZsixFuShiCheck" class="com.mcp.esf.check.EsfZsixFuShiCheck"></bean>    
+    
+    <!-- 任六胆拖算奖 -->
+    <bean id="esfZsixDanTuoCheck" class="com.mcp.esf.check.EsfZsixDanTuoCheck"></bean>
+    
+    <!-- 任七单式算奖 -->
+    <bean id="esfZsevenDanShiCheck" class="com.mcp.esf.check.EsfZsevenDanShiCheck"></bean>
+    
+    <!-- 任七复式算奖 -->
+    <bean id="esfZsevenFuShiCheck" class="com.mcp.esf.check.EsfZsevenFuShiCheck"></bean>    
+    
+    <!-- 任七胆拖算奖 -->
+    <bean id="esfZsevenDanTuoCheck" class="com.mcp.esf.check.EsfZsevenDanTuoCheck"></bean>
+    
+    <!-- 任八单式算奖 -->
+    <bean id="esfZeightDanShiCheck" class="com.mcp.esf.check.EsfZeightDanShiCheck"></bean>
+    
+    <!-- 前二组选单式算奖 -->
+    <bean id="esfQtzuDanShiCheck" class="com.mcp.esf.check.EsfQtzuDanShiCheck"></bean>    
+    
+    <!-- 前二组选复式算奖 -->
+    <bean id="esfQtzuFuShiCheck" class="com.mcp.esf.check.EsfQtzuFuShiCheck"></bean>
+    
+    <!-- 前二组选胆拖算奖 -->
+    <bean id="esfQtzuDanTuoCheck" class="com.mcp.esf.check.EsfQtzuDanTuoCheck"></bean>
+    
+    <!-- 前二组选和值算奖 -->
+    <bean id="esfQtzuHeZhiCheck" class="com.mcp.esf.check.EsfQtzuHeZhiCheck"></bean>
+    
+    <!-- 前二组选跨度算奖 -->
+    <bean id="esfQtzuKuaDuCheck" class="com.mcp.esf.check.EsfQtzuKuaDuCheck"></bean>
+    
+    <!-- 前二直选单式算奖 -->
+    <bean id="esfQtzhiDanShiCheck" class="com.mcp.esf.check.EsfQtzhiDanShiCheck"></bean>    
+    
+    <!-- 前二直选复式算奖 -->
+    <bean id="esfQtzhiFuShiCheck" class="com.mcp.esf.check.EsfQtzhiFuShiCheck"></bean>
+    
+    <!-- 前二直选定位算奖 -->
+    <bean id="esfQtzhiDingWeiCheck" class="com.mcp.esf.check.EsfQtzhiDingWeiCheck"></bean>
+    
+    <!-- 前二直选和值算奖 -->
+    <bean id="esfQtzhiHeZhiCheck" class="com.mcp.esf.check.EsfQtzhiHeZhiCheck"></bean>
+    
+    <!-- 前二直选跨度算奖 -->
+    <bean id="esfQtzhiKuaDuCheck" class="com.mcp.esf.check.EsfQtzhiKuaDuCheck"></bean>
+    
+    <!-- 前三组选单式算奖 -->
+    <bean id="esfQthzuDanShiCheck" class="com.mcp.esf.check.EsfQthzuDanShiCheck"></bean>    
+    
+    <!-- 前三组选复式算奖 -->
+    <bean id="esfQthzuFuShiCheck" class="com.mcp.esf.check.EsfQthzuFuShiCheck"></bean>
+    
+    <!-- 前三组选胆拖算奖 -->
+    <bean id="esfQthzuDanTuoCheck" class="com.mcp.esf.check.EsfQthzuDanTuoCheck"></bean>
+    
+    <!-- 前三组选和值算奖 -->
+    <bean id="esfQthzuHeZhiCheck" class="com.mcp.esf.check.EsfQthzuHeZhiCheck"></bean>
+    
+    <!-- 前三组选跨度算奖 -->
+    <bean id="esfQthzuKuaDuCheck" class="com.mcp.esf.check.EsfQthzuKuaDuCheck"></bean>
+    
+    <!-- 前三直选单式算奖 -->
+    <bean id="esfQthzhiDanShiCheck" class="com.mcp.esf.check.EsfQthzhiDanShiCheck"></bean>    
+    
+    <!-- 前三直选复式算奖 -->
+    <bean id="esfQthzhiFuShiCheck" class="com.mcp.esf.check.EsfQthzhiFuShiCheck"></bean>
+    
+    <!-- 前三直选定位算奖 -->
+    <bean id="esfQthzhiDingWeiCheck" class="com.mcp.esf.check.EsfQthzhiDingWeiCheck"></bean>
+    
+    <!-- 前三直选和值算奖 -->
+    <bean id="esfQthzhiHeZhiCheck" class="com.mcp.esf.check.EsfQthzhiHeZhiCheck"></bean>
+    
+    <!-- 前三直选跨度算奖 -->
+    <bean id="esfQthzhiKuaDuCheck" class="com.mcp.esf.check.EsfQthzhiKuaDuCheck"></bean>
+</beans>

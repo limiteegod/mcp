@@ -1,0 +1,6 @@
+dependencies {
+	compile project(':mcp-order-inter')
+	
+	compile group: 'javax.servlet', name: 'servlet-api', version: '2.4'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3-beta2'
+}

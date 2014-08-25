@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 14场单式算奖 -->
+	<bean id="sfcSscDanShiCheck" class="com.mcp.sfc.check.SfcSscDanShiCheck"></bean>
+    
+    <!-- 14场复式算奖 -->
+	<bean id="sfcSscFuShiCheck" class="com.mcp.sfc.check.SfcSscFuShiCheck"></bean>
+	
+	<!-- 9场单式算奖 -->
+	<bean id="sfcRjcDanShiCheck" class="com.mcp.sfc.check.SfcRjcDanShiCheck"></bean>
+	
+	<!-- 9场复式算奖 -->
+	<bean id="sfcRjcFuShiCheck" class="com.mcp.sfc.check.SfcRjcFuShiCheck"></bean>
+	
+</beans>

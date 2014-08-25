@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+
+
+
+
+		http://www.springframework.org/schema/batch 
+		http://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
+
+    <bean id="cUpdateTicket" class="com.mcp.scheduler.tasklet.CheckUpdateTicketTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="gameType" value="#{jobParameters['gameType']}"></property>
+        <property name="termId" value="#{jobParameters['termId']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+    </bean>
+
+    <bean id="cUpdateOrder" class="com.mcp.scheduler.tasklet.CheckUpdateOrderTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="gameType" value="#{jobParameters['gameType']}"></property>
+        <property name="termId" value="#{jobParameters['termId']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+    </bean>
+
+    <bean id="generateChannelFileTasklet" class="com.mcp.scheduler.tasklet.GenerateChannelFileTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+        <property name="iFolder" value="#{jobParameters['iFolder']}"></property>
+        <property name="termId" value="#{jobParameters['termId']}"></property>
+    </bean>
+
+    <bean id="cUpdateScheme" class="com.mcp.scheduler.tasklet.CheckUpdateSchemeTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="gameType" value="#{jobParameters['gameType']}"></property>
+        <property name="termId" value="#{jobParameters['termId']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+        <property name="nextTermCode" value="#{jobParameters['nextTermCode']}"></property>
+    </bean>
+
+    <bean id="prizeTasklet" class="com.mcp.scheduler.tasklet.PrizeTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+    </bean>
+
+    <bean id="prizeToStationTasklet" class="com.mcp.scheduler.tasklet.PrizeToStationTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+    </bean>
+    
+    <batch:job id="pJob">
+        <batch:step id="pJob_step1" next="pJob_step2">
+            <batch:tasklet ref="cUpdateTicket" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+        <batch:step id="pJob_step2" next="pJob_step3">
+            <batch:tasklet ref="cUpdateOrder" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+        <batch:step id="pJob_step3" next="pJob_step4">
+            <batch:tasklet ref="generateChannelFileTasklet" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+        <batch:step id="pJob_step4" next="pJob_step5">
+            <batch:tasklet ref="cUpdateScheme" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+    	<batch:step id="pJob_step5" next="pJob_step6">
+    		<batch:tasklet ref="prizeTasklet" transaction-manager="batchManager">
+            </batch:tasklet>
+    	</batch:step>
+        <batch:step id="pJob_step6">
+            <batch:tasklet ref="prizeToStationTasklet" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+    
+</beans>

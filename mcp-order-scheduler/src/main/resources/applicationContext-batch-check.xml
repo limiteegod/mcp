@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+
+
+
+
+		http://www.springframework.org/schema/batch 
+		http://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
+	
+	<bean id="cStart" class="com.mcp.scheduler.tasklet.CheckStartTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="gameType" value="#{jobParameters['gameType']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+    </bean>
+    
+    <bean id="cCheck" class="com.mcp.scheduler.tasklet.CheckTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="gameType" value="#{jobParameters['gameType']}"></property>
+        <property name="termId" value="#{jobParameters['termId']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+    </bean>
+
+    <bean id="cCheckInfo" class="com.mcp.scheduler.tasklet.GenerateCheckInfoTasklet" scope="step">
+        <property name="gameCode" value="#{jobParameters['gameCode']}"></property>
+        <property name="gameType" value="#{jobParameters['gameType']}"></property>
+        <property name="termId" value="#{jobParameters['termId']}"></property>
+        <property name="termCode" value="#{jobParameters['termCode']}"></property>
+    </bean>
+    
+	<batch:job id="cJob">
+		<batch:step id="cJob_step1" next="cJob_step2">
+            <batch:tasklet ref="cStart" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+        <batch:step id="cJob_step2" next="cJob_step3">
+            <batch:tasklet ref="cCheck" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+        <batch:step id="cJob_step3">
+            <batch:tasklet ref="cCheckInfo" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+	</batch:job>
+
+</beans>

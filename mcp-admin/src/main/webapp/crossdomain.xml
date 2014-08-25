@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<cross-domain-policy>
+    <allow-access-from domain="*"/>
+    <!--下面这行代码必须有-->
+    <allow-access-from domain="192.168.1.17"/>
+</cross-domain-policy>

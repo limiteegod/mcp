@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+
+
+
+
+		http://www.springframework.org/schema/batch 
+		http://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
+
+		
+	<bean id="hmCancelTasklet" class="com.mcp.scheme.scheduler.task.hm.HmCancelTasklet" scope="step">
+    </bean>
+    
+    <batch:job id="hmCancelJob">
+    	<batch:step id="hmCancelJob_step1">
+	        <batch:tasklet ref="hmCancelTasklet" transaction-manager="batchManager">
+	        </batch:tasklet>
+	    </batch:step>
+    </batch:job>
+
+
+    <bean id="hmPrizeTasklet" class="com.mcp.scheme.scheduler.task.hm.HmPrizeTasklet" scope="step">
+    </bean>
+
+    <batch:job id="hmPrizeJob">
+        <batch:step id="hmPrizeJob_step1">
+            <batch:tasklet ref="hmPrizeTasklet" transaction-manager="batchManager">
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+
+</beans>

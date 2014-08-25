@@ -1,0 +1,38 @@
+<root>
+	<channel code="Q0001">
+	    <draw>
+            <param>defaultDrawParam</param>
+            <job>cJob</job>
+        </draw>
+	    <prize>
+	        <job>pJob</job>
+	        <bean>cPrizeSelf</bean>
+	    </prize>
+	    <checkBalanceAtBet>true</checkBalanceAtBet>
+		<bigBonus>2000000</bigBonus>
+	</channel>
+	<channel code="Q0002">
+	    <draw>
+            <param>defaultDrawParam</param>
+            <job>cJob</job>
+        </draw>
+	    <prize>
+	        <job>pJob</job>
+            <bean>cPrizeOther</bean>
+        </prize>
+        <checkBalanceAtBet>true</checkBalanceAtBet>
+        <bigBonus>1000000</bigBonus>
+    </channel>
+    <channel code="Q1000" description="定投306">
+        <draw>
+            <param>defaultDrawParam</param>
+            <job>cJob</job>
+        </draw>
+        <prize>
+            <job>pJob</job>
+            <bean>cPrizeOther</bean>
+        </prize>
+        <checkBalanceAtBet>false</checkBalanceAtBet>
+        <bigBonus>1000000</bigBonus>
+    </channel>
+</root>

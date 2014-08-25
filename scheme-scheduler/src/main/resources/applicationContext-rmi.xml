@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="rmiSchemeImpl" class="com.mcp.scheme.scheduler.rmi.RmiSchemeImpl"></bean>
+	
+	<bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<property name="serviceName" value="${rmi.scheme.name}"/>
+		<property name="service" ref="rmiSchemeImpl"/>
+		<property name="serviceInterface" value="com.mcp.rmi.inter.SchemeInter"/>
+		<property name="registryPort" value="${rmi.scheme.port}"/>
+		<property name="servicePort" value="${rmi.data.port}"/>
+	</bean>
+	
+	<bean id="orderInter" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="rmi://${rmi.order.host}:${rmi.order.port}/${rmi.order.name}"/>
+		<property name="serviceInterface" value="com.mcp.rmi.inter.OrderInter"/>
+		<property name="lookupStubOnStartup" value="false"/>
+		<property name="refreshStubOnConnectFailure" value="true"/>
+	</bean>
+	
+</beans>

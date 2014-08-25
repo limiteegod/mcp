@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 直选单式算奖 -->
+	<bean id="fsdZhiXuanDanShiCheck" class="com.mcp.fsd.check.FsdZhiXuanDanShiCheck"></bean>	
+    
+    <!-- 直选复式算奖 -->
+    <bean id="fsdZhiXuanFuShiCheck" class="com.mcp.fsd.check.FsdZhiXuanFuShiCheck"></bean>
+    
+    <!-- 直选和值算奖 -->
+    <bean id="fsdZhiXuanHeZhiCheck" class="com.mcp.fsd.check.FsdZhiXuanHeZhiCheck"></bean>    
+    
+    
+    <!-- 组三复式算奖 -->
+    <bean id="fsdZuSanFuShiCheck" class="com.mcp.fsd.check.FsdZuSanFuShiCheck"></bean>    
+   
+    <!-- 组六复式算奖 -->
+    <bean id="fsdZuLiuFuShiCheck" class="com.mcp.fsd.check.FsdZuLiuFuShiCheck"></bean>    
+   
+    <!-- 组选和值算奖 -->
+    <bean id="fsdZuXuanHeZhiCheck" class="com.mcp.fsd.check.FsdZuXuanHeZhiCheck"></bean>
+</beans>

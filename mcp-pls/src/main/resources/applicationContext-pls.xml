@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 直选单式算奖 -->
+	<bean id="plsZhiXuanDanShiCheck" class="com.mcp.pls.check.PlsZhiXuanDanShiCheck"></bean>	
+    
+    <!-- 直选复式算奖 -->
+    <bean id="plsZhiXuanFuShiCheck" class="com.mcp.pls.check.PlsZhiXuanFuShiCheck"></bean>
+    
+    <!-- 直选和值算奖 -->
+    <bean id="plsZhiXuanHeZhiCheck" class="com.mcp.pls.check.PlsZhiXuanHeZhiCheck"></bean>    
+    
+    <!-- 直选组合复式算奖 -->
+    <bean id="plsZhiXuanZuHeFuShiCheck" class="com.mcp.pls.check.PlsZhiXuanZuHeFuShiCheck"></bean>
+    
+    <!-- 直选组合胆拖算奖 -->
+    <bean id="plsZhiXuanZuHeDanTuoCheck" class="com.mcp.pls.check.PlsZhiXuanZuHeDanTuoCheck"></bean>    
+    
+    <!-- 直选跨度复式算奖 -->
+    <bean id="plsZhiXuanKuaDuFuShiCheck" class="com.mcp.pls.check.PlsZhiXuanKuaDuFuShiCheck"></bean>
+    
+    <!-- 组三复式算奖 -->
+    <bean id="plsZuSanFuShiCheck" class="com.mcp.pls.check.PlsZuSanFuShiCheck"></bean>    
+    
+    <!-- 组三胆拖算奖 -->
+    <bean id="plsZuSanDanTuoCheck" class="com.mcp.pls.check.PlsZuSanDanTuoCheck"></bean>
+    
+    <!-- 组三跨度算奖 -->
+    <bean id="plsZuSanKuaDuCheck" class="com.mcp.pls.check.PlsZuSanKuaDuCheck"></bean>
+    
+    <!-- 组六复式算奖 -->
+    <bean id="plsZuLiuFuShiCheck" class="com.mcp.pls.check.PlsZuLiuFuShiCheck"></bean>    
+    
+    <!-- 组六胆拖算奖 -->
+    <bean id="plsZuLiuDanTuoCheck" class="com.mcp.pls.check.PlsZuLiuDanTuoCheck"></bean>
+    
+    <!-- 组六跨度算奖 -->
+    <bean id="plsZuLiuKuaDuCheck" class="com.mcp.pls.check.PlsZuLiuKuaDuCheck"></bean>
+    
+    <!-- 组选单式算奖 -->
+    <bean id="plsZuXuanDanShiCheck" class="com.mcp.pls.check.PlsZuXuanDanShiCheck"></bean>
+    
+    <!-- 组选和值算奖 -->
+    <bean id="plsZuXuanHeZhiCheck" class="com.mcp.pls.check.PlsZuXuanHeZhiCheck"></bean>
+</beans>

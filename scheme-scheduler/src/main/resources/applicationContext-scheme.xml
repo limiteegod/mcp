@@ -1,0 +1,20 @@
+<beans:beans xmlns="http://www.springframework.org/schema/batch"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
+
+
+	<beans:import resource="classpath:applicationContext-bean.xml"/>
+	<beans:import resource="classpath:applicationContext-rmi.xml"/>
+	<beans:import resource="classpath:applicationContext-mdb.xml"/>
+	
+	<beans:import resource="classpath:applicationContext-service.xml"/>
+	<beans:import resource="classpath:applicationContext-jpa.xml"/>
+	<beans:import resource="classpath:applicationContext-batch.xml"/>
+	<beans:import resource="classpath:applicationContext-batch-zh.xml"/>
+    <beans:import resource="classpath:applicationContext-batch-hm.xml"/>
+	
+</beans:beans>

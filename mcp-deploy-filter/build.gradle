@@ -1,0 +1,62 @@
+ext {
+	mainClass = 'com.mcp.deploy.print.PrintMain'
+}
+
+dependencies {
+	compile project(':mcp-order-inter')
+	compile project(':mcp-order-service')
+	
+	compile group: 'javax.servlet', name: 'servlet-api', version: '2.4'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3-beta2'
+}
+
+task copyToLib(dependsOn: configurations.runtime.buildDependencies, type: Copy) {
+	into "$buildDir/libs/lib"
+	from configurations.runtime {
+		exclude 'mcp*.jar', 'scheme*.jar', 'rmi*.jar', 'mq*.jar'
+	}
+}
+
+task copyToRLib(dependsOn: configurations.runtime.buildDependencies, type: Copy) {
+	into "$buildDir/libs/rlib"
+	from configurations.runtime {
+		include 'mcp*.jar', 'scheme*.jar', 'rmi*.jar', 'mq*.jar'
+	}
+}
+
+task copyConfig(type: Copy) {
+	into "$buildDir/libs/config"
+	from 'src/main/config/nor'
+	from 'src/main/config/' + target
+}
+
+jar.doFirst {
+	StringBuffer cPath = new StringBuffer()
+	cPath.append("./ ")
+	cPath.append("./config/ ")
+	FileCollection collection = files{file("$buildDir/libs/rlib").listFiles()}
+	collection.each {File file ->
+		cPath.append("./rlib/")
+		cPath.append(file.name)
+		cPath.append(" ")
+	}
+	collection = files{file("$buildDir/libs/lib").listFiles()}
+	collection.each {File file ->
+		cPath.append("./lib/")
+		cPath.append(file.name)
+		cPath.append(" ")
+	}
+	project.ext.classPath = cPath.toString()
+
+	manifest.attributes(["Class-Path":project.ext.classPath])
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': mainClass
+	}
+}
+
+project.jar.dependsOn copyToLib
+project.jar.dependsOn copyToRLib
+project.jar.dependsOn copyConfig

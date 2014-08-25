@@ -1,0 +1,1043 @@
+<root>
+	<group code="E" package="com.mcp.order.inter" req="" rep="">
+		<cmd code="01">
+			<response code="01">
+			    <filter code="01">
+			    </filter>
+			</response>
+		</cmd>
+	</group>
+	<group code="J" package="com.mcp.order.inter.jbank" req="" rep="">
+        <cmd code="01" path="jbank/login.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02" path="jbank/getUser.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="jbank/modifyInfo.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="jbank/register.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="05" path="jbank/affordFromBank.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="06" path="jbank/getCurTerm.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="term">
+                		<property value="id"/>
+			            <property value="version"/>
+			            <property value="prizeDesc"/>
+			            <property value="detailInfo"/>
+			            <property value="concedePoints"/>
+			            <property value="matchTime"/>
+			            <property value="oddsMap"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="07" path="jbank/getCurTermOrders.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="torder">
+			            <property value="encrypt"/>
+			            <property value="schemeId"/>
+			            <property value="stationId"/>
+			            <property value="customerId"/>
+			            <property value="schemeType"/>
+			            <property value="channelCode"/>
+			            <property value="takeAwayTime"/>
+			            <property value="takeAway"/>
+			            <property value="createTime"/>
+			            <property value="acceptTime"/>
+			            <property value="printTime"/>
+			            <property value="platform"/>
+			            <property value="notes"/>
+			            <property value="finishedTicketCount"/>
+			            <property value="printCount"/>
+			            <property value="printStationId"/>
+			            <property value="printAccountId"/>
+			            <property value="outerId"/>
+			            <property value="ticketCount"/>
+			            <property value="payType"/>
+			            <property value="numbers"/>
+			        </name>
+			        <name value="tticket">
+			            <property value="encrypt"/>
+			            <property value="termIndex"/>
+			            <property value="termIndexDeadline"/>
+			            <property value="version"/>
+			            <property value="printerAccountId"/>
+			            <property value="terminalId"/>
+			            <property value="type"/>
+			            <property value="stubInfo"/>
+			            <property value="orderId"/>
+			            <property value="seq"/>
+			            <property value="finishedCount"/>
+			            <property value="stationId"/>
+			            <property value="customerId"/>
+			            <property value="channelCode"/>
+			            <property value="termCode"/>
+			            <property value="gameCode"/>
+			            <property value="price"/>
+			            <property value="rNumber"/>
+			            <property value="dNumber"/>
+			            <property value="printTime"/>
+			            <property value="bigBonus"/>
+			            <property value="price"/>
+			            <property value="winDesc"/>
+			            <property value="possiblePrize"/>
+			            <property value="imgURL"/>
+			            <property value="paper"/>
+			            <property value="printerStationId"/>
+			            <property value="receiptStatus"/>
+			            <property value="sysTakeTime"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="08" path="jbank/getLastTermHit.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="torder">
+			            <property value="encrypt"/>
+			            <property value="schemeId"/>
+			            <property value="stationId"/>
+			            <property value="customerId"/>
+			            <property value="schemeType"/>
+			            <property value="channelCode"/>
+			            <property value="takeAwayTime"/>
+			            <property value="takeAway"/>
+			            <property value="createTime"/>
+			            <property value="acceptTime"/>
+			            <property value="printTime"/>
+			            <property value="platform"/>
+			            <property value="notes"/>
+			            <property value="finishedTicketCount"/>
+			            <property value="printCount"/>
+			            <property value="printStationId"/>
+			            <property value="printAccountId"/>
+			            <property value="outerId"/>
+			            <property value="ticketCount"/>
+			            <property value="payType"/>
+			            <property value="numbers"/>
+			        </name>
+			        <name value="tticket">
+			            <property value="encrypt"/>
+			            <property value="termIndex"/>
+			            <property value="termIndexDeadline"/>
+			            <property value="version"/>
+			            <property value="printerAccountId"/>
+			            <property value="terminalId"/>
+			            <property value="type"/>
+			            <property value="stubInfo"/>
+			            <property value="orderId"/>
+			            <property value="seq"/>
+			            <property value="finishedCount"/>
+			            <property value="stationId"/>
+			            <property value="customerId"/>
+			            <property value="channelCode"/>
+			            <property value="termCode"/>
+			            <property value="gameCode"/>
+			            <property value="price"/>
+			            <property value="rNumber"/>
+			            <property value="dNumber"/>
+			            <property value="printTime"/>
+			            <property value="bigBonus"/>
+			            <property value="price"/>
+			            <property value="winDesc"/>
+			            <property value="possiblePrize"/>
+			            <property value="imgURL"/>
+			            <property value="paper"/>
+			            <property value="printerStationId"/>
+			            <property value="receiptStatus"/>
+			            <property value="sysTakeTime"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+    </group>
+	<group code="C" package="com.mcp.order.inter.cash" req="" rep="">
+        <cmd code="01" path="cash/prizeToRecharge.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02" path="cash/rechargeAtStation.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="cash/prizeToOut.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="cash/coupon.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="coupon">
+                        <property value="id"/>
+                        <property value="amount"/>
+                        <property value="status"/>
+                        <property value="expiredTime"/>
+                        <property value="createTime"/>
+                        <property value="activeTime"/>
+                        <property value="type"/>
+                        <property value="customerId"/>
+                        <property value="channelCode"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="05" path="cash/getCoupon.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="coupon">
+                        <property value="id"/>
+                        <property value="amount"/>
+                        <property value="status"/>
+                        <property value="expiredTime"/>
+                        <property value="createTime"/>
+                        <property value="activeTime"/>
+                        <property value="type"/>
+                        <property value="customerId"/>
+                        <property value="channelCode"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+    </group>
+	<group code="R" package="com.mcp.order.inter.resource" req="" rep="">
+        <cmd code="01" path="resource/sendShortMsg.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02" path="resource/findBackPsd.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="resource/bindBank.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="resource/bindPhone.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+    </group>
+	<group code="N" package="com.mcp.order.inter.notify" req="" rep="">
+        <cmd code="01">
+            <response code="01">
+                <filter code="01">
+                    <name value="term">
+                        <property value="id"/>
+                        <property value="code"/>
+                        <property value="nextCode"/>
+                        <property value="name"/>
+                        <property value="gameCode"/>
+                        <property value="prizePool"/>
+                        <property value="openTime"/>
+                        <property value="endTime"/>
+                        <property value="winningNumber"/>
+                        <property value="status"/>
+                        <property value="detailInfo"/>
+                        <property value="concedePoints"/>
+                        <property value="matchTime"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02">
+            <response code="01">
+                <filter code="01">
+                    <name value="torder">
+                    	<property value="id"/>
+                    	<property value="termCode"/>
+                    	<property value="schemeId"/>
+                    	<property value="gameCode"/>
+                    	<property value="outerId"/>
+                    	<property value="amount"/>
+                    	<property value="ticketCount"/>
+                    	<property value="bonus"/>
+                        <property value="bonusBeforeTax"/>
+                    	<property value="acceptTime"/>
+                    	<property value="printTime"/>
+                    	<property value="status"/>
+                    	<property value="multiple"/>
+                    	<property value="numbers"/>
+                    	<property value="dNumber"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="notify/match.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="notify/termNotify.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="05" path="notify/printNotify.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="06" path="notify/receiptNotify.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="07" path="notify/oddsNotify.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+    </group>
+    <group code="S" package="com.mcp.order.inter.scheme" req="" rep="">
+        <cmd code="01" path="scheme/zh.htm">
+            <response code="01">
+            	<filter code="01">
+            		<name value="schemezh">
+            			<property value="id"/>
+            			<property value="gameCode"/>
+            			<property value="numList"/>
+            			<property value="amount"/>
+            			<property value="createTime"/>
+            			<property value="orderCount"/>
+            			<property value="finishedOrderCount"/>
+            			<property value="status"/>
+            			<property value="startTermCode"/>
+            			<property value="curTermCode"/>
+            			<property value="payType"/>
+            			<property value="winStop"/>
+                    </name>
+            	</filter>
+            </response>
+        </cmd>
+        <cmd code="02" path="scheme/query.htm">
+            <response code="01">
+            	<filter code="01">
+            		<name value="schemezh">
+            			<property value="id"/>
+            			<property value="customerId"/>
+            			<property value="gameCode"/>
+            			<property value="numList"/>
+            			<property value="amount"/>
+            			<property value="createTime"/>
+            			<property value="orderCount"/>
+            			<property value="finishedOrderCount"/>
+            			<property value="status"/>
+            			<property value="startTermCode"/>
+            			<property value="curTermCode"/>
+            			<property value="payType"/>
+            			<property value="winStop"/>
+            			<property value="bonus"/>
+                        <property value="bonusBeforeTax"/>
+                    </name>
+            	</filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="scheme/cancel.htm">
+            <response code="01">
+            	<filter code="01">
+            	</filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="scheme/hm.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="schemehm">
+                        <property value="id"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="05" path="scheme/joinHm.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+    </group>
+	<group code="T" package="com.mcp.order.inter.trade" req="" rep="">
+        <cmd code="01" path="trade/lot.htm">
+            <response code="01">
+                <filter code="01"></filter>
+                <filter code="0101">
+                    <name value="repBody">
+                    	<property value="station"/>
+                    	<property value="order"/>
+                    	<property value="repCode"/>
+                    	<property value="description"/>
+                    </name>
+                </filter>
+                <filter code="0102">
+                    <name value="repBody">
+                        <property value="order"/>
+                        <property value="repCode"/>
+                    	<property value="description"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02" path="trade/afford.htm">
+            <response code="01">    
+                <filter code="01">
+                    <name value="repBody">
+                    	<property value="station"/>
+                    	<property value="order"/>
+                    	<property value="repCode"/>
+                    	<property value="description"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="trade/clot.htm">
+            <response code="01">    
+                <filter code="01">
+                    <name value="repBody">
+                    	<property value="station"/>
+                    	<property value="order"/>
+                    	<property value="repCode"/>
+                    	<property value="description"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="trade/cValidate.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="05" path="jctrade/jcLot.htm">
+            <response code="01">
+                <filter code="01"></filter>
+                <filter code="0101">
+                    <name value="repBody">
+                    	<property value="station"/>
+                    	<property value="order"/>
+                    	<property value="repCode"/>
+                    	<property value="description"/>
+                    </name>
+                </filter>
+                <filter code="0102">
+                    <name value="repBody">
+                        <property value="order"/>
+                        <property value="repCode"/>
+                    	<property value="description"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="06" path="jctrade/cJcLot.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="repBody">
+                        <property value="station"/>
+                        <property value="order"/>
+                        <property value="repCode"/>
+                        <property value="description"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+    </group>
+	<group code="P" package="com.mcp.order.inter.print" req="" rep="">
+        <cmd code="01" path="print/getOrders.htm">
+            <response code="01">    
+                <filter code="01"></filter>
+            </response>
+        </cmd>
+        <cmd code="02" path="print/printBack.htm">
+            <response code="01">
+                <filter code="01"></filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="print/getAllToPrize.htm">
+            <response code="01">
+                <filter code="01"></filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="print/prizeBack.htm">
+            <response code="01">
+                <filter code="01"></filter>
+            </response>
+        </cmd>
+        <cmd code="05" path="print/login.htm">
+            <response code="01">
+                <filter code="01"></filter>
+            </response>
+        </cmd>
+        <cmd code="06" path="print/printByOrderId.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="tticket">
+			            <property value="id"/>
+			            <property value="orderId"/>
+			            <property value="seq"/>
+			            <property value="termCode"/>
+			            <property value="gameCode"/>
+			            <property value="betTypeCode"/>
+			            <property value="playTypeCode"/>
+			            <property value="amount"/>
+			            <property value="multiple"/>
+			            <property value="price"/>
+			            <property value="numbers"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="07" path="print/regUser.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="customer">
+						<property value="id"/>
+						<property value="name"/>
+						<property value="password"/>
+						<property value="channelCode"/>
+        			</name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="08" path="print/printBackByOrder.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="09" path="print/printPaper.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="tticket">
+                		<property value="orderId"/>
+			            <property value="seq"/>
+			            <property value="finishedCount"/>
+			            <property value="terminalId"/>
+			            <property value="stationId"/>
+			            <property value="customerId"/>
+			            <property value="channelCode"/>
+			            <property value="termCode"/>
+			            <property value="gameCode"/>
+			            <property value="betTypeCode"/>
+			            <property value="playTypeCode"/>
+			            <property value="amount"/>
+			            <property value="multiple"/>
+			            <property value="price"/>
+			            <property value="numbers"/>
+			            <property value="rNumber"/>
+			            <property value="dNumber"/>
+			            <property value="termIndex"/>
+			            <property value="termIndexDeadline"/>
+			            <property value="acceptTime"/>
+			            <property value="createTime"/>
+			            <property value="serialNumber"/>
+			            <property value="printTime"/>
+			            <property value="encrypt"/>
+			            <property value="type"/>
+			            <property value="bigBonus"/>
+			            <property value="winDesc"/>
+			            <property value="bonus"/>
+			            <property value="possiblePrize"/>
+			            <property value="imgURL"/>
+			            <property value="receiptStatus"/>
+			            <property value="status"/>
+			            <property value="paper"/>
+			            <property value="printerAccountId"/>
+			            <property value="version"/>
+			            <property value="sysTakeTime"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="10" path="print/resetTakeAway.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="11" path="print/printFailure.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="12" path="print/getPrintQueen.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+    </group>
+	<group code="Q" package="com.mcp.order.inter.query" req="" rep="">
+	   <cmd code="01">
+            <response code="01">
+                <filter code="01">
+                    <name value="term">
+			            <property value="code"/>
+                        <property value="nextCode"/>
+			            <property value="name"/>
+			            <property value="gameCode"/>
+			            <property value="prizePool"/>
+			            <property value="openTime"/>
+			            <property value="endTime"/>
+			            <property value="winningNumber"/>
+			            <property value="status"/>
+			            <property value="detailInfo"/>
+			            <property value="concedePoints"/>
+			            <property value="matchTime"/>
+			        </name>
+                </filter>
+                <filter code="02">
+                    <name value="term">
+                    	<property value="code"/>
+			            <property value="name"/>
+			            <property value="gameCode"/>
+			            <property value="prizePool"/>
+			            <property value="openTime"/>
+			            <property value="endTime"/>
+			            <property value="winningNumber"/>
+			            <property value="status"/>
+			            <property value="detailInfo"/>
+			            <property value="concedePoints"/>
+			            <property value="matchTime"/>
+                    	<property value="prizeDesc"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02">
+            <response code="01">
+                <filter code="01">
+                    <name value="tscheme">
+			            <property value="orderList"/>
+			            <property value="encrypt"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="query/getBetHistory.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="torder">
+			            <property value="id"/>
+			            <property value="termCode"/>
+			            <property value="schemeId"/>
+			            <property value="gameCode"/>
+			            <property value="schemeType"/>
+			            <property value="amount"/>
+			            <property value="ticketCount"/>
+			            <property value="bonus"/>
+                        <property value="bonusBeforeTax"/>
+			            <property value="createTime"/>
+			            <property value="acceptTime"/>
+			            <property value="status"/>
+			            <property value="multiple"/>
+			            <property value="dNumber"/>
+			            <property value="tickets"/>
+			        </name>
+			        <name value="tticket">
+			            <property value="id"/>
+			            <property value="orderId"/>
+			            <property value="termCode"/>
+			            <property value="gameCode"/>
+			            <property value="betTypeCode"/>
+			            <property value="playTypeCode"/>
+			            <property value="amount"/>
+			            <property value="multiple"/>
+			            <property value="price"/>
+			            <property value="numbers"/>
+			            <property value="rNumber"/>
+			            <property value="dNumber"/>
+			            <property value="createTime"/>
+			            <property value="bonus"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="04">
+            <response code="01">
+                <filter code="01">
+                	<name value="moneylog">
+			            <property value="id"/>
+			            <property value="handlerCode"/>
+			            <property value="operationCode"/>
+			            <property value="subject"/>
+			            <property value="createTimeStamp"/>
+			            <property value="acceptTimeStamp"/>
+			            <property value="stateBefore"/>
+			            <property value="stateAfter"/>
+			            <property value="amount"/>
+			            <property value="status"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="05">
+            <response code="01">
+                <filter code="01">
+                    <name value="betshop">
+                        <property value="id"/>
+                        <property value="stationId"/>
+                        <property value="longitude"/>
+                        <property value="latitude"/>
+                        <property value="address"/>
+                        <property value="rank"/>
+                        <property value="name"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="07">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="08">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="09">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="10" path="query/getTicket.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="tticket">
+			            <property value="id"/>
+			            <property value="orderId"/>
+			            <property value="termCode"/>
+			            <property value="gameCode"/>
+			            <property value="betTypeCode"/>
+			            <property value="playTypeCode"/>
+			            <property value="amount"/>
+			            <property value="multiple"/>
+			            <property value="price"/>
+			            <property value="numbers"/>
+			            <property value="rNumber"/>
+			            <property value="dNumber"/>
+			            <property value="createTime"/>
+			            <property value="bonus"/>
+                        <property value="bonusBeforeTax"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="11" path="query/getGamesByStatus.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="game">
+			            <property value="id"/>
+			            <property value="code"/>
+			            <property value="name"/>
+			            <property value="description"/>
+			            <property value="status"/>
+			            <property value="offset"/>
+			            <property value="type"/>
+			            <property value="curTerm"/>
+			        </name>
+			        <name value="term">
+                    	<property value="code"/>
+			            <property value="name"/>
+			            <property value="gameCode"/>
+			            <property value="prizePool"/>
+			            <property value="openTime"/>
+			            <property value="endTime"/>
+			            <property value="winningNumber"/>
+			            <property value="status"/>
+			            <property value="detailInfo"/>
+			            <property value="concedePoints"/>
+			            <property value="matchTime"/>
+			        </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="12">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="13" path="query/getPromotions.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="14" path="query/getJcMatches.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="term">
+			            <property value="code"/>
+			            <property value="openTime"/>
+			            <property value="endTime"/>
+			            <property value="winningNumber"/>
+			            <property value="status"/>
+			            <property value="detailInfo"/>
+			            <property value="concedePoints"/>
+			            <property value="matchTime"/>
+			            <property value="oddsMap"/>
+			        </name>
+        			<name value="jodds">
+        				<property value="oddsCode"/>
+        				<property value="oddsName"/>
+        				<property value="oddsInfo"/>
+        			</name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="15" path="query/getJcMatches.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="torder">
+                        <property value="id"/>
+                        <property value="termCode"/>
+                        <property value="schemeId"/>
+                        <property value="gameCode"/>
+                        <property value="schemeType"/>
+                        <property value="amount"/>
+                        <property value="ticketCount"/>
+                        <property value="bonus"/>
+                        <property value="bonusBeforeTax"/>
+                        <property value="createTime"/>
+                        <property value="acceptTime"/>
+                        <property value="status"/>
+                        <property value="multiple"/>
+                        <property value="dNumber"/>
+                        <property value="tickets"/>
+                    </name>
+                    <name value="tticket">
+                        <property value="id"/>
+                        <property value="orderId"/>
+                        <property value="termCode"/>
+                        <property value="gameCode"/>
+                        <property value="betTypeCode"/>
+                        <property value="playTypeCode"/>
+                        <property value="amount"/>
+                        <property value="multiple"/>
+                        <property value="price"/>
+                        <property value="numbers"/>
+                        <property value="rNumber"/>
+                        <property value="dNumber"/>
+                        <property value="createTime"/>
+                        <property value="bonus"/>
+                        <property value="bonusBeforeTax"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="16" path="query/cGetTerm.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="term">
+                        <property value="id"/>
+                        <property value="code"/>
+                        <property value="nextCode"/>
+                        <property value="name"/>
+                        <property value="gameCode"/>
+                        <property value="prizePool"/>
+                        <property value="openTime"/>
+                        <property value="endTime"/>
+                        <property value="winningNumber"/>
+                        <property value="status"/>
+                        <property value="detailInfo"/>
+                        <property value="concedePoints"/>
+                        <property value="matchTime"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="17" path="query/cGetNotifyMsg.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+	</group>
+	<group code="A" package="com.mcp.order.inter.account" req="" rep="">
+		<cmd code="01" path="account/register.htm">
+			<response code="01">
+				<filter code="01">
+					<name value="repBody">
+						<property value="customer"/>
+                        <property value="st"/>
+						<property value="repCode"/>
+			            <property value="description"/>
+        			</name>
+					<name value="customer">
+						<property value="id"/>
+						<property value="name"/>
+						<property value="channelCode"/>
+						<property value="password"/>
+        			</name>
+				</filter>
+			</response>
+		</cmd>
+		<cmd code="02" path="account/query.htm">
+			<response code="01">
+				<filter code="01">
+					<name value="customeraccount">
+						<property value="id"/>
+			            <property value="recharge"/>
+			            <property value="prize"/>
+			            <property value="integral"/>
+			            <property value="status"/>
+			            <property value="station"/>
+			        </name>
+			        <name value="station">
+			            <property value="code"/>
+			            <property value="name"/>
+			        </name>
+		        </filter>
+	        </response>
+		</cmd>
+		<cmd code="03" path="account/modifyPassword.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+		<cmd code="04" path="account/login.htm">
+            <response code="01">
+                <filter code="01">
+                	<name value="repBody">
+                        <property value="st"/>
+			            <property value="repCode"/>
+			            <property value="description"/>
+			            <property value="status"/>
+                        <property value="customer"/>
+			        </name>
+                    <name value="customer">
+                        <property value="id"/>
+                        <property value="name"/>
+                        <property value="channelCode"/>
+                        <property value="password"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="05" path="account/modifyInfo.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="07" path="account/channelQuery.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+	</group>
+    <group code="AD" package="com.mcp.order.inter.admin" req="" rep="">
+        <cmd code="01" path="admin/login.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="admini">
+                        <property value="id"/>
+                        <property value="name"/>
+                        <property value="type"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="02" path="admin/addToPrintQueen.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="03" path="admin/getTermReportInfo.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="04" path="admin/getTermInfo.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="term">
+                        <property value="id"/>
+                        <property value="code"/>
+                        <property value="nextCode"/>
+                        <property value="name"/>
+                        <property value="gameCode"/>
+                        <property value="prizePool"/>
+                        <property value="openTime"/>
+                        <property value="endTime"/>
+                        <property value="winningNumber"/>
+                        <property value="status"/>
+                        <property value="detailInfo"/>
+                        <property value="concedePoints"/>
+                        <property value="matchTime"/>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+    </group>
+
+    <group code="AP" package="com.mcp.order.inter.operation" req="" rep="">
+        <cmd code="01" path="admin/operation/query.htm">
+            <response code="01">
+                <filter code="01">
+                    <name value="useroperation">
+                        <property value="id"></property>
+                        <property value="operation"></property>
+                    </name>
+                    <name value="operation">
+                        <property value="id"></property>
+                        <property value="name"></property>
+                        <property value="type"></property>
+                        <property value="parentId"></property>
+                        <property value="url"></property>
+                    </name>
+                </filter>
+            </response>
+        </cmd>
+    </group>
+
+
+</root>

@@ -1,0 +1,118 @@
+<!--彩民投注站账户进出帐操作的元数据注册--> 
+<accounts type="R" name="root">
+    <entity type="U" name="彩民">
+        <account type="00" name="彩民现金副账户" desc="customerAccount:recharge"><!-- //金额来源由彩民的银行卡、第三方支付等账户担保。包含大户。 -->
+            <first type="0" name="收入">
+                <second type="00" name="充值收入"><!-- //实际收款从各种支付渠道完成。  充值如果彩民负担费用，那么立即扣除。 -->
+                    <third type="00" name="手工充值"/><!-- //考虑删除。如果需要手工充值，收现金之后，通过自己的支付宝或银行卡代充值。 -->
+                    <third type="01" name="奖金账户转入"/><!-- 场景1：彩民在客户端发起请求，把自己的奖金转为现金，重新用于投注。 -->
+					<third type="02" name="支付宝充值"/><!-- （包含本渠道的其他银行）场景1：彩民通过支付宝给自己的账户充值。 -->
+					<third type="03" name="银联充值"/><!-- （包含本渠道的其他银行）场景1：彩民通过银联给自己的账户充值。 -->
+					<third type="04" name="中国银行直充"/><!-- 场景1：通过中行提供的支付接口直接充值。 -->
+					<third type="05" name="建设银行直充"/><!-- 场景1：通过建行提供的支付接口直接充值。 -->
+				</second>
+                <second type="01" name="退款收入">
+                    <third type="00" name="出票失败"/><!-- 场景1：彩民投注成功，但是最终出票失败。那么退款到彩民账户。 -->
+                    <third type="01" name="追号撤销"/><!-- 场景1：彩民追号中，手工撤销，把未完成的追号退款到彩民账户。场景2：彩民追号中，中奖停追，把剩余的追号退款到彩民账户。 -->
+            	</second>
+            </first>
+            <first type="1" name="支出">
+                <second type="00" name="投注支出"><!-- (可以考虑不分普通和追号)可以合并 -->
+                    <third type="00" name="普通投注"/><!-- 场景1：彩民普通投注 场景2：大户普通投注 -->
+                </second>
+                <second type="01" name="账户提现">
+                    <third type="00" name="现金提款"/><!-- 场景1：彩民把自己的资金提款到银行卡。场景2：大户（机构）把自己的资金提款到银行卡。 -->
+					<third type="01" name="资金冲正"/><!-- //场景1：操作撤销。（暂时用不到） -->
+                </second>
+            </first>
+        </account>
+        <account type="02" name="彩民奖金副账户" desc="customerAccount:prize"><!-- //由商家方担保。 -->
+            <first type="0" name="收入">
+                <second type="00" name="税后中奖收入">
+                    <third type="00" name="购彩中奖"/><!-- 场景1：彩民中奖  -->
+                </second>
+            </first>
+            <first type="1" name="支出">
+                <second type="00" name="账户提现">
+                    <third type="00" name="奖金提款"/><!-- //场景1：彩民直接提取奖金到银行卡  场景2：大户直接提取奖金到银行卡 -->
+                    <third type="01" name="转投注金"/><!-- /场景1：彩民转奖金到现金副账户  场景2：大户转奖金到现金副账户。 -->
+					<!-- //直接投注.是否支持看是否能够联合支付。 -->
+					<third type="02" name="直接投注"/><!-- 场景1：彩民直接使用奖金投注。 -->
+                </second>
+            </first>
+        </account>
+    </entity>
+    <entity type="P" name="平台">
+        <account type="00" name="平台结算账户" desc="CPlatform:CC:balance"><!--  反映赚钱的能力。 -->
+            <!-- 平台账户实体 -->
+            <first type="0" name="收入">
+                <second type="01" name="业务费用"><!-- （可以跟投注站业务费用合并）直接合并 -->
+                    <third type="00" name="机构服务费"/><!-- 场景1：结算时，渠道给平台上交的机构服务费。 -->
+                    <third type="01" name="投注站服务费"/><!-- 场景1：结算时，投注站给平台上交的服务费用。 -->
+                    <third type="02" name="彩民提款服务费"/><!-- 场景1：结算时，投注站给平台上交的服务费用。 -->
+                    <third type="03" name="彩民充值服务费"/><!-- 场景1：结算时，投注站给平台上交的服务费用。 -->
+                    <third type="04" name="彩民购彩提成"/><!-- 场景1：结算时，投注站给平台上交的服务费用。 -->
+                </second>
+                <second type="03" name="发行回购">
+                    <third type="00" name="回购积分"/>
+                    <third type="01" name="回购优惠券"/>
+                </second>
+            </first>
+            <first type="1" name="支出">
+                <second type="01" name="结算支出"><!-- ／／按周期结算的返点，给商家。 -->
+                    <third type="00" name="机构结算"/>
+                </second> 
+                <second type="03" name="发行支出"><!-- //平台通用 -->
+                    <third type="00" name="发行积分"/>
+                    <third type="01" name="发行优惠券"/>
+                </second>
+            </first>
+        </account>
+    </entity>
+    <entity type="S" name="机构"><!-- //机构包含：投注站、出票中心、销售渠道、各种银行 -->
+        <account type="00" name="结算账户" desc="station:balance"><!-- 结算账户用于机构与机构之间的结算。 -->
+            <first type="0" name="收入">
+            	<second type="00" name="退款收入">
+                    <third type="00" name="出票失败"/>
+                    <third type="01" name="追号撤销"/>
+            	</second>
+                <second type="01" name="充值收入">
+                    <third type="00" name="机构充值"/>
+                </second>
+                <second type="02" name="周期结算收入">
+                    <third type="00" name="平台返点"/><!-- 场景1：平台给机构按周期计算返点 -->
+					<third type="01" name="机构返点"/><!-- 场景1：机构给机构按周期返点。比如A投注站的票转到了B投注站出票，A每个月转的超100万，另外再给1%。 -->
+                </second>
+                <second type="03" name="销售收入">
+                    <third type="00" name="出票"/><!-- 场景1：机构作为出票服务提供方出现，由于出票操作产生的收入。-->
+                    <third type="01" name="转票提成"/><!-- 转票操作收取的提成费用 -->
+                </second>
+                <second type="04" name="回购收入">
+                    <third type="00" name="回购积分"/>
+                    <third type="01" name="回购优惠券"/>
+                </second>
+				<second type="05" name="奖金收入">
+                    <third type="00" name="奖金返奖"/><!-- ／／如果是渠道投注的话，返奖直接返还到渠道。如果是普通彩民投注的转票的话，出票方绕过中间环节，直接返彩票。 -->
+                </second>
+			</first>
+            <first type="1" name="支出">
+                <second type="00" name="提款">
+                    <third type="00" name="现金提款"/><!-- 场景1：机构提款，比如平台给电子出票口预付款，相当于电子出票口提现。 -->
+                </second>
+                <second type="01" name="平台费用">
+                    <third type="00" name="平台费用扣减"/><!-- 场景1：平台收取机构费用。 -->
+					<third type="01" name="机构费用扣减"/><!-- 场景1：机构收取机构费用。比如A投注站的票转到了B投注站出票，B出票成功以后收取A的一些费用。 -->
+				</second>
+                <second type="02" name="彩票支出">
+                    <third type="00" name="支付渠道奖金"/><!-- //场景1：机构作为出票服务提供方出现，出票以后彩票中奖。支出奖金到销售方。（支出奖金到销售方大户账户）。仅限于转票。 -->
+                    <third type="01" name="投注失败退款"/><!-- //场景1：机构作为出票服务提供方出现，出票失败，向销售方退款。（退款到销售方大户账户） -->
+                    <third type="02" name="投注"/><!-- 拉卡拉等渠道投注 -->
+				</second>
+                <second type="03" name="发行支出">
+                    <third type="00" name="发行积分"/>
+                    <third type="01" name="发行优惠券"/>
+                </second>
+            </first>
+        </account>
+    </entity>
+</accounts>
