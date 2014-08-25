@@ -1,4 +1,6 @@
 /build
 /log
-/*.iml
+*.iml
 /*.bak
+/.idea
+/.gradle
