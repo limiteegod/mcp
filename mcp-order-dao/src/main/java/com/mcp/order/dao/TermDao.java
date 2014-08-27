@@ -36,6 +36,10 @@ public interface TermDao extends PagingAndSortingRepository<Term, String>,JpaSpe
     @Modifying
     @Query("update Term gt set gt.status=?1 where gt.id=?2")
     public int updateStatus(int status, String id);
+
+    @Modifying
+    @Query("update Term gt set gt.endTime=?1 where gt.id=?2")
+    public int updateEndTime(Date date, String id);
     
     //修改其为可售的条件是：1 当前时间等于或迟于期次定义的开售时间。2 当前状态不是暂停状态。3 当前时间在停售时间之前。
     public List<Term> findAllByGameCodeAndStatusAndOpenTimeBefore(String gameCode, int status, Date openTime, Pageable p);

@@ -82,7 +82,14 @@ public class TermService {
     {
     	this.termDao.updateStatus(status, id);
     }
-    
+
+
+    @Transactional
+    public void updateEndTimeById(Date date, String id) {
+        this.termDao.updateEndTime(date,id);
+    }
+
+
     @Transactional
     public void updateDrawInfo(String prizeDesc, String drawNumber, String id, int gameType)
     {

@@ -19,13 +19,13 @@ allprojects {
 
 	repositories {
 	    maven {
-			url "http://127.0.0.1:8081/nexus/content/groups/public/"
+			url "http://192.168.11.147:8081/nexus/content/groups/public/"
 	    }
 	}
 
 	uploadArchives {
 	    repositories.mavenDeployer {
-			repository(url: "http://127.0.0.1:8081/nexus/content/repositories/releases/") {
+			repository(url: "http://192.168.11.147:8081/nexus/content/repositories/releases/") {
 			    authentication(userName: "deployment", password: "admin123")
 			    pom.groupId = "com.mcp"
 			    pom.artifactId = archivesBaseName
