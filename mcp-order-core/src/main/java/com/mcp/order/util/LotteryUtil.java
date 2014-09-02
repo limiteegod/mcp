@@ -41,6 +41,11 @@ public class LotteryUtil {
 	 * 定位分割符
 	 */
 	public static final String POSITION_SEP = "|";
+
+    /**
+     * null position
+     */
+    public static final String BLANK_SEP = "_";
 	
 	/**
 	 * 定位分割符，适用于需要正则表达式的场景

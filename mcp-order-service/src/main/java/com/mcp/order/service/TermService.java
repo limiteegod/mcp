@@ -91,19 +91,26 @@ public class TermService {
 
 
     @Transactional
-    public void updateDrawInfo(String prizeDesc, String drawNumber, String id, int gameType)
+    public void updateDrawInfo(String prizeDesc, String drawNumber, String id, int gameType, boolean passed)
     {
     	Term t = this.termDao.findOne(id);
-    	//高频或者竞彩，不需要详细的开奖详情，直接算奖，普通游戏则等待录入开奖号码
-    	if(gameType == ConstantValues.Game_Type_Gaopin.getCode() || gameType == ConstantValues.Game_Type_Jingcai.getCode())
-    	{
-    		t.setStatus(TermState.DRAW.getCode());
-    	}
-    	t.setWinningNumber(drawNumber);
-    	if(!StringUtil.isEmpty(prizeDesc) && gameType == ConstantValues.Game_Type_Normal.getCode())
-    	{
-    		t.setPrizeDesc(prizeDesc);
-    	}
+        if(t.getStatus() < TermState.DRAW.getCode())
+        {
+            //高频或者竞彩，不需要详细的开奖详情，直接算奖，普通游戏则等待录入开奖号码
+            if(gameType == ConstantValues.Game_Type_Gaopin.getCode() || gameType == ConstantValues.Game_Type_Jingcai.getCode())
+            {
+                t.setStatus(TermState.DRAW.getCode());
+            }
+            if(passed && gameType == ConstantValues.Game_Type_Normal.getCode())
+            {
+                t.setStatus(TermState.DRAW.getCode());
+            }
+            t.setWinningNumber(drawNumber);
+            if(!StringUtil.isEmpty(prizeDesc) && gameType == ConstantValues.Game_Type_Normal.getCode())
+            {
+                t.setPrizeDesc(prizeDesc);
+            }
+        }
     }
 
     /**

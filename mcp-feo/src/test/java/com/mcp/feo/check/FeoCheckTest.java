@@ -127,7 +127,6 @@ public class FeoCheckTest {
 	/**
 	 * 校验算奖算法的正确性
 	 * @param number
-	 * @param gameCode
 	 * @param playType
 	 * @param betType
 	 */
@@ -217,6 +216,24 @@ public class FeoCheckTest {
 		numbers = "1$2,3";
 		bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
 		assertEquals(4, bt.getValidator().validator(numbers));
+
+        playType = "05";
+        betType = "00";
+        numbers = "8|_|_|_";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(1, bt.getValidator().validator(numbers));
+
+        playType = "05";
+        betType = "01";
+        numbers = "2,8|_|1,3|_";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(4, bt.getValidator().validator(numbers));
+
+        playType = "06";
+        betType = "00";
+        numbers = "8|_|2|_";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(1, bt.getValidator().validator(numbers));
 	}
 	
 	@Test

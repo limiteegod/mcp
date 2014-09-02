@@ -1,15 +1,13 @@
 package com.mcp.feo.validator;
 
-import com.mcp.feo.common.FeoConstants;
 import com.mcp.order.exception.CoreException;
 import com.mcp.order.exception.ErrCode;
 import com.mcp.order.util.LotteryUtil;
 
 /**
- * select only one number at any position.
  * Created by liming on 14-9-2.
  */
-public class FeoRoDanShiValidator extends FeoValidator {
+public class FeoRtDanShiValidator extends FeoValidator {
 
     @Override
     public int validator(String numbers) throws CoreException {
@@ -30,7 +28,7 @@ public class FeoRoDanShiValidator extends FeoValidator {
                     count++;
                 }
             }
-            if(count != 1)
+            if(count != 2)
             {
                 throw new CoreException(ErrCode.E2033, ErrCode.codeToMsg(ErrCode.E2033));
             }

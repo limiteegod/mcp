@@ -110,25 +110,17 @@ public class NotifyControl {
 				}
 				if(t.getStatus() == TermState.DRAW.getCode())
 				{
-					if(term.getStatus() < TermState.DRAW.getCode())
-					{
-						Game game = gameService.findOneByCode(term.getGameCode());
-						termService.updateDrawInfo(t.getPrizeDesc(), t.getWinningNumber(), term.getId(), game.getType());
-						
-						TermLog tl = new TermLog();
-						tl.setId(CoreUtil.getUUID());
-						tl.setTermId(term.getId());
-						tl.sethTime(new Date());
-						tl.setUserId("SYSTEM");
-						tl.setDescription("接受开奖通知,开奖号码为:" + t.getWinningNumber());
-						
-						termLogService.save(tl);
-					}
-					else
-					{
-						//如果期次已经跑到开奖（包括开奖）之后的状态，则不再接受通知
-						log.info("期次已经手动开奖，数据库中开奖号码:" + term.getWinningNumber() + ",收到的开奖号码:" + t.getWinningNumber());
-					}
+                    Game game = gameService.findOneByCode(term.getGameCode());
+                    termService.updateDrawInfo(t.getPrizeDesc(), t.getWinningNumber(), term.getId(), game.getType(), false);
+
+                    TermLog tl = new TermLog();
+                    tl.setId(CoreUtil.getUUID());
+                    tl.setTermId(term.getId());
+                    tl.sethTime(new Date());
+                    tl.setUserId("SYSTEM");
+                    tl.setDescription("接受开奖通知,开奖号码为:" + t.getWinningNumber());
+
+                    termLogService.save(tl);
 				}
 			}
 		}
