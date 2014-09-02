@@ -138,6 +138,21 @@ public class FeoCheckTest {
 		CheckParam cp = check.check(ticket, drawNumber.split(",|\\|"), pd);
 		return cp;
 	}
+
+    /**
+     * 校验算奖算法的正确性
+     * @param number
+     * @param playType
+     * @param betType
+     */
+    public CheckParam checkTest(String number, String playType, String betType, String drawNumber) throws Exception
+    {
+        Check check = FeoCheckContext.getInstance().getCheckByCode(gameCode + playType + betType);
+        TTicket ticket = new TTicket();
+        ticket.setNumbers(number);
+        CheckParam cp = check.check(ticket, drawNumber.split(",|\\|"), pd);
+        return cp;
+    }
 	
 	@Test
 	public void testValidator() throws Exception
@@ -234,10 +249,47 @@ public class FeoCheckTest {
         numbers = "8|_|2|_";
         bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
         assertEquals(1, bt.getValidator().validator(numbers));
+
+        playType = "06";
+        betType = "01";
+        numbers = "8|_|2,3|1";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(5, bt.getValidator().validator(numbers));
+
+        playType = "07";
+        betType = "00";
+        numbers = "8|_|2|1";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(1, bt.getValidator().validator(numbers));
+
+        playType = "07";
+        betType = "01";
+        numbers = "8|_|2,3|1";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(2, bt.getValidator().validator(numbers));
+
+        playType = "08";
+        betType = "00";
+        numbers = "8|1|2|1";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(1, bt.getValidator().validator(numbers));
+
+        playType = "08";
+        betType = "01";
+        numbers = "8|1,2|2,3|1";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(4, bt.getValidator().validator(numbers));
 	}
 	
 	@Test
 	public void testCheck() throws Exception
 	{
+        String numbers = "1,2,3,4;1,2,3,4";
+        CheckParam cp = checkTest(numbers, "01", "00", "1,2,3,4");
+        assertEquals(19700*2, cp.getBonus());
+
+        numbers = "1,2,3,4,5";
+        cp = checkTest(numbers, "01", "01", "1,2,3,4");
+        assertEquals(19700, cp.getBonus());
 	}
 }

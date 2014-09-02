@@ -108,6 +108,27 @@ public class FeoConstants {
 		}
 		return all;
 	}
+
+    /**
+     * 获得任n的号码的注数
+     * @return
+     */
+    public static int getRNumberCount(String[] posStrArray, int n)
+    {
+        int[] lenArray = new int[posStrArray.length];
+        for(int i = 0; i < posStrArray.length; i++)
+        {
+            if(posStrArray[i].equals(LotteryUtil.BLANK_SEP))
+            {
+                lenArray[i] = 0;
+            }
+            else
+            {
+                lenArray[i] = posStrArray[i].split(LotteryUtil.FUSHI_REG_SEP).length;
+            }
+        }
+        return getRNumberCount(lenArray, n);
+    }
 	
 	/**
 	 * 对任n的每一位都进行校验
@@ -117,7 +138,7 @@ public class FeoConstants {
 	{
 		for(int i = 0; i < strArray.length; i++)
 		{
-			if(!strArray[i].equals("_"))
+			if(!strArray[i].equals(LotteryUtil.BLANK_SEP))
 			{
 				int[] posIntArray = LotteryUtil.getIntArrayFromStrArray(strArray[i].split(LotteryUtil.FUSHI_REG_SEP));
 				LotteryUtil.checkMargin(posIntArray, FeoConstants.MAX, FeoConstants.MIN);

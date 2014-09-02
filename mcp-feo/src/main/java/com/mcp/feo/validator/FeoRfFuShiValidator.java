@@ -8,7 +8,7 @@ import com.mcp.order.util.LotteryUtil;
 /**
  * Created by liming on 14-9-2.
  */
-public class FeoRtFuShiValidator extends FeoValidator {
+public class FeoRfFuShiValidator extends FeoValidator {
 
     @Override
     public int validator(String numbers) throws CoreException {
@@ -19,7 +19,7 @@ public class FeoRtFuShiValidator extends FeoValidator {
         }
         String[] posStrArray = numbers.split(LotteryUtil.POSITION_REG_SEP);
         FeoConstants.checkRNumber(posStrArray);
-        int count = FeoConstants.getRNumberCount(posStrArray, 2);
+        int count = FeoConstants.getRNumberCount(posStrArray, 4);
         if(count < 2)
         {
             throw new CoreException(ErrCode.E2033, ErrCode.codeToMsg(ErrCode.E2033));
