@@ -12,6 +12,7 @@ import com.mcp.order.mongo.util.NotifyUtil;
 import com.mcp.order.service.MoneyService;
 import com.mcp.order.service.OrderService;
 import com.mcp.order.service.TicketService;
+import com.mcp.order.service.util.PrintUtil;
 import com.mcp.order.status.OrderState;
 import com.mcp.order.status.TicketState;
 import com.mcp.scheduler.common.SchedulerContext;
@@ -110,43 +111,7 @@ public class ExportTicketTasklet implements Tasklet {
                     }
                     else
                     {
-                        TOrder order = this.orderService.incrFailureTicket(t.getOrderId());
-                        mgOrderService.save(order, termCode);
-
-                        //订单所有的票都有出票结果
-                        if(order.getPrintCount() + order.getPrintFailCount() == order.getTicketCount())
-                        {
-                            if(order.getPrintCount() > 0)
-                            {
-                                //部分出票成功
-                                int status = order.getStatus();
-                                order.setStatus(OrderState.PARTIAL_SUCCESS.getCode());
-                                NotifyUtil.sendN02(SchedulerContext.getInstance().getSpringContext(), order);
-                                order.setStatus(status);
-                            }
-                        }
-                        //订单已经完成，通知渠道
-                        if(order.getFinishedTicketCount() == order.getTicketCount())
-                        {
-                            NotifyUtil.sendN02(SchedulerContext.getInstance().getSpringContext(), order);
-                        }
-
-                        //对票据进行退款，并更新订单信息
-                        String customerId = t.getCustomerId();
-                        if(order.getType() == TOrderType.CHANNEL)
-                        {
-                            //退款给渠道
-                            this.moneyService.refundToStation(customerId, t.getOrderId(), t.getId(), t.getAmount());
-                        }
-                        else
-                        {
-                            //退款给彩民
-                            this.moneyService.refundToCustomer(t.getStationId(), customerId, t.getOrderId(), t.getId(), t.getAmount());
-                        }
-                        this.ticketService.updateStatusById(TicketState.REFUNDED.getCode(), t.getId());
-
-                        //保存到已退款的票据collection
-                        this.mgTicketService.saveRefundedTicket(t.getId(), gameCode, termCode, t.getChannelCode(), order.getType(), t.getAmount());
+                        PrintUtil.fail(SchedulerContext.getInstance().getSpringContext(), t, this.termCode);
                     }
                 }
                 catch(Exception e)

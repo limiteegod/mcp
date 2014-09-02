@@ -32,7 +32,7 @@ public class NotifyUtil {
 	{
 		MgNotifyService mgNotifyService = context.getBean("mgNotifyService", MgNotifyService.class);
         MgAutoIncrIdService mgAutoIncrIdService = context.getBean("mgAutoIncrIdService", MgAutoIncrIdService.class);
-		MgNotify mgNotify = mgNotifyService.findWait(order.getChannelCode());
+		MgNotify mgNotify = mgNotifyService.findById(order.getChannelCode());
 		if(mgNotify != null)
 		{
 			RepN02Body repN02Body = new RepN02Body();

@@ -19,9 +19,9 @@ public class TestT03 {
 	private static Logger log = Logger.getLogger(TestT03.class);
 
 	public static void main(String[] args) throws Exception {
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 1; i++)
         {
-            lotF04();
+            lot();
         }
 	}
 
@@ -32,7 +32,7 @@ public class TestT03 {
         ReqOrder reqOrder = new ReqOrder();
         reqOrder.setGameCode("T01");
         reqOrder.setTermCode("2014001");
-        reqOrder.setAmount(400);
+        reqOrder.setAmount(200);
         reqOrder.setOuterId(CoreUtil.getUUID());
         reqOrder.setPlatform("ANDROID");
         List<ReqTicket> tickets = new ArrayList<ReqTicket>();
@@ -43,14 +43,6 @@ public class TestT03 {
         ticket.setMultiple(1);
         ticket.setNumbers("01,02,03,04,05|01,02");
         tickets.add(ticket);
-
-        ReqTicket ticket2 = new ReqTicket();
-        ticket2.setAmount(200);
-        ticket2.setPlayTypeCode("00");
-        ticket2.setBetTypeCode("00");
-        ticket2.setMultiple(1);
-        ticket2.setNumbers("09,13,23,31,33|02,04");
-        tickets.add(ticket2);
 
         reqOrder.setTickets(tickets);
         reqT03Body.setOrder(reqOrder);
