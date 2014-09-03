@@ -54,38 +54,48 @@ public class FeoConstants {
 	public static int getNumberType(int[] numbers)
 	{
 		Map<Integer, Integer> info = LotteryUtil.getInfo(numbers);
-		Set<Integer> keys = info.keySet();
-		int size = keys.size();
-		if(size == 4)
-		{
-			return NUMBER_TYPE_ZTF;
-		}
-		else if(size == 3)
-		{
-			return NUMBER_TYPE_ZOT;
-		}
-		else if(size == 2)
-		{
-			boolean hasThree = false;
-			for(Integer key:keys)
-			{
-				if(info.get(key) == 3)
-				{
-					hasThree = true;
-				}
-			}
-			
-			if(hasThree)
-			{
-				return NUMBER_TYPE_ZF;
-			}
-			else
-			{
-				return NUMBER_TYPE_ZS;
-			}
-		}
-		return -1;
+		return getNumberType(info);
 	}
+
+    /**
+     * 获得号码的类型，组24，组12，组6，组4
+     * @param info
+     * @return
+     */
+    public static int getNumberType(Map<Integer, Integer> info)
+    {
+        Set<Integer> keys = info.keySet();
+        int size = keys.size();
+        if(size == 4)
+        {
+            return NUMBER_TYPE_ZTF;
+        }
+        else if(size == 3)
+        {
+            return NUMBER_TYPE_ZOT;
+        }
+        else if(size == 2)
+        {
+            boolean hasThree = false;
+            for(Integer key:keys)
+            {
+                if(info.get(key) == 3)
+                {
+                    hasThree = true;
+                }
+            }
+
+            if(hasThree)
+            {
+                return NUMBER_TYPE_ZF;
+            }
+            else
+            {
+                return NUMBER_TYPE_ZS;
+            }
+        }
+        return -1;
+    }
 	
 	/**
 	 * 获得任n的号码的注数

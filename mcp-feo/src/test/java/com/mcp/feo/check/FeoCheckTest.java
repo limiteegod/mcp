@@ -319,5 +319,21 @@ public class FeoCheckTest {
         numbers = "1,3$2,4,5";
         cp = checkTest(numbers, "02", "02", "1,2,2,4");
         assertEquals(0, cp.getBonus());
+
+        numbers = "2,2,4,4";
+        cp = checkTest(numbers, "03", "00", "4,2,2,4");
+        assertEquals(79100, cp.getBonus());
+
+        numbers = "2,2,4,4";
+        cp = checkTest(numbers, "03", "00", "2,2,2,4");
+        assertEquals(0, cp.getBonus());
+
+        numbers = "1,2,4";
+        cp = checkTest(numbers, "03", "01", "4,2,2,4");
+        assertEquals(79100, cp.getBonus());
+
+        numbers = "2$1,4";
+        cp = checkTest(numbers, "03", "02", "4,2,2,4");
+        assertEquals(79100, cp.getBonus());
 	}
 }
