@@ -32,7 +32,7 @@ public class FeoZtfDanTuoCheck extends FeoCheck {
         {
             int[] danIntArray = LotteryUtil.getIntArrayFromStrArray(ticketNumberStrArray[0].split(LotteryUtil.FUSHI_REG_SEP));
             int[] tuoIntArray = LotteryUtil.getIntArrayFromStrArray(ticketNumberStrArray[1].split(LotteryUtil.FUSHI_REG_SEP));
-            
+
         }
         return cp;
     }

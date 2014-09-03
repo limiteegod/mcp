@@ -39,8 +39,10 @@ public class JsonBodyResolver implements HandlerMethodArgumentResolver {
         }
 		String cmd = jsonBody.cmd();
 		webRequest.setAttribute("cmd", cmd, RequestAttributes.SCOPE_REQUEST);
-		
-		log.info("body:" + body);
+        if(!cmd.equals("N07"))
+        {
+            log.info("body:" + body);
+        }
 		String pkg = ParameterUtil.getReqPkg(cmd);
 		String className = ParameterUtil.getReqBodyClassNameByCmd(cmd);
 		ObjectMapper om = new ObjectMapper();

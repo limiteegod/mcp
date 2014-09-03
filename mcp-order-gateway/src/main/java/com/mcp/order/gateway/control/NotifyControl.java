@@ -98,7 +98,7 @@ public class NotifyControl {
 				catch (Exception e)
 				{
 					log.error("保存新的期次信息出错:gameCode:" + t.getGameCode() + ",termCode:" + t.getCode());
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 			}
 			else
