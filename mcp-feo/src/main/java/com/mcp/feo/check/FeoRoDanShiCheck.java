@@ -1,5 +1,6 @@
 package com.mcp.feo.check;
 
+import com.mcp.feo.common.FeoConstants;
 import com.mcp.order.batch.check.CheckParam;
 import com.mcp.order.common.Constants;
 import com.mcp.order.exception.CoreException;
@@ -8,6 +9,9 @@ import com.mcp.order.model.entity.PrizeDescription;
 import com.mcp.order.model.ts.TTicket;
 import com.mcp.order.util.LotteryUtil;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * select only one number at any position.
@@ -20,11 +24,14 @@ public class FeoRoDanShiCheck extends FeoCheck {
     public CheckParam check(TTicket ticket, String[] number, PrizeDescription prizeDescription) throws CoreException {
         CheckParam cp = new CheckParam();
         String ticketNumber  = ticket.getNumbers();
-        int[] ticketNumberIntArray = LotteryUtil.getIntArrayFromStrArray(ticketNumber.split(LotteryUtil.FUSHI_REG_SEP));
-        int hitCount = LotteryUtil.getHitCount(ticketNumberIntArray, new int[]{Integer.parseInt(number[0])});
-        if(hitCount == 1)
+        String[] ticketArray = ticketNumber.split(LotteryUtil.TICKET_REG_SEP);
+        for(int i = 0; i < ticketArray.length; i++)
         {
-            super.getPrizeByLevel(cp, Constants.GRADE_LEVEL_FIRST, 1, prizeDescription);
+            int hitCount = FeoConstants.getRNumberHitCount(ticketArray[i], number);
+            if(hitCount > 0)
+            {
+                super.getPrizeByLevel(cp, Constants.GRADE_LEVEL_FIFTH, 1, prizeDescription);
+            }
         }
         return cp;
     }

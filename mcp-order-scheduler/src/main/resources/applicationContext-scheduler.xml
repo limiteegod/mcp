@@ -29,6 +29,7 @@
     
     <import resource="classpath:applicationContext-jc.xml"/>
     <import resource="classpath:applicationContext-kt.xml"/>
+    <import resource="classpath:applicationContext-feo.xml"/>
     
     <import resource="classpath:applicationContext-bean.xml"/>
     

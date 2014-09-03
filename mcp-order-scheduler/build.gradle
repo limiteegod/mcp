@@ -18,6 +18,7 @@ dependencies {
 	compile project(':mcp-sfc')
 	compile project(':mcp-ssq')
     compile project(':mcp-kt')
+    compile project(':mcp-feo')
 
 	compile group: 'org.quartz-scheduler', name: 'quartz', version: '1.8.5'
 	compile group: 'org.springframework.batch', name: 'spring-batch-core', version: '2.1.9.RELEASE'

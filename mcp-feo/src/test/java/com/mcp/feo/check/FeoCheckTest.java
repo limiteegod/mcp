@@ -8,6 +8,7 @@ import com.mcp.order.model.entity.BetType;
 import com.mcp.order.model.entity.PrizeDescription;
 import com.mcp.order.model.ts.GameGrade;
 import com.mcp.order.model.ts.TTicket;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,7 +27,7 @@ public class FeoCheckTest {
 	private PrizeDescription pd;
 
 	@Before
-	public void initPD()
+	public void initPD() throws Exception
 	{
 		FeoCheckContext.getInstance();
 		pd = new PrizeDescription();
@@ -122,6 +123,10 @@ public class FeoCheckTest {
 		gradeList.add(gameGrade7);
 		gradeList.add(gameGrade8);
 		pd.setGrades(gradeList);
+
+        ObjectMapper om = new ObjectMapper();
+        String prizeDes = om.writeValueAsString(this.pd);
+        System.out.println(prizeDes);
 	}
 	
 	/**
@@ -335,5 +340,50 @@ public class FeoCheckTest {
         numbers = "2$1,4";
         cp = checkTest(numbers, "03", "02", "4,2,2,4");
         assertEquals(79100, cp.getBonus());
+
+        numbers = "2,2,2,4";
+        cp = checkTest(numbers, "04", "00", "4,2,2,2");
+        assertEquals(118700, cp.getBonus());
+
+        numbers = "2,4";
+        cp = checkTest(numbers, "04", "01", "4,2,2,2");
+        assertEquals(118700, cp.getBonus());
+
+        numbers = "2$4,5";
+        cp = checkTest(numbers, "04", "02", "4,2,2,2");
+        assertEquals(118700, cp.getBonus());
+
+        numbers = "4|_|_|_";
+        cp = checkTest(numbers, "05", "00", "4,2,2,2");
+        assertEquals(900, cp.getBonus());
+
+        numbers = "4|_|1,2|_";
+        cp = checkTest(numbers, "05", "01", "4,2,2,2");
+        assertEquals(1800, cp.getBonus());
+
+        numbers = "4|_|2|_;4|_|2|_";
+        cp = checkTest(numbers, "06", "00", "4,2,2,2");
+        assertEquals(14800, cp.getBonus());
+
+        numbers = "4|_|1,2|1";
+        cp = checkTest(numbers, "06", "01", "4,2,2,2");
+        assertEquals(7400, cp.getBonus());
+
+        numbers = "4|_|2|2;4|_|2|1";
+        cp = checkTest(numbers, "07", "00", "4,2,2,2");
+        assertEquals(59300, cp.getBonus());
+
+        numbers = "4|_|1,2|2";
+        cp = checkTest(numbers, "07", "01", "4,2,2,2");
+        assertEquals(59300, cp.getBonus());
+
+        numbers = "4|2|2|2;4|1|2|1";
+        cp = checkTest(numbers, "08", "00", "4,2,2,2");
+        assertEquals(475100, cp.getBonus());
+
+        numbers = "4|2|1,2|2,4";
+        cp = checkTest(numbers, "08", "01", "4,2,2,2");
+        assertEquals(475100, cp.getBonus());
+
 	}
 }

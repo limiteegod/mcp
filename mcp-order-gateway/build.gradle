@@ -17,6 +17,7 @@ dependencies {
 	compile project(':mcp-sfc')
 	compile project(':mcp-ssq')
     compile project(':mcp-kt')
+    compile project(':mcp-feo')
 
 	compile group: 'org.springframework', name: 'spring-web', version: springVersion
 	compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion

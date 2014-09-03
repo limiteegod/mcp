@@ -156,4 +156,24 @@ public class FeoConstants {
 			}
 		}
 	}
+
+    /**
+     *
+     * @param number
+     * @return
+     */
+    public static int getRNumberHitCount(String number, String[] dNumber)
+    {
+        String[] numberStrArray = number.split(LotteryUtil.POSITION_REG_SEP);
+        int hitCount = 0;
+        for(int i = 0; i < numberStrArray.length; i++)
+        {
+            if(numberStrArray[i].indexOf(dNumber[i]) > -1)
+            {
+                hitCount++;
+            }
+        }
+        return hitCount;
+    }
+
 }
