@@ -291,5 +291,33 @@ public class FeoCheckTest {
         numbers = "1,2,3,4,5";
         cp = checkTest(numbers, "01", "01", "1,2,3,4");
         assertEquals(19700, cp.getBonus());
+
+        numbers = "1$2,3,4,5";
+        cp = checkTest(numbers, "01", "02", "1,2,3,4");
+        assertEquals(19700, cp.getBonus());
+
+        numbers = "1,2,2,4";
+        cp = checkTest(numbers, "02", "00", "1,2,2,4");
+        assertEquals(39500, cp.getBonus());
+
+        numbers = "1,2,2,4";
+        cp = checkTest(numbers, "02", "00", "1,2,3,4");
+        assertEquals(0, cp.getBonus());
+
+        numbers = "1,2,3,4";
+        cp = checkTest(numbers, "02", "01", "1,2,2,4");
+        assertEquals(39500, cp.getBonus());
+
+        numbers = "1,3,4,5";
+        cp = checkTest(numbers, "02", "01", "1,2,2,4");
+        assertEquals(0, cp.getBonus());
+
+        numbers = "1$2,4,5";
+        cp = checkTest(numbers, "02", "02", "1,2,2,4");
+        assertEquals(39500, cp.getBonus());
+
+        numbers = "1,3$2,4,5";
+        cp = checkTest(numbers, "02", "02", "1,2,2,4");
+        assertEquals(0, cp.getBonus());
 	}
 }
