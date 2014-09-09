@@ -2,6 +2,7 @@ package com.mcp.order.service;
 
 import com.mcp.order.common.ConstantValues;
 import com.mcp.order.dao.CustomerAccountDao;
+import com.mcp.order.dao.MoneyLogDao;
 import com.mcp.order.dao.finance.AccountConstants;
 import com.mcp.order.dao.finance.AccountOperator;
 import com.mcp.order.dao.finance.AccountOperatorType;
@@ -32,6 +33,9 @@ public class MoneyService {
 	
 	@Autowired
 	private CustomerAccountDao customerAccountDao;
+
+    @Autowired
+    private MoneyLogDao moneyLogDao;
 	
 	/**
 	 * 代理商投注，代理商扣款
@@ -298,6 +302,11 @@ public class MoneyService {
     	{
     		throw new CoreException(ErrCode.E1022, ErrCode.codeToMsg(ErrCode.E1022));
     	}
+        MoneyLog moneyLog = this.moneyLogDao.findOneByOperationCodeAndOrderId(op, orderId);
+        if(moneyLog != null)
+        {
+            throw new CoreException(ErrCode.E1030, ErrCode.codeToMsg(ErrCode.E1030));
+        }
     	AccountOperatorType type = AccountOperator.getInstance().getAccountOperatorType(op);
     	CustomerAccount ca = customerAccountDao.findOneByCustomerIdAndStationId(customerId, stationId);
     	try {

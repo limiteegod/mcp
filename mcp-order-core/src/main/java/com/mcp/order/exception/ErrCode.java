@@ -160,6 +160,11 @@ public class ErrCode {
 	 * 订单已经失效
 	 */
 	public static final String E1029 = "1029";
+
+    /**
+     * 订单号已经使用过
+     */
+    public static final String E1030 = "1030";
 	
 	/**
 	 * 金额不能小于1
@@ -491,6 +496,7 @@ public class ErrCode {
 		map.put(E1027, "不支持的支付方式");
 		map.put(E1028, "未绑定银行卡");
 		map.put(E1029, "订单已经失效");
+        map.put(E1030, "订单号已经使用过");
 		
 		map.put(E1301, "历史开奖不存在");
 		map.put(E1302, "记录已存在");

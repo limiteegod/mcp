@@ -18,7 +18,7 @@ public class TestC02 {
 
 	public static void main(String[] args) throws Exception {
 		ObjectMapper om = new ObjectMapper();
-		
+
 		ReqC02Body reqC02Body = new ReqC02Body();
 		reqC02Body.setAmount(100000);
 		reqC02Body.setName(User.NAME);
@@ -27,9 +27,12 @@ public class TestC02 {
 		
 		om.setFilters(CmdContext.getInstance().getFilterProviderByCode("C020101"));
 		String bodyStr = om.writeValueAsString(reqC02Body);
-		String message = TestUtil.getCReqMessage("", Station.CODE, bodyStr, "C02", Station.KEY);
+		String message = TestUtil.getCReqMessage("", "Q0003", bodyStr, "C02", "CePEYAR/Snc=");
 		log.info(message);
 		String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
 		log.info(content);
+
+        String content2 = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
+        log.info(content2);
 	}
 }

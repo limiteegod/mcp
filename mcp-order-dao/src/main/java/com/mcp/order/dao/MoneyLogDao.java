@@ -6,6 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface MoneyLogDao extends PagingAndSortingRepository<MoneyLog, String>,JpaSpecificationExecutor<MoneyLog> {
+
     @Query("select sum(c.amount) from MoneyLog c where c.userId= ?1 and c.handlerCode = ?2 and c.acceptTimeStamp>?3")
     public Object getStationTodayRecharge(String stationId,String handlerCode,long acceptTimeStamp);
+
+    @Query("from MoneyLog m where m.operationCode=?1 and m.orderId=?2")
+    public MoneyLog findOneByOperationCodeAndOrderId(String operationCode, String orderId);
+
 }

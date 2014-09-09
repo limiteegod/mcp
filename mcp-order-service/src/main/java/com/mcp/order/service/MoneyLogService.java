@@ -100,4 +100,9 @@ public class MoneyLogService {
         }
         return Double.valueOf(object.toString()).longValue();
     }
+
+    public MoneyLog findOneByOperationCodeAndOrderId(String operationCode, String orderId)
+    {
+        return this.moneyLogDao.findOneByOperationCodeAndOrderId(operationCode, orderId);
+    }
 }
