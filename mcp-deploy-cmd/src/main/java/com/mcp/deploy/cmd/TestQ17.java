@@ -22,7 +22,7 @@ public class TestQ17 {
         reqQ17Body.setMinId(10);
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("Q170101"));
         String bodyStr = om.writeValueAsString(reqQ17Body);
-        String message = TestUtil.getCReqMessage("", "Q0003", bodyStr, "Q17", "123456");
+        String message = TestUtil.getCReqMessage("", "Q0003", bodyStr, "Q17", "CePEYAR/Snc=");
         log.info(message);
         String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
         log.info(content);
