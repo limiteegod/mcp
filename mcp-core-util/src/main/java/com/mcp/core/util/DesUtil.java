@@ -47,7 +47,7 @@ public class DesUtil {
         SecretKey deskey = new SecretKeySpec(keybyte, "DESede");
         IvParameterSpec iv = new IvParameterSpec(new byte[8]);
         //加密
-        Cipher c1 = Cipher.getInstance("DESede/CFB/PKCS5Padding");
+        Cipher c1 = Cipher.getInstance("DESede/CFB/NoPadding");
         c1.init(Cipher.ENCRYPT_MODE, deskey, iv);
         //c1.init(Cipher.ENCRYPT_MODE, deskey);
         return c1.doFinal(src);//在单一方面的加密或解密
@@ -61,7 +61,7 @@ public class DesUtil {
         IvParameterSpec iv = new IvParameterSpec(new byte[8]);
         //DESede/CBC/PKCS5Padding
         //解密
-        Cipher c1 = Cipher.getInstance("DESede/CFB/PKCS5Padding");
+        Cipher c1 = Cipher.getInstance("DESede/CFB/NoPadding");
         c1.init(Cipher.DECRYPT_MODE, deskey, iv);
         //c1.init(Cipher.DECRYPT_MODE, deskey);
         return c1.doFinal(src);
