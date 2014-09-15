@@ -166,7 +166,7 @@ public class NotifyControl {
 		{
 			odds.setCreateTime(new Date());
 			odds.setId(CoreUtil.getUUID());
-			jOddsService.save(odds);
+			//jOddsService.save(odds);
 			
 			this.mgOddsService.save(odds);
 		}
