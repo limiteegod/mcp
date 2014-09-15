@@ -166,20 +166,10 @@ public class PrintControl {
 	public String printBack(@JsonHead(value="head",checkChannel=false) Head head, @McpStation Station station, @JsonBody(value="body", cmd="P02") ReqP02Body body,
 			 ModelMap modelMap, HttpServletRequest httpServletRequest) throws Exception {
 		RepP02Body repBody = new RepP02Body();
-		String terminalId;
-		Terminal terminal = terminalService.findOneByCode(body.getTerminalCode());
-		if(terminal != null)
-		{
-			terminalId = terminal.getId();
-		}
-		else
-		{
-			terminalId = "";
-		}
+
 		String ticketId = body.getTicketId();
 		int code = body.getCode();
-		
-		TTicket ticketBack = ticketService.printBack(ticketId, code, terminalId, null, body.getStubInfo(), body.getrNumber(), body.isPaper());
+		TTicket ticketBack = ticketService.printBack(ticketId, code, "", null, body.getStubInfo(), body.getrNumber(), body.isPaper());
 		//如果是出票成功，则还需要更新订单状态
 		if(code == Constants.TICKET_PRINT_RECEIPT_SUCCESS)
 		{
