@@ -63,7 +63,7 @@ public class ReqC02Body extends ReqBody {
 		this.orderId = orderId;
 	}
 
-	@Override
+    @Override
 	public void validate() throws CoreException {
 		if(amount <= 0 || StringUtil.isEmpty(name) || StringUtil.isEmpty(orderId))
 		{

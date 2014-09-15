@@ -1,0 +1,9 @@
+<lotterys>
+    <lottery code="F01" type="1" name="双色球" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="标准" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="ssqDanShiCheck" validator="com.mcp.ssq.validator.SsqDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="ssqFuShiCheck" validator="com.mcp.ssq.validator.SsqFuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="ssqDanTuoCheck" validator="com.mcp.ssq.validator.SsqDanTuoValidator" offset="180"/>
+        </play>
+    </lottery>
+</lotterys>

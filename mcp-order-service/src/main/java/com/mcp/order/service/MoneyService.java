@@ -1,5 +1,6 @@
 package com.mcp.order.service;
 
+import com.mcp.core.util.StringUtil;
 import com.mcp.order.common.ConstantValues;
 import com.mcp.order.dao.CustomerAccountDao;
 import com.mcp.order.dao.MoneyLogDao;
@@ -298,6 +299,10 @@ public class MoneyService {
     	{
     		op = "RU0000007";
     	}
+        else if(fromType == ConstantValues.Recharge_Channel_XB.getCode())
+        {
+            op = "RU0000008";
+        }
     	else 
     	{
     		throw new CoreException(ErrCode.E1022, ErrCode.codeToMsg(ErrCode.E1022));

@@ -25,7 +25,7 @@ public class ReqAD02Body extends ReqBody {
     /**
      * 重新指定出票口
      */
-    private String stationId = null;
+    private String stationCode = null;
 
     public String getTicketId() {
         return ticketId;
@@ -51,12 +51,12 @@ public class ReqAD02Body extends ReqBody {
         this.resetId = resetId;
     }
 
-    public String getStationId() {
-        return stationId;
+    public String getStationCode() {
+        return stationCode;
     }
 
-    public void setStationId(String stationId) {
-        this.stationId = stationId;
+    public void setStationCode(String stationCode) {
+        this.stationCode = stationCode;
     }
 
     @Override

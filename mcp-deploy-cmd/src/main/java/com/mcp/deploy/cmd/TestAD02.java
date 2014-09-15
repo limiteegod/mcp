@@ -26,8 +26,11 @@ public class TestAD02 {
         String key = bodyNode.get("st").getTextValue();
 		
 		ReqAD02Body reqAD02Body = new ReqAD02Body();
-        reqAD02Body.setTicketId("b7e183484bfc40bd8e5bbb272f304065");
+        reqAD02Body.setTicketId("d3e663ca4b7a49149e6ee91503d96d9e");
         reqAD02Body.setUniqueId(CoreUtil.getUUID());
+        reqAD02Body.setResetStatus(true);
+        reqAD02Body.setResetId(false);
+        reqAD02Body.setStationCode("C0002");
 		om.setFilters(CmdContext.getInstance().getFilterProviderByCode("AD020101"));
         String bodyStr = om.writeValueAsString(reqAD02Body);
         log.info(bodyStr);

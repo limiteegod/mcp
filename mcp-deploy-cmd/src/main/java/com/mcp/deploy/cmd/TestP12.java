@@ -42,6 +42,7 @@ public class TestP12 {
 
     public static boolean print() throws Exception
     {
+        String stationCode = "C0002";
         //查询队列
         ObjectMapper om = new ObjectMapper();
         ReqP12Body reqP12Body = new ReqP12Body();
@@ -49,7 +50,7 @@ public class TestP12 {
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P120101"));
         String bodyStr = om.writeValueAsString(reqP12Body);
         log.info(bodyStr);
-        String message = TestUtil.getCReqMessage("", "C0001", bodyStr, "P12", "GtUuw3yWiQI=");
+        String message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P12", "GtUuw3yWiQI=");
         //String message = TestUtil.getDesCReqMessage("", "C0001", bodyStr, "P12", "GtUuw3yWiQI=");
         log.info(message);
         String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
@@ -72,7 +73,7 @@ public class TestP12 {
             om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P060101"));
             bodyStr = om.writeValueAsString(reqP06Body);
             log.info(bodyStr);
-            message = TestUtil.getCReqMessage("", "C0001", bodyStr, "P06", "GtUuw3yWiQI=");
+            message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P06", "GtUuw3yWiQI=");
             //String message = TestUtil.getDesCReqMessage("", "C0001", bodyStr, "P06", "GtUuw3yWiQI=");
             log.info(message);
             content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
@@ -96,7 +97,7 @@ public class TestP12 {
                 }
                 om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P020101"));
                 bodyStr = om.writeValueAsString(reqP02Body);
-                message = TestUtil.getCReqMessage("", "C0001", bodyStr, "P02", "GtUuw3yWiQI=");
+                message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P02", "GtUuw3yWiQI=");
                 //String message = TestUtil.getDesCReqMessage("", "C0001", bodyStr, "P02", "GtUuw3yWiQI=");
                 log.info(message);
                 content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);

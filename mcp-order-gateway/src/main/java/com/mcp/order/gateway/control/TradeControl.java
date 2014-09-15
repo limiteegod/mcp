@@ -359,7 +359,7 @@ public class TradeControl {
      * @throws Exception
      */
 	@RequestMapping(value = "/clot.htm")
-	public String clot(@JsonHead(value="head", checkChannel=false) Head head, @McpStation Station station, @JsonBody(value="body", cmd="T03") ReqT03Body body,
+	public String clot(@JsonHead(value="head") Head head, @McpStation Station station, @JsonBody(value="body", cmd="T03") ReqT03Body body,
 			ModelMap modelMap, HttpServletRequest httpServletRequest) throws Exception {
 		RepT03Body repBody = new RepT03Body();
 		ReqOrder reqOrder = body.getOrder();

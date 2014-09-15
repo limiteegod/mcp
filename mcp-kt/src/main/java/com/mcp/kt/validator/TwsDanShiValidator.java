@@ -10,6 +10,8 @@ import com.mcp.order.model.ts.TTicket;
 import com.mcp.order.util.LotteryUtil;
 import org.apache.log4j.Logger;
 
+import java.util.Map;
+
 
 public class TwsDanShiValidator extends KtValidator {
 
@@ -27,8 +29,8 @@ public class TwsDanShiValidator extends KtValidator {
             }
             String[] numArray = items[i].split(LotteryUtil.FUSHI_REG_SEP);
             int[] numIntArray = LotteryUtil.getIntArrayFromStrArray(numArray);
-            int kuaDu = LotteryUtil.getKuaDu(numIntArray);
-            if(kuaDu != 1)
+            Map<Integer, Integer> info = LotteryUtil.getInfo(numIntArray);
+            if(info.keySet().size() != 2)
             {
                 throw new CoreException(ErrCode.E2033, ErrCode.codeToMsg(ErrCode.E2033));
             }

@@ -188,42 +188,32 @@ public class PrintControl {
 			mgTicketService.save(ticketBack, game.getType());
 			
 			TOrder torder = orderService.incrPrintCount(ticketBack.getOrderId(), 1);
-			if(torder.getStatus() == OrderState.SUCCESS.getCode())
+
+            //print station get the money
+            StationGame sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(ticketBack.getPrinterStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
+            int factor = sg.getpFactor();
+            long amount = ticketBack.getAmount()*factor/10000;
+            moneyService.orderPrintSuccess(ticketBack.getPrinterStationId(), ticketBack.getId(), amount);
+
+            //sale station get the sale percentage
+            sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(torder.getStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
+            int rFactor = sg.getrFactor();
+            if(rFactor > 0)     //如果有转票提成，则收取一定比例费用
+            {
+                long rAmount = ticketBack.getAmount()*rFactor/10000;
+                moneyService.orderPrintSuccessSalePercentage(torder.getStationId(), ticketBack.getId(), rAmount);
+            }
+
+            if(torder.getStatus() == OrderState.SUCCESS.getCode())
 			{
-				//出票成功，出票中心收出票款
-				StationGame sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(torder.getPrintStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
-				int factor = sg.getpFactor();
-				long amount = torder.getAmount()*factor/10000;
-				moneyService.orderPrintSuccess(torder.getPrintStationId(), torder.getId(), amount);
-				//记录平台收入
-				long pAmount  = torder.getAmount() - amount;	
-				
-				//如果发生了转票，则销售方收取一定比例费用
-				if(!torder.getStationId().equals(torder.getPrintStationId()))
-				{
-					sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(torder.getStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
-					int rFactor = sg.getrFactor();
-                    if(rFactor > 0)     //如果有转票提成，则收取一定比例费用
-                    {
-                        long rAmount = torder.getAmount()*rFactor/10000;
-                        moneyService.orderPrintSuccessSalePercentage(torder.getStationId(), torder.getId(), rAmount);
-                        pAmount = pAmount - rAmount;
-                    }
-				}
-				
-				//记录平台收入
-				moneyService.platFormSalePercentage(torder.getId(), pAmount);
-				
-				//发送出票成功通知
-				ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(httpServletRequest.getSession().getServletContext());
-				NotifyUtil.sendN02(context, torder);
+                //发送出票成功通知
+                ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(httpServletRequest.getSession().getServletContext());
+                NotifyUtil.sendN02(context, torder);
 			}
 		}
-		
 		repBody.setTicketId(ticketBack.getId());
 		repBody.setAmount(ticketBack.getAmount());
 		repBody.setCode(code);
-		
 		modelMap.put("response", repBody);
 		return "plainJsonView";
 	}

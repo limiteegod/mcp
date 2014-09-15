@@ -133,6 +133,7 @@ public enum ConstantValues {
     },Recharge_Channel_CCB(6, "建设银行直充", "Recharge_Channel"){
     },Recharge_Channel_CMBC(7, "民生银行直充", "Recharge_Channel"){ 
     },Recharge_Channel_CEB(8, "光大银行直充", "Recharge_Channel"){
+    },Recharge_Channel_XB(9, "寻宝中奖", "Recharge_Channel"){
     },NOTIFY_TYPE_TERM(1, "期次通知", "NOTIFY_TYPE"){ 	
     },NOTIFY_TYPE_ORDER(2, "订单通知", "NOTIFY_TYPE"){ 	
     },NOTIFY_STATUS_UNUSED(1, "未处理", "NOTIFY_STATUS"){ 	

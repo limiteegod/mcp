@@ -137,15 +137,18 @@ public class AdminControl {
         {
             this.ticketService.updateStatusById(TicketState.WAITING_PRINT.getCode(), ticketId);
         }
-        if(!StringUtil.isEmpty(body.getStationId()))
+        boolean newStation = false; //change print station or not
+        if(!StringUtil.isEmpty(body.getStationCode()))
         {
-            this.ticketService.updatePrintStationIdById(body.getStationId(), ticketId);
+            newStation = true;
+            Station newPrintStation = this.stationService.findOneByCode(body.getStationCode());
+            this.ticketService.updatePrintStationIdById(newPrintStation.getId(), ticketId);
         }
         if(body.isResetId())
         {
             String newId = CoreUtil.getUUID();
             this.ticketService.updateIdById(newId, ticketId);
-            ticketId = newId;
+            repAD02Body.setTicketId(newId);
         }
         MgPrint mgPrint = new MgPrint();
         mgPrint.setId(mgAutoIncrIdService.getAutoIdAndIncrByName(MgConstants.MG_PRINT_ID).getValue());
@@ -153,8 +156,15 @@ public class AdminControl {
         mgPrint.setGameCode(ticket.getGameCode());
         mgPrint.setTermCode(ticket.getTermCode());
 
-        Station pStation = this.stationService.findOne(ticket.getPrinterStationId());
-        mgPrintService.save(pStation.getCode(), mgPrint);
+        if(newStation)  //change
+        {
+            mgPrintService.save(body.getStationCode(), mgPrint);
+        }
+        else    //not change
+        {
+            Station pStation = this.stationService.findOne(ticket.getPrinterStationId());
+            mgPrintService.save(pStation.getCode(), mgPrint);
+        }
 
         modelMap.put("response", repAD02Body);
         return "plainTypeJsonView";
