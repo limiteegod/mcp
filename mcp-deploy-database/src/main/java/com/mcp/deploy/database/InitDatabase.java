@@ -2115,7 +2115,7 @@ public class InitDatabase {
         gameGrade1.setCode("LV1");
         gameGrade1.setName("直选");
         gameGrade1.setgLevel(Constants.GRADE_LEVEL_FIRST);
-        gameGrade1.setBonus(100000);
+        gameGrade1.setBonus(104000);
         gameGrade1.setFixedBonus(true);
         gameGrade1.setStatus(1);
         
@@ -2130,7 +2130,7 @@ public class InitDatabase {
         gameGrade2.setCode("LV2");
         gameGrade2.setName("组选3");
         gameGrade2.setgLevel(Constants.GRADE_LEVEL_SECOND);
-        gameGrade2.setBonus(32000);
+        gameGrade2.setBonus(34600);
         gameGrade2.setFixedBonus(true);
         gameGrade2.setStatus(1);
         
@@ -2145,7 +2145,7 @@ public class InitDatabase {
         gameGrade3.setCode("LV3");
         gameGrade3.setName("组选6");
         gameGrade3.setgLevel(Constants.GRADE_LEVEL_THIRD);
-        gameGrade3.setBonus(16000);
+        gameGrade3.setBonus(17300);
         gameGrade3.setFixedBonus(true);
         gameGrade3.setStatus(1);
         

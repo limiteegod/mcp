@@ -28,7 +28,7 @@ public class QxcCheckTest {
 	private PrizeDescription pd;
 
 	@Before
-	public void initPD()
+	public void initPD() throws Exception
 	{
 		QxcCheckContext.getInstance();
 		pd = new PrizeDescription();
@@ -129,6 +129,8 @@ public class QxcCheckTest {
         gradeList.add(gameGrade5);
         gradeList.add(gameGrade6);
         pd.setGrades(gradeList);
+
+        System.out.println(om.writeValueAsString(this.pd));
 	}
 	
 	/**

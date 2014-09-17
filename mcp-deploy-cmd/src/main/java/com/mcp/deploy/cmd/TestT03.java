@@ -21,7 +21,7 @@ public class TestT03 {
 	public static void main(String[] args) throws Exception {
         for(int i = 0; i < 1; i++)
         {
-            lotT06();
+            lot();
         }
 	}
 

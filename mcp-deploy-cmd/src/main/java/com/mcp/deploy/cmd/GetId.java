@@ -10,6 +10,12 @@ public class GetId {
     public static void main(String[] args) throws Exception
     {
         System.out.println(CoreUtil.getUUID());
+
+        String a = "abc";
+        if(a instanceof String)
+        {
+
+        }
     }
 
 }

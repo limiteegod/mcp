@@ -1,0 +1,18 @@
+<lotterys>
+    <lottery code="F02" type="1" name="福彩3d" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="直选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="fsdZhiXuanDanShiCheck" validator="com.mcp.fsd.validator.FsdZhiXuanDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="fsdZhiXuanFuShiCheck" validator="com.mcp.fsd.validator.FsdZhiXuanFuShiValidator" offset="180"/>
+            <bet code="03" name="和值" status="1" check="fsdZhiXuanHeZhiCheck" validator="com.mcp.fsd.validator.FsdZhiXuanHeZhiValidator" offset="180"/>
+        </play>
+        <play code="02" name="组选三" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="fsdZuSanFuShiCheck" validator="com.mcp.fsd.validator.FsdZuSanFuShiValidator" offset="180"/>
+        </play>
+        <play code="03" name="组选六" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="fsdZuLiuFuShiCheck" validator="com.mcp.fsd.validator.FsdZuLiuFuShiValidator" offset="180"/>
+        </play>
+        <play code="04" name="组选" status="1" price="200">
+            <bet code="03" name="和值" status="1" check="fsdZuXuanHeZhiCheck" validator="com.mcp.fsd.validator.FsdZuXuanHeZhiValidator" offset="180"/>
+        </play>
+    </lottery>
+</lotterys>

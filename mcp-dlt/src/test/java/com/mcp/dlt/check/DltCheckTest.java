@@ -10,6 +10,7 @@ import com.mcp.order.model.entity.PrizeDescription;
 import com.mcp.order.model.ts.GameGrade;
 import com.mcp.order.model.ts.TTicket;
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +30,7 @@ public class DltCheckTest {
 	private PrizeDescription pd;
 
 	@Before
-	public void initPD()
+	public void initPD() throws Exception
 	{
 		DltCheckContext.getInstance();
 		pd = new PrizeDescription();
@@ -201,6 +202,9 @@ public class DltCheckTest {
 		gradeList.add(gameGrade12);
 		gradeList.add(gameGrade13);
 		pd.setGrades(gradeList);
+
+        ObjectMapper om = new ObjectMapper();
+        System.out.println(om.writeValueAsString(this.pd));
 	}
 	
 	/**

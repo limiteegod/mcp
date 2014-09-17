@@ -9,6 +9,7 @@ import com.mcp.order.model.entity.BetType;
 import com.mcp.order.model.entity.PrizeDescription;
 import com.mcp.order.model.ts.GameGrade;
 import com.mcp.order.model.ts.TTicket;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +28,7 @@ public class JqcCheckTest {
 	private PrizeDescription pd;
 
 	@Before
-	public void initPD()
+	public void initPD() throws Exception
 	{
 		JqcCheckContext.getInstance();
 		pd = new PrizeDescription();
@@ -50,6 +51,8 @@ public class JqcCheckTest {
 		gradeList.add(gameGrade1);
 		
 		pd.setGrades(gradeList);
+        ObjectMapper om = new ObjectMapper();
+        System.out.println(om.writeValueAsString(pd));
 	}
 	
 	/**
@@ -109,7 +112,7 @@ public class JqcCheckTest {
 		//单式
 		String numbers = "3|1|0|3|1|0|0|1";
 		CheckParam cp = checkTest(numbers, "01", "00");
-		assertEquals(4000000, cp.getBonus());
+		assertEquals(3200000, cp.getBonus());
 		
 		//单式，未中
 		numbers = "3|1|0|3|1|0|0|2";
@@ -119,6 +122,6 @@ public class JqcCheckTest {
 		//复式
 		numbers = "3|1|0,2|3,1|1|0|0|1";
 		cp = checkTest(numbers, "01", "01");
-		assertEquals(4000000, cp.getBonus());
+		assertEquals(3200000, cp.getBonus());
 	}
 }

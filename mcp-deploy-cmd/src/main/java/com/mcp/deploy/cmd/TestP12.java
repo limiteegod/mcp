@@ -27,11 +27,12 @@ public class TestP12 {
         while(true)
         {
             try {
-                if(!print())
+                /*if(!print())
                 {
                     break;
-                }
-                //Thread.sleep(10000);
+                }*/
+                print();
+                Thread.sleep(2000);
             }
             catch (Exception e)
             {
@@ -42,7 +43,7 @@ public class TestP12 {
 
     public static boolean print() throws Exception
     {
-        String stationCode = "C0002";
+        String stationCode = "C0001";
         //查询队列
         ObjectMapper om = new ObjectMapper();
         ReqP12Body reqP12Body = new ReqP12Body();

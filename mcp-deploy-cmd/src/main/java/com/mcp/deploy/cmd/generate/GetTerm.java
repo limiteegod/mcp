@@ -14,7 +14,7 @@ public class GetTerm {
 
     public static void main(String[] args) throws Exception
     {
-        getT06();
+        getT01();
     }
 
     public static void getF04()
@@ -38,6 +38,66 @@ public class GetTerm {
     }
 
 
+    public static void getT01()
+    {
+        String gameCode = "T01";
+        int curTermCode = 2014001;
+        long startDate = new Date().getTime();
+        long gap = 180*60*1000;
+        String pDes = "{\"grades\":[{\"id\":\"48d7ad96c2c04c8db66f819be96b805c\",\"gameCode\":\"T01\",\"code\":\"LV1\",\"name\":\"一等奖\",\"gLevel\":1,\"bonus\":400000000,\"status\":1,\"gCount\":0,\"fixedBonus\":false},{\"id\":\"5ff778526aa146a885979789ffeae64a\",\"gameCode\":\"T01\",\"code\":\"LV2\",\"name\":\"二等奖\",\"gLevel\":2,\"bonus\":200000000,\"status\":1,\"gCount\":0,\"fixedBonus\":false},{\"id\":\"2c3c4acfdda54ad58a7a2018ef88b921\",\"gameCode\":\"T01\",\"code\":\"LV3\",\"name\":\"三等奖\",\"gLevel\":3,\"bonus\":100000000,\"status\":1,\"gCount\":0,\"fixedBonus\":false},{\"id\":\"d26e90853fad4c1381bb109ad20ac773\",\"gameCode\":\"T01\",\"code\":\"LV4\",\"name\":\"四等奖\",\"gLevel\":4,\"bonus\":20000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"08e957d15df34145940024908a10cec9\",\"gameCode\":\"T01\",\"code\":\"LV5\",\"name\":\"五等奖\",\"gLevel\":5,\"bonus\":1000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"8bf25c08a5eb498dbeffe83b8d00ead4\",\"gameCode\":\"T01\",\"code\":\"LV6\",\"name\":\"六等奖\",\"gLevel\":6,\"bonus\":500,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"5cbdd29cded94a7da01f1997e7452523\",\"gameCode\":\"T01\",\"code\":\"LV7\",\"name\":\"一等奖追加\",\"gLevel\":7,\"bonus\":240000000,\"status\":1,\"gCount\":0,\"fixedBonus\":false},{\"id\":\"a007f339ce3841159d6420ad1b86d288\",\"gameCode\":\"T01\",\"code\":\"LV8\",\"name\":\"二等奖追加\",\"gLevel\":8,\"bonus\":120000000,\"status\":1,\"gCount\":0,\"fixedBonus\":false},{\"id\":\"abb64ff7bbce40deaecfb4cd58d32943\",\"gameCode\":\"T01\",\"code\":\"LV9\",\"name\":\"三等奖追加\",\"gLevel\":9,\"bonus\":60000000,\"status\":1,\"gCount\":0,\"fixedBonus\":false},{\"id\":\"3d3a66cc55c04d27961e14fe1fcc58f6\",\"gameCode\":\"T01\",\"code\":\"LV10\",\"name\":\"四等奖追加\",\"gLevel\":10,\"bonus\":10000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"9b423e5cf0c84e1d91983e74d66ca939\",\"gameCode\":\"T01\",\"code\":\"LV11\",\"name\":\"五等奖追加\",\"gLevel\":11,\"bonus\":500,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}\n";
+        String wNum = "11,13,20,28,35|01,05";
+        for(int i = 0; i < 2; i++)
+        {
+            String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
+            int nextTermCode = curTermCode + 1;
+            sql += curTermCode + ",'" + curTermCode + "'," + nextTermCode + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
+            startDate += gap;
+            sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
+            System.out.print(sql);
+            curTermCode++;
+        }
+    }
+
+    public static void getT02()
+    {
+        String gameCode = "T02";
+        int curTermCode = 2014001;
+        long startDate = new Date().getTime();
+        long gap = 60*60*1000;
+        String pDes = "{\"grades\":[{\"id\":\"f5efb6e9c5cd4961b99c92c36e2882c0\",\"gameCode\":\"T02\",\"code\":\"LV1\",\"name\":\"一等奖\",\"gLevel\":1,\"bonus\":400000000,\"status\":1,\"gCount\":2,\"fixedBonus\":false},{\"id\":\"e9555c9f51b641fda3ba8317791bba8c\",\"gameCode\":\"T02\",\"code\":\"LV2\",\"name\":\"二等奖\",\"gLevel\":2,\"bonus\":200000000,\"status\":1,\"gCount\":20,\"fixedBonus\":false},{\"id\":\"4805d88d2df345daabf27371dd143b37\",\"gameCode\":\"T02\",\"code\":\"LV3\",\"name\":\"三等奖\",\"gLevel\":3,\"bonus\":180000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"af3fb0e4a1ba4161a4dfb69853f043ce\",\"gameCode\":\"T02\",\"code\":\"LV4\",\"name\":\"四等奖\",\"gLevel\":4,\"bonus\":30000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"3f260c81a75f42f4b29bfee63bdfb29d\",\"gameCode\":\"T02\",\"code\":\"LV5\",\"name\":\"五等奖\",\"gLevel\":5,\"bonus\":2000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"ce5d0bf1fcfc4124aec20d42467589ab\",\"gameCode\":\"T02\",\"code\":\"LV6\",\"name\":\"六等奖\",\"gLevel\":6,\"bonus\":500,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}\n";
+        String wNum = "4|9|5|0|4|6|3";
+        for(int i = 0; i < 200; i++)
+        {
+            String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
+            int nextTermCode = curTermCode + 1;
+            sql += curTermCode + ",'" + curTermCode + "'," + nextTermCode + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
+            startDate += gap;
+            sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
+            System.out.print(sql);
+            curTermCode++;
+        }
+    }
+
+    public static void getT03()
+    {
+        String gameCode = "T03";
+        int curTermCode = 2014001;
+        long startDate = new Date().getTime();
+        long gap = 60*60*1000;
+        String pDes = "{\"grades\":[{\"id\":\"3a7ca9ab1ecf45eebee7849d164eb6b2\",\"gameCode\":\"T03\",\"code\":\"LV1\",\"name\":\"直选\",\"gLevel\":1,\"bonus\":104000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"d9c6ab027f114bedb023c6d3f1b4f80b\",\"gameCode\":\"T03\",\"code\":\"LV2\",\"name\":\"组选3\",\"gLevel\":2,\"bonus\":34600,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"0ea7a769c60844e89c165654cdf41647\",\"gameCode\":\"T03\",\"code\":\"LV3\",\"name\":\"组选6\",\"gLevel\":3,\"bonus\":17300,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}\n";
+        String wNum = "1|7|7";
+        for(int i = 0; i < 200; i++)
+        {
+            String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
+            int nextTermCode = curTermCode + 1;
+            sql += curTermCode + ",'" + curTermCode + "'," + nextTermCode + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
+            startDate += gap;
+            sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
+            System.out.print(sql);
+            curTermCode++;
+        }
+    }
+
     public static void getT06()
     {
         String gameCode = "T06";
@@ -58,15 +118,55 @@ public class GetTerm {
         }
     }
 
+    public static void getT53()
+    {
+        String gameCode = "T53";
+        int curTermCode = 2014001;
+        long startDate = new Date().getTime();
+        long gap = 60*60*1000;
+        String pDes = "{\"grades\":[{\"id\":\"9aede9cee381406c8f62acc4c32bf0b6\",\"gameCode\":\"T53\",\"code\":\"LV1\",\"name\":\"14场一等奖\",\"gLevel\":1,\"bonus\":4000000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"f4fffacbdac7492599cd51185b72d264\",\"gameCode\":\"T53\",\"code\":\"LV2\",\"name\":\"14场二等奖\",\"gLevel\":2,\"bonus\":40000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"178180447bf84754b22f632679e35b4f\",\"gameCode\":\"T53\",\"code\":\"LV3\",\"name\":\"任9场一等奖\",\"gLevel\":3,\"bonus\":400,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}\n";
+        String wNum = "3|1|0|3|1|0|0|1|3|1|3|3|1|1";
+        for(int i = 0; i < 200; i++)
+        {
+            String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
+            int nextTermCode = curTermCode + 1;
+            sql += curTermCode + ",'" + curTermCode + "'," + nextTermCode + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
+            startDate += gap;
+            sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
+            System.out.print(sql);
+            curTermCode++;
+        }
+    }
+
+    public static void getT54()
+    {
+        String gameCode = "T54";
+        int curTermCode = 2014001;
+        long startDate = new Date().getTime();
+        long gap = 60*60*1000;
+        String pDes = "{\"grades\":[{\"id\":\"def0107659a94bb6a617565c18470d30\",\"gameCode\":\"T54\",\"code\":\"LV1\",\"name\":\"一等奖\",\"gLevel\":1,\"bonus\":4000000,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}\n";
+        String wNum = "3|1|0|3|1|0|0|1";
+        for(int i = 0; i < 200; i++)
+        {
+            String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
+            int nextTermCode = curTermCode + 1;
+            sql += curTermCode + ",'" + curTermCode + "'," + nextTermCode + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
+            startDate += gap;
+            sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
+            System.out.print(sql);
+            curTermCode++;
+        }
+    }
+
     public static void getF01()
     {
         String gameCode = "F01";
         int curTermCode = 2014001;
         long startDate = new Date().getTime();
-        long gap = 120*60*1000;
+        long gap = 60*60*1000;
         String pDes = "{\"grades\":[{\"id\":\"40623ae3da4945a2b8482435f0578d37\",\"gameCode\":\"F01\",\"code\":\"LV1\",\"name\":\"一等奖\",\"gLevel\":1,\"bonus\":400000000,\"status\":1,\"gCount\":2,\"fixedBonus\":false},{\"id\":\"b44a2be235d74f158326635506aea278\",\"gameCode\":\"F01\",\"code\":\"LV2\",\"name\":\"二等奖\",\"gLevel\":2,\"bonus\":200000000,\"status\":1,\"gCount\":20,\"fixedBonus\":false},{\"id\":\"5c1221410f564bbf9648a9744e92e5f0\",\"gameCode\":\"F01\",\"code\":\"LV3\",\"name\":\"三等奖\",\"gLevel\":3,\"bonus\":300000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"86eef4a5a927450e80fb805f536b9d59\",\"gameCode\":\"F01\",\"code\":\"LV4\",\"name\":\"四等奖\",\"gLevel\":4,\"bonus\":20000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"4da3a2e9599f410aafbab45ee2cadd8f\",\"gameCode\":\"F01\",\"code\":\"LV5\",\"name\":\"五等奖\",\"gLevel\":5,\"bonus\":1000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"57cbe76695b049858340d0363f2bfd3e\",\"gameCode\":\"F01\",\"code\":\"LV6\",\"name\":\"六等奖\",\"gLevel\":6,\"bonus\":500,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}";
         String wNum = "09,12,14,30,32,33|02";
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 200; i++)
         {
             String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
             int nextTermCode = curTermCode + 1;
@@ -83,10 +183,10 @@ public class GetTerm {
         String gameCode = "F02";
         int curTermCode = 2014001;
         long startDate = new Date().getTime();
-        long gap = 120*60*1000;
+        long gap = 60*60*1000;
         String pDes = "{\"grades\":[{\"id\":\"e4f1f29132dc45a7bdc73c72457aab8b\",\"gameCode\":\"F02\",\"code\":\"LV1\",\"name\":\"直选\",\"gLevel\":1,\"bonus\":100000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"25bde95065bd428795c6d64dbf087927\",\"gameCode\":\"F02\",\"code\":\"LV2\",\"name\":\"组选3\",\"gLevel\":2,\"bonus\":32000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"b172d4ca2a624f33a50ab43286c28f36\",\"gameCode\":\"F02\",\"code\":\"LV3\",\"name\":\"组选6\",\"gLevel\":3,\"bonus\":16000,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}";
         String wNum = "1|2|3";
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 200; i++)
         {
             String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
             int nextTermCode = curTermCode + 1;

@@ -1,0 +1,26 @@
+<lotterys>
+    <lottery code="T03" type="1" name="排列三" status="1" period="" publishDesc="" offset="180">
+        <play code="01" name="直选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="plsZhiXuanDanShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanDanShiValidator" offset="180"/>
+            <bet code="01" name="复式" status="1" check="plsZhiXuanFuShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanFuShiValidator" offset="180"/>
+            <bet code="03" name="和值" status="1" check="plsZhiXuanHeZhiCheck" validator="com.mcp.pls.validator.PlsZhiXuanHeZhiValidator" offset="180"/>
+            <bet code="04" name="组合复式" status="1" check="plsZhiXuanZuHeFuShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanZuHeFuShiValidator" offset="180"/>
+            <bet code="05" name="组合胆拖" status="1" check="plsZhiXuanZuHeDanTuoCheck" validator="com.mcp.pls.validator.PlsZhiXuanZuHeDanTuoValidator" offset="180"/>
+            <bet code="06" name="跨度复式" status="1" check="plsZhiXuanKuaDuFuShiCheck" validator="com.mcp.pls.validator.PlsZhiXuanKuaDuFuShiValidator" offset="180"/>
+        </play>
+        <play code="02" name="组选三" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="plsZuSanFuShiCheck" validator="com.mcp.pls.validator.PlsZuSanFuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="plsZuSanDanTuoCheck" validator="com.mcp.pls.validator.PlsZuSanDanTuoValidator" offset="180"/>
+            <bet code="06" name="跨度" status="1" check="plsZuSanKuaDuCheck" validator="com.mcp.pls.validator.PlsZuSanKuaDuValidator" offset="180"/>
+        </play>
+        <play code="03" name="组选六" status="1" price="200">
+            <bet code="01" name="复式" status="1" check="plsZuLiuFuShiCheck" validator="com.mcp.pls.validator.PlsZuLiuFuShiValidator" offset="180"/>
+            <bet code="02" name="胆拖" status="1" check="plsZuLiuDanTuoCheck" validator="com.mcp.pls.validator.PlsZuLiuDanTuoValidator" offset="180"/>
+            <bet code="06" name="跨度" status="1" check="plsZuLiuKuaDuCheck" validator="com.mcp.pls.validator.PlsZuLiuKuaDuValidator" offset="180"/>
+        </play>
+        <play code="04" name="组选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="plsZuXuanDanShiCheck" validator="com.mcp.pls.validator.PlsZuXuanDanShiValidator" offset="180"/>
+            <bet code="03" name="和值" status="1" check="plsZuXuanHeZhiCheck" validator="com.mcp.pls.validator.PlsZuXuanHeZhiValidator" offset="180"/>
+        </play>
+    </lottery>
+</lotterys>
