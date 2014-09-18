@@ -560,6 +560,10 @@ public class QueryControl {
                                   ModelMap modelMap) throws Exception {
         RepQ16Body repBody = new RepQ16Body();
         Term t = this.termService.findOneByGameCodeAndCode(body.getGameCode(), body.getTermCode());
+        if(t == null)
+        {
+            throw new CoreException(ErrCode.E2003);
+        }
         repBody.setTerm(t);
         if(t.getStatus() == TermState.SEAL.getCode())   //如果期次已经封存，告诉外部系统封存文件的位置
         {

@@ -61,7 +61,7 @@ public class Term implements java.io.Serializable {
     private Date endTime;
 	
 	@Basic
-	@Column(length = 40)
+	@Column(length = 80)
     private String winningNumber;
 	
 	@Basic
