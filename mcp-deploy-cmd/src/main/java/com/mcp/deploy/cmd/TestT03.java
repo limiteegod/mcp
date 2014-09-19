@@ -19,9 +19,9 @@ public class TestT03 {
 	private static Logger log = Logger.getLogger(TestT03.class);
 
 	public static void main(String[] args) throws Exception {
-        for(int i = 0; i < 1; i++)
+        for(int i = 0; i < 100; i++)
         {
-            lot();
+            lotF01();
         }
 	}
 
@@ -134,6 +134,40 @@ public class TestT03 {
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("T030101"));
         String bodyStr = om.writeValueAsString(reqT03Body);
         String message = TestUtil.getCReqMessage("", "Q0003", bodyStr, "T03", "CePEYAR/Snc=");
+        log.info(message);
+        String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
+        log.info(content);
+
+        McpGtMsg rep = om.readValue(content, McpGtMsg.class);
+        String repBodyStr = rep.getBody();
+        RepT03Body repbody = om.readValue(repBodyStr, RepT03Body.class);
+    }
+
+    public static void lotF01() throws Exception
+    {
+        ObjectMapper om = new ObjectMapper();
+        ReqT03Body reqT03Body = new ReqT03Body();
+        ReqOrder reqOrder = new ReqOrder();
+        reqOrder.setGameCode("F01");
+        reqOrder.setTermCode("2014075");
+        reqOrder.setAmount(200);
+        reqOrder.setOuterId(CoreUtil.getUUID());
+        reqOrder.setPlatform("ANDROID");
+        List<ReqTicket> tickets = new ArrayList<ReqTicket>();
+        ReqTicket ticket = new ReqTicket();
+        ticket.setAmount(200);
+        ticket.setPlayTypeCode("00");
+        ticket.setBetTypeCode("00");
+        ticket.setMultiple(1);
+        ticket.setNumbers("09,14,17,18,21,25|15");
+        tickets.add(ticket);
+
+        reqOrder.setTickets(tickets);
+        reqT03Body.setOrder(reqOrder);
+
+        om.setFilters(CmdContext.getInstance().getFilterProviderByCode("T030101"));
+        String bodyStr = om.writeValueAsString(reqT03Body);
+        String message = TestUtil.getCReqMessage("", "Q0004", bodyStr, "T03", "123456");
         log.info(message);
         String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
         log.info(content);

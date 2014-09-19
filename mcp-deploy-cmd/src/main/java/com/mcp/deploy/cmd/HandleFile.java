@@ -2,6 +2,7 @@ package com.mcp.deploy.cmd;
 
 import com.mcp.core.util.CoreUtil;
 import com.mcp.core.util.ResourceUtil;
+import com.mcp.core.util.StringUtil;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,7 +15,7 @@ public class HandleFile {
 
     public static void main(String[] args) throws Exception
     {
-        /*String fileName = "target.txt";
+        String fileName = "target.txt";
         URL url = ResourceUtil.getURL(fileName);
         FileReader fileReader = new FileReader(url.getPath());
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -23,23 +24,14 @@ public class HandleFile {
         int count = 0;
         while((line = bufferedReader.readLine()) != null)
         {
-            *//*String sql = "update tticket set bonus=0,bonusbeforetax=0,finishedcount=finishedcount-1,status=1300 where id='" + line + "';";
-            System.out.println(sql);*//*
-            if(count > 0)
+            if(!StringUtil.isEmpty(line))
             {
-                ids += "," + "'" + line + "'";
+                String sql = "update tticket set status=1100 where id='" + line.substring(0, 32) + "';";
+                System.out.println(sql);
             }
-            else
-            {
-                ids +=  "'" + line + "'";
-            }
-            count++;
         }
-        ids += ")";
-        String sql = "select id,termcode from tticket where id in " + ids + ";";
-        System.out.println(sql);
-        bufferedReader.close();*/
-        generateMdb();
+        bufferedReader.close();
+        //generateMdb();
 
         //undoMore();
     }

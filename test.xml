@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msg>
+    <body>
+        <ticketorder gameid="SSQ" ticketsnum="1" totalmoney="2">
+            <tickets>
+                <ticket id="9e9cfbcaa19b4a4b8917b4aea0dc6b4a" issue="20140910004" money="2" multiple="1" playtype="0">
+                    <ball>09,14,17,18,21,25:15</ball>
+                </ticket>
+            </tickets>
+            <user idcard="130123198907250098" phone="13321176503" realname="石清茂" userid="008611"/>
+        </ticketorder>
+    </body>
+    <head partnerid="008611" time="20140919025032" transcode="104" version="1.0"/>
+</msg>
+
+
+        <?xml version=“1.0” encoding=“UTF-8”?><msg>
+<head transcode="104" pratnerid="008611" version="1.0" time="20140919153540"/>
+<body>
+    <ticketorder gameid="SSQ" ticketsnum="2" totalmoney="4">
+        <user idcard="130123198907250098" userid="008611" phone="13321176503" realname="石清茂"/>
+        <tickets>
+            <ticket id="2014091915354010000049" multiple="1" issue="2014001" playtype="0" money="2">
+                <ball>09,14,17,18,21,25:15</ball>
+            </ticket>
+            <ticket id="2014091915354010000050" multiple="1" issue="2014001" playtype="0" money="2">
+                <ball>09,14,17,18,21,25:15</ball>
+            </ticket>
+        </tickets>
+    </ticketorder>
+</body>
+</msg>

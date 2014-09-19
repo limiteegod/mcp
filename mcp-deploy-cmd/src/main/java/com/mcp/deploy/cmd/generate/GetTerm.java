@@ -14,7 +14,7 @@ public class GetTerm {
 
     public static void main(String[] args) throws Exception
     {
-        getT01();
+        getT05();
     }
 
     public static void getF04()
@@ -91,6 +91,32 @@ public class GetTerm {
             String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
             int nextTermCode = curTermCode + 1;
             sql += curTermCode + ",'" + curTermCode + "'," + nextTermCode + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
+            startDate += gap;
+            sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
+            System.out.print(sql);
+            curTermCode++;
+        }
+    }
+
+    public static String format(int code)
+    {
+        //return String.format("%08d", code);
+        return String.format("%d", code);
+    }
+
+    public static void getT05()
+    {
+        String gameCode = "T05";
+        int curTermCode = 5005;
+        long startDate = new Date().getTime();
+        long gap = 60*60*1000;
+        String pDes = "{\"grades\":[{\"id\":\"dbe4d6fbb33e4376a5ad4713630e685c\",\"gameCode\":\"T05\",\"code\":\"LV1\",\"name\":\"任选一\",\"gLevel\":1,\"bonus\":1300,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"1131d5a6b5f540148eaf1a29d89a3405\",\"gameCode\":\"T05\",\"code\":\"LV2\",\"name\":\"任选二\",\"gLevel\":2,\"bonus\":600,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"9b85cd1489e2474e993531132b9c9f97\",\"gameCode\":\"T05\",\"code\":\"LV3\",\"name\":\"任选三\",\"gLevel\":3,\"bonus\":1900,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"96f95afa0c4048448002769e7b3f3632\",\"gameCode\":\"T05\",\"code\":\"LV4\",\"name\":\"任选四\",\"gLevel\":4,\"bonus\":7800,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"264ba97e59a749c8a19969370593391e\",\"gameCode\":\"T05\",\"code\":\"LV5\",\"name\":\"任选五\",\"gLevel\":5,\"bonus\":54000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"6b9128fd9a884915976ef92e7e426eae\",\"gameCode\":\"T05\",\"code\":\"LV6\",\"name\":\"任选六\",\"gLevel\":6,\"bonus\":9000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"0604a1862f0b4334be376670e97e4ad6\",\"gameCode\":\"T05\",\"code\":\"LV7\",\"name\":\"任选七\",\"gLevel\":7,\"bonus\":2600,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"8c8f67171e7f430080f23b1083c7f57e\",\"gameCode\":\"T05\",\"code\":\"LV8\",\"name\":\"任选八\",\"gLevel\":8,\"bonus\":900,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"93c5345b3f6843a6b44103ec043c955f\",\"gameCode\":\"T05\",\"code\":\"LV9\",\"name\":\"前二组选\",\"gLevel\":9,\"bonus\":6500,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"a940edb5a624494e92c83549fe9b6fc6\",\"gameCode\":\"T05\",\"code\":\"LV10\",\"name\":\"前二直选\",\"gLevel\":10,\"bonus\":13000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"276a7a641bff4069b293318448651665\",\"gameCode\":\"T05\",\"code\":\"LV11\",\"name\":\"前三组选\",\"gLevel\":11,\"bonus\":19500,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"79baed4a6a9e43d9aefdb0676ab199c8\",\"gameCode\":\"T05\",\"code\":\"LV12\",\"name\":\"前三直选\",\"gLevel\":12,\"bonus\":117000,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}\n";
+        String wNum = "01|02|03|04|05";
+        for(int i = 0; i < 20; i++)
+        {
+            String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
+            int nextTermCode = curTermCode + 1;
+            sql += format(curTermCode) + ",'" + format(curTermCode) + "'," + format(nextTermCode) + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
             startDate += gap;
             sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
             System.out.print(sql);
