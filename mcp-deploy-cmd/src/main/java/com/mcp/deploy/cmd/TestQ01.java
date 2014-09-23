@@ -20,24 +20,42 @@ public class TestQ01 {
 	private static Logger log = Logger.getLogger(TestQ01.class);
 
 	public static void main(String[] args) throws Exception {
-		CookieParam uCp = new CookieParam();
-		
-		ObjectMapper om = new ObjectMapper();
+        CookieParam uCp = new CookieParam();
 
-		ReqQ01Body reqQ01Body = new ReqQ01Body();
-		reqQ01Body.setType(0);
-		ReqQ01Term term = new ReqQ01Term();
-		term.setGameCode("T05");
-		term.setTermCode("2013101009");
-		List<ReqQ01Term> tList = new ArrayList<ReqQ01Term>();
-		tList.add(term);
-		reqQ01Body.setTerms(tList);
-		om.setFilters(CmdContext.getInstance().getFilterProviderByCode("Q010101"));
-		String bodyStr = om.writeValueAsString(reqQ01Body);
-		String message = TestUtil.getReqMessage("", "Q0003", bodyStr, "Q01");
-		log.info(bodyStr);
-		String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, uCp);
-		log.info(om.readValue(content, McpGtMsg.class).getBody());
+        ObjectMapper om = new ObjectMapper();
+        ReqQ01Body reqQ01Body = new ReqQ01Body();
+        reqQ01Body.setType(3);
+        reqQ01Body.setGameCode("T51");
+        reqQ01Body.setStartIndex(0);
+        reqQ01Body.setSize(10);
+        om.setFilters(CmdContext.getInstance().getFilterProviderByCode("Q010101"));
+        String bodyStr = om.writeValueAsString(reqQ01Body);
+        String message = TestUtil.getReqMessage("", "Q0003", bodyStr, "Q01");
+        log.info(bodyStr);
+        String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, uCp);
+        log.info(om.readValue(content, McpGtMsg.class).getBody());
+	}
+
+    public static void test() throws Exception
+    {
+        CookieParam uCp = new CookieParam();
+
+        ObjectMapper om = new ObjectMapper();
+
+        ReqQ01Body reqQ01Body = new ReqQ01Body();
+        reqQ01Body.setType(0);
+        ReqQ01Term term = new ReqQ01Term();
+        term.setGameCode("T05");
+        term.setTermCode("2013101009");
+        List<ReqQ01Term> tList = new ArrayList<ReqQ01Term>();
+        tList.add(term);
+        reqQ01Body.setTerms(tList);
+        om.setFilters(CmdContext.getInstance().getFilterProviderByCode("Q010101"));
+        String bodyStr = om.writeValueAsString(reqQ01Body);
+        String message = TestUtil.getReqMessage("", "Q0003", bodyStr, "Q01");
+        log.info(bodyStr);
+        String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, uCp);
+        log.info(om.readValue(content, McpGtMsg.class).getBody());
 
         reqQ01Body = new ReqQ01Body();
         reqQ01Body.setType(2);
@@ -73,5 +91,5 @@ public class TestQ01 {
         log.info(bodyStr);
         content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, uCp);
         log.info(om.readValue(content, McpGtMsg.class).getBody());
-	}
+    }
 }

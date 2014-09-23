@@ -147,6 +147,7 @@ public class JcTradeControl {
 		for(TTicket t:tList)
 		{
 			t.setStatus(ticketStatus);
+            t.setTermIndexDeadline(gt.getEndTime());
 		}
 		
 		if(afford)
@@ -256,6 +257,7 @@ public class JcTradeControl {
             {
                 t.setStatus(ticketStatus);
                 t.setAcceptTime(acceptTime);
+                t.setTermIndexDeadline(gt.getEndTime());
             }
 
             orderService.save(order);

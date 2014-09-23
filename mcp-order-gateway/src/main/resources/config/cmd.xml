@@ -521,6 +521,7 @@
 			            <property value="multiple"/>
 			            <property value="price"/>
 			            <property value="numbers"/>
+                        <property value="termIndexDeadline"/>
 			        </name>
                 </filter>
             </response>

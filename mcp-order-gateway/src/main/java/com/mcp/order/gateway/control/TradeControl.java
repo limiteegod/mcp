@@ -175,6 +175,7 @@ public class TradeControl {
 		for(TTicket t:tList)
 		{
 			t.setStatus(ticketStatus);
+            t.setTermIndexDeadline(gt.getEndTime());
 		}
 		
 		if(afford)
@@ -430,6 +431,7 @@ public class TradeControl {
 			{
 				t.setAcceptTime(acceptTime);
 				t.setStatus(ticketStatus);
+                t.setTermIndexDeadline(gt.getEndTime());
 			}
 			
 			orderService.save(order);
