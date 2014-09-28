@@ -24,10 +24,13 @@ public class TestQ01 {
 
         ObjectMapper om = new ObjectMapper();
         ReqQ01Body reqQ01Body = new ReqQ01Body();
-        reqQ01Body.setType(3);
-        reqQ01Body.setGameCode("T51");
-        reqQ01Body.setStartIndex(0);
-        reqQ01Body.setSize(10);
+        reqQ01Body.setType(0);
+        List<ReqQ01Term> tList = new ArrayList<ReqQ01Term>();
+        ReqQ01Term t = new ReqQ01Term();
+        t.setGameCode("T51");
+        t.setTermCode("201409265001");
+        tList.add(t);
+        reqQ01Body.setTerms(tList);
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("Q010101"));
         String bodyStr = om.writeValueAsString(reqQ01Body);
         String message = TestUtil.getReqMessage("", "Q0003", bodyStr, "Q01");
