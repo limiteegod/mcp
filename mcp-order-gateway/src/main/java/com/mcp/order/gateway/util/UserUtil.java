@@ -3,7 +3,6 @@ package com.mcp.order.gateway.util;
 import com.mcp.core.util.cons.SystemUserType;
 import com.mcp.order.exception.CoreException;
 import com.mcp.order.exception.ErrCode;
-import com.mcp.order.service.AdminiService;
 import com.mcp.order.service.CustomerService;
 import com.mcp.order.service.StationService;
 import org.springframework.context.ApplicationContext;
@@ -31,11 +30,6 @@ public class UserUtil {
         {
             StationService stationService = context.getBean("stationService", StationService.class);
             return stationService.findOneByCode(id);
-        }
-        else if(type == SystemUserType.ADMINISTRATOR.getCode())
-        {
-            AdminiService adminiService = context.getBean("adminiService", AdminiService.class);
-            return adminiService.findOneByNameAndType(id, type);
         }
         else
         {

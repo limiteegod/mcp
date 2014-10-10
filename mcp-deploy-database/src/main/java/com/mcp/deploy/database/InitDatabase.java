@@ -30,62 +30,6 @@ public class InitDatabase {
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat(
 			Constants.DATE_FORMAT);
 
-    /**
-     * 添加管理员
-     */
-    public static void addAdmini() {
-        AdminiService adminiService = DeployContext.getInstance().getBean("adminiService", AdminiService.class);
-        Admini admini = new Admini();
-        admini.setId(CoreUtil.getUUID());
-        admini.setName("admini");
-        admini.setPassword("0okmnhy6");
-        admini.setType(SystemUserType.ADMINISTRATOR.getCode());
-        adminiService.save(admini);
-
-        OperationService operationService = DeployContext.getInstance().getBean("operationService", OperationService.class);
-        UserOperationService userOperationService = DeployContext.getInstance().getBean("userOperationService", UserOperationService.class);
-        Operation operation = new Operation();
-        String parentId = CoreUtil.getUUID();
-        operation.setId(parentId);
-        operation.setName("权限管理");
-        operation.setUrl("");
-        operation.setType(OperationType.GROUP.getCode());
-        operationService.save(operation);
-
-        UserOperation userOperation = new UserOperation();
-        userOperation.setId(CoreUtil.getUUID());
-        userOperation.setOperationId(operation.getId());
-        userOperation.setUserType(SystemUserType.ADMINISTRATOR.getCode());
-        userOperationService.save(userOperation);
-
-        operation = new Operation();
-        operation.setId(CoreUtil.getUUID());
-        operation.setName("添加项目");
-        operation.setUrl("operation/addOperation.jsp");
-        operation.setType(OperationType.DETAIL.getCode());
-        operation.setParentId(parentId);
-        operationService.save(operation);
-
-        userOperation = new UserOperation();
-        userOperation.setId(CoreUtil.getUUID());
-        userOperation.setOperationId(operation.getId());
-        userOperation.setUserType(SystemUserType.ADMINISTRATOR.getCode());
-        userOperationService.save(userOperation);
-
-        operation = new Operation();
-        operation.setId(CoreUtil.getUUID());
-        operation.setName("权限设置");
-        operation.setUrl("operation/setOperation.jsp");
-        operation.setType(OperationType.DETAIL.getCode());
-        operation.setParentId(parentId);
-        operationService.save(operation);
-
-        userOperation = new UserOperation();
-        userOperation.setId(CoreUtil.getUUID());
-        userOperation.setOperationId(operation.getId());
-        userOperation.setUserType(SystemUserType.ADMINISTRATOR.getCode());
-        userOperationService.save(userOperation);
-    }
 
 	public static void addCustomer() {
 		CustomerService customerService = DeployContext.getInstance().getBean(
@@ -2949,7 +2893,6 @@ public class InitDatabase {
 	
 	public static void init() throws Exception
 	{
-        addAdmini();
 
 		addT01();
 		addT01Term();

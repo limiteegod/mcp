@@ -78,12 +78,4 @@
 	<service cmd="J06" path="/mcp/jbank/getCurTerm.htm" />
 	<service cmd="J07" path="/mcp/jbank/getCurTermOrders.htm" />
 	<service cmd="J08" path="/mcp/jbank/getLastTermHit.htm" />
-
-    <service cmd="AD01" path="/mcp/admin/login.htm" />
-    <service cmd="AD02" path="/mcp/admin/addToPrintQueen.htm" />
-    <service cmd="AD03" path="/mcp/admin/getTermReportInfo.htm" />
-    <service cmd="AD04" path="/mcp/admin/getTermInfo.htm" />
-
-    <service cmd="AP01" path="/mcp/admin/operation/query.htm" />
-
 </services>

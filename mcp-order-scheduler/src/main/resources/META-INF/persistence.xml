@@ -29,9 +29,6 @@
 		<class>com.mcp.order.model.jc.JOdds</class>
 		<class>com.mcp.order.model.ts.WithDraw</class>
         <class>com.mcp.order.model.report.Coupon</class>
-        <class>com.mcp.order.model.admin.Admini</class>
-        <class>com.mcp.order.model.admin.Operation</class>
-        <class>com.mcp.order.model.admin.UserOperation</class>
         <class>com.mcp.scheme.model.SchemeZh</class>
         <class>com.mcp.scheme.model.SchemeHm</class>
         <class>com.mcp.scheme.model.SchemeShare</class>

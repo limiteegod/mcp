@@ -258,7 +258,7 @@
             <bet code="00" name="单式" status="1" check="sfcSscDanShiCheck" validator="com.mcp.sfc.validator.SfcSscDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="sfcSscFuShiCheck" validator="com.mcp.sfc.validator.SfcSscFuShiValidator" offset="0"/>
         </play>
-        <play code="02" name="任九场" status="1" price="300">
+        <play code="02" name="任九场" status="1" price="200">
             <bet code="00" name="单式" status="1" check="sfcRjcDanShiCheck" validator="com.mcp.sfc.validator.SfcRjcDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="sfcRjcFuShiCheck" validator="com.mcp.sfc.validator.SfcRjcFuShiValidator" offset="0"/>
         </play>
