@@ -1,9 +1,15 @@
 package com.mcp.deploy.cmd.generate;
 
 import com.mcp.core.util.CoreUtil;
+import com.mcp.order.common.Constants;
+import com.mcp.order.model.entity.PrizeDescription;
+import com.mcp.order.model.ts.GameGrade;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by kfzx-liming on 2014/7/23.
@@ -14,7 +20,7 @@ public class GetTerm {
 
     public static void main(String[] args) throws Exception
     {
-        getT05();
+        getT04();
     }
 
     public static void getF04()
@@ -102,6 +108,26 @@ public class GetTerm {
     {
         //return String.format("%08d", code);
         return String.format("%d", code);
+    }
+
+    public static void getT04() throws Exception
+    {
+        String gameCode = "T04";
+        int curTermCode = 5005;
+        long startDate = new Date().getTime();
+        long gap = 60*60*1000;
+        String pDes = "{\"grades\":[{\"id\":\"eddb13ad81c444f0abddb2b93e4026a2\",\"gameCode\":\"T04\",\"code\":\"LV1\",\"name\":\"普通\",\"gLevel\":1,\"bonus\":10000000,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}\n";
+        String wNum = "1|2|3|4|5";
+        for(int i = 0; i < 1; i++)
+        {
+            String sql = "insert into term(id, code, name, nextCode, gameCode, openTime, endTime, prizeDesc, prizePool, status, concedePoints, version, winningNumber) values('" + CoreUtil.getUUID() + "',";
+            int nextTermCode = curTermCode + 1;
+            sql += format(curTermCode) + ",'" + format(curTermCode) + "'," + format(nextTermCode) + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
+            startDate += gap;
+            sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
+            System.out.print(sql);
+            curTermCode++;
+        }
     }
 
     public static void getT05()
