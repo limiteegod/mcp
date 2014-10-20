@@ -67,10 +67,14 @@ public interface OrderDao extends PagingAndSortingRepository<TOrder, String>, Jp
     @Modifying
     @Query("update TOrder t set t.status=?1 where t.id=?2")
     public int updateStatusById(int status, String id);
-    
+
     @Modifying
-    @Query("update TOrder t set t.status=?1,printCount=?2 where t.id=?3")
-    public int updateStatusAndPrintCountById(int status, int printCount, String id);
+    @Query("update TOrder t set t.printCount=?1,t.version=t.version+1 where t.id=?3 and t.version=?2")
+    public int updatePrintCountById(int printCount, int version, String id);
+
+    @Modifying
+    @Query("update TOrder t set t.status=?1,t.printCount=?2,t.printTime=?3 where t.id=?5 and t.version=?4")
+    public int updateStatusAndPrintCountById(int status, int printCount, Date pTime, int version, String id);
     
     @Modifying
     @Query("update TOrder t set t.status=?1 where t.status=?2 and t.gameCode=?3 and t.termCode=?4")

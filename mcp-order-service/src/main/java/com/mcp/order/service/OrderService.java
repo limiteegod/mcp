@@ -295,6 +295,40 @@ public class OrderService {
         }
         return order;
     }
+
+    /**
+     * 订单的票据出票成功
+     * @return
+     */
+    @Transactional
+    public boolean incrPrintCount(TOrder order) {
+        int printCount = order.getPrintCount() + 1;
+        order.setPrintCount(printCount);
+        int version = order.getVersion();
+        order.setVersion(version + 1);
+
+        int updateCount = 0;
+        if(order.getTicketCount() == printCount)
+        {
+            order.setStatus(OrderState.SUCCESS.getCode());
+            order.setPrintTime(new Date());
+
+            updateCount = this.orderDao.updateStatusAndPrintCountById(order.getStatus(),
+                    order.getPrintCount(), order.getPrintTime(), version, order.getId());
+        }
+        else
+        {
+            updateCount = this.orderDao.updatePrintCountById(order.getPrintCount(), version, order.getId());
+        }
+        if(updateCount > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
     @Transactional
     public void updateCheckInfoById(String dNumber, int status, String id) {

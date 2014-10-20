@@ -180,7 +180,18 @@ public class TOrder implements java.io.Serializable {
 	 */
 	@Basic
 	private TOrderType type = TOrderType.CUSTOMER;
-    
+
+    @Version
+    private int version;
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     public String getdNumber() {
 		return dNumber;
 	}

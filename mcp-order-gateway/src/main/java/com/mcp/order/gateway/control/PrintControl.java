@@ -176,9 +176,28 @@ public class PrintControl {
 			//保存到mongodb，供算奖使用
 			Game game = LotteryContext.getInstance().getGameByCode(ticketBack.getGameCode());
 			mgTicketService.save(ticketBack, game.getType());
-			
-			TOrder torder = orderService.incrPrintCount(ticketBack.getOrderId(), 1);
 
+            TOrder torder = null;
+            boolean success = false;
+            int count = 0;
+            while(!success && count < 10)
+            {
+                try {
+                    torder = orderService.findOne(ticketBack.getOrderId());
+                    success = orderService.incrPrintCount(torder);
+                }
+                catch (StaleObjectStateException e)
+                {
+                    log.error("出票已经成功，订单更新失败，id:" + ticketBack.getOrderId());
+                }
+                finally {
+                    count++;
+                }
+            }
+            if(!success)
+            {
+                throw new CoreException(ErrCode.E0999);
+            }
             //print station get the money
             StationGame sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(ticketBack.getPrinterStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
             int factor = sg.getpFactor();

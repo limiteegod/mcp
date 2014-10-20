@@ -114,7 +114,7 @@ public class LotteryContext {
 	 * 获得唯一的实例
 	 * @return
 	 */
-	public static LotteryContext getInstance()
+	public synchronized static LotteryContext getInstance()
 	{
 		if(context == null)
 		{

@@ -27,10 +27,6 @@ public class TestP12 {
         while(true)
         {
             try {
-                /*if(!print())
-                {
-                    break;
-                }*/
                 print();
                 Thread.sleep(20000);
             }
@@ -43,7 +39,8 @@ public class TestP12 {
 
     public static boolean print() throws Exception
     {
-        String stationCode = "C0001";
+        String stationCode = "T00001";
+        String key = "123456";
         //查询队列
         ObjectMapper om = new ObjectMapper();
         ReqP12Body reqP12Body = new ReqP12Body();
@@ -51,13 +48,13 @@ public class TestP12 {
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P120101"));
         String bodyStr = om.writeValueAsString(reqP12Body);
         log.info(bodyStr);
-        String message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P12", "cad6011f5f174a359d9a36e06aada07e");
+        String message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P12", key);
         //String message = TestUtil.getDesCReqMessage("", "C0001", bodyStr, "P12", "GtUuw3yWiQI=");
         log.info(message);
         String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
         log.info(content);
         McpGtMsg backMsg = om.readValue(content, McpGtMsg.class);
-        String repBodyStr = DigestFactory.check(backMsg.getHead(), backMsg.getBody(), "cad6011f5f174a359d9a36e06aada07e");
+        String repBodyStr = DigestFactory.check(backMsg.getHead(), backMsg.getBody(), key);
         log.info(repBodyStr);
         JsonNode bodyNode = om.readTree(repBodyStr);
         ArrayNode rstNode = (ArrayNode)bodyNode.get("rst");
@@ -67,20 +64,20 @@ public class TestP12 {
         }
         for(JsonNode orderNode:rstNode)
         {
-            /*//取票
+            //取票
             ReqP06Body reqP06Body = new ReqP06Body();
             String orderId = orderNode.get("orderId").getTextValue();
             reqP06Body.setOrderId(orderId);
             om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P060101"));
             bodyStr = om.writeValueAsString(reqP06Body);
             log.info(bodyStr);
-            message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P06", "cad6011f5f174a359d9a36e06aada07e");
+            message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P06", key);
             //String message = TestUtil.getDesCReqMessage("", "C0001", bodyStr, "P06", "GtUuw3yWiQI=");
             log.info(message);
             content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
             log.info(content);
             backMsg = om.readValue(content, McpGtMsg.class);
-            repBodyStr = DigestFactory.check(backMsg.getHead(), backMsg.getBody(), "cad6011f5f174a359d9a36e06aada07e");
+            repBodyStr = DigestFactory.check(backMsg.getHead(), backMsg.getBody(), key);
             log.info(repBodyStr);
             RepP06Body repP06Body = om.readValue(repBodyStr, RepP06Body.class);
 
@@ -98,12 +95,12 @@ public class TestP12 {
                 }
                 om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P020101"));
                 bodyStr = om.writeValueAsString(reqP02Body);
-                message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P02", "cad6011f5f174a359d9a36e06aada07e");
+                message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P02", key);
                 //String message = TestUtil.getDesCReqMessage("", "C0001", bodyStr, "P02", "GtUuw3yWiQI=");
                 log.info(message);
                 content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
                 log.info(content);
-            }*/
+            }
         }
         return true;
     }
