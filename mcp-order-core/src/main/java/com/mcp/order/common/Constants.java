@@ -181,6 +181,7 @@ public class Constants {
      * 自动返奖的分界线，>=则不自动返奖
      */
     public static final long DEFAULT_BIGBONUS_BORDER = 10000000;
+
     
     /**
      * Spring Batch批处理的数据文件的分隔符

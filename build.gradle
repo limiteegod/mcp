@@ -19,13 +19,13 @@ allprojects {
 
 	repositories {
 	    maven {
-			url "http://localhost:8081/nexus/content/groups/public/"
+			url "http://testicbc.mobilelottery.cn:8881/nexus/content/groups/public/"
 	    }
 	}
 
 	uploadArchives {
 	    repositories.mavenDeployer {
-			repository(url: "http://localhost:8081/nexus/content/repositories/releases/") {
+			repository(url: "http://testicbc.mobilelottery.cn:8881/nexus/content/repositories/releases/") {
 			    authentication(userName: "deployment", password: "admin123")
 			    pom.groupId = "com.mcp"
 			    pom.artifactId = archivesBaseName

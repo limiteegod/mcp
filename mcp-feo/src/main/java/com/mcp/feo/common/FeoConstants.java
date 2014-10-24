@@ -4,6 +4,8 @@
 package com.mcp.feo.common;
 
 import com.mcp.core.util.MathUtil;
+import com.mcp.order.exception.CoreException;
+import com.mcp.order.exception.ErrCode;
 import com.mcp.order.util.LotteryUtil;
 
 import java.util.Map;
@@ -176,4 +178,62 @@ public class FeoConstants {
         return hitCount;
     }
 
+    /**
+     *
+     * 任选二全包 注数
+     */
+
+    public static int getRTwoNumberQuanBaoCount(int[] intPosArray) throws CoreException{
+        int count = 0;
+        if (intPosArray.length !=2){
+            throw  new CoreException(ErrCode.E1023);
+        }
+        int num1 = intPosArray[0];
+        int num2 = intPosArray[1];
+        if (num1 == num2){
+            count = 6;
+        }else{
+            count = 12;
+        }
+        return count;
+    }
+
+    /**
+     * 判断任选二全包是否中奖，返回中奖注数
+     */
+
+    public static  int getRTwoNumberQuanBaoPrizeCount(String numbers, String[] dNumber){
+        int count = 0;
+        //获取开奖号码 每个数 出现的次数
+        Map<Integer, Integer> info = LotteryUtil.getInfo(LotteryUtil.getIntArrayFromStrArray(dNumber));
+        int type = getNumberType(info);
+        int[] numArray = LotteryUtil.getIntArrayFromStrArray(numbers.split(LotteryUtil.FUSHI_REG_SEP));
+        if (numArray[0] == numArray[1]){
+            if (info.containsKey(numArray[0])){
+                count = MathUtil.getC(info.get(numArray[0]), 2);
+                return count;
+            }
+        }
+        if (info.containsKey(numArray[0]) && info.containsKey(numArray[1])){
+            if (type == NUMBER_TYPE_ZTF){
+                count = 1;
+            }else if (type == NUMBER_TYPE_ZS){
+                count = 4;
+            }else {
+                count = getMax(info.get(numArray[0]), info.get(numArray[1]));
+            }
+        }else{
+            count = 0;
+        }
+        return count;
+
+    }
+
+    public static int getMax (int m, int n){
+        if (m < n ){
+            return n;
+        }else{
+            return  m;
+        }
+    }
 }
