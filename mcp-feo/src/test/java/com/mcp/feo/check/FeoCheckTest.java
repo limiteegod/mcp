@@ -432,6 +432,10 @@ public class FeoCheckTest {
         cp = checkTest(numbers, "07", "01", "4,2,2,2");
         assertEquals(59300, cp.getBonus());
 
+        numbers = "1,2,3";
+        cp = checkTest(numbers, "07", "09", "4,2,2,2");
+        assertEquals(59300, cp.getBonus());
+
         numbers = "4|2|2|2;4|1|2|1";
         cp = checkTest(numbers, "08", "00", "4,2,2,2");
         assertEquals(475100, cp.getBonus());

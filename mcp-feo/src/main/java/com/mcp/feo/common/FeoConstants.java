@@ -271,4 +271,18 @@ public class FeoConstants {
         }
         return count;
     }
+
+    public static int getRthQuanBaoCount(int [] numberArray) {
+        int count = 0;
+        Map<Integer,Integer> chooseInfo = LotteryUtil.getInfo(numberArray);
+        Set<Integer> keys = chooseInfo.keySet();
+        if (keys.size() == 1){
+            count = 4;   //A(4,1)
+        }else if (keys.size() == 3){
+            count = 24;  //A(4,3)
+        }else{
+            count = 12;  //A(4,2)
+        }
+        return count;
+    }
 }

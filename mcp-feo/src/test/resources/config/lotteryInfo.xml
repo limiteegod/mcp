@@ -36,6 +36,7 @@
         <play code="07" name="任三" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoRthDanShiCheck" validator="com.mcp.feo.validator.FeoRthDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoRthFuShiCheck" validator="com.mcp.feo.validator.FeoRthFuShiValidator" offset="0"/>
+            <bet code="09" name="全包" status="1" check="feoRthQuanBaoCheck" validator="com.mcp.feo.validator.FeoRthQuanBaoValidator" offset="0"/>
         </play>
         <play code="08" name="任四" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoRfDanShiCheck" validator="com.mcp.feo.validator.FeoRfDanShiValidator" offset="180"/>
