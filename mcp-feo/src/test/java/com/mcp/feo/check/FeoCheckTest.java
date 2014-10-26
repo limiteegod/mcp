@@ -200,6 +200,12 @@ public class FeoCheckTest {
 		numbers = "1$2,3,4";
 		bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
 		assertEquals(9, bt.getValidator().validator(numbers));
+
+        playType = "02";
+        betType = "08";
+        numbers = "7$2,3,4,5,6";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(10, bt.getValidator().validator(numbers));
 		
 		playType = "03";
 		betType = "00";
@@ -236,6 +242,12 @@ public class FeoCheckTest {
 		numbers = "1$2,3";
 		bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
 		assertEquals(4, bt.getValidator().validator(numbers));
+
+        playType = "04";
+        betType = "08";
+        numbers = "1$2,3,4,5,6,7";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(6, bt.getValidator().validator(numbers));
 
         playType = "05";
         betType = "00";
@@ -344,6 +356,10 @@ public class FeoCheckTest {
         cp = checkTest(numbers, "02", "02", "1,2,2,4");
         assertEquals(0, cp.getBonus());
 
+        numbers = "1$2,4,5";
+        cp = checkTest(numbers, "02", "08", "1,2,1,4");
+        assertEquals(39500, cp.getBonus());
+
         numbers = "2,2,4,4";
         cp = checkTest(numbers, "03", "00", "4,2,2,4");
         assertEquals(79100, cp.getBonus());
@@ -370,6 +386,10 @@ public class FeoCheckTest {
 
         numbers = "2$4,5";
         cp = checkTest(numbers, "04", "02", "4,2,2,2");
+        assertEquals(118700, cp.getBonus());
+
+        numbers = "4$6";
+        cp = checkTest(numbers, "04", "08", "6,4,4,4");
         assertEquals(118700, cp.getBonus());
 
         numbers = "4|_|_|_";
