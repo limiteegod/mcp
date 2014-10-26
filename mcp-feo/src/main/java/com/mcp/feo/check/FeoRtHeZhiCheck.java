@@ -19,10 +19,20 @@ public class FeoRtHeZhiCheck extends FeoCheck{
     public CheckParam check(TTicket ticket, String[] number, PrizeDescription prizeDescription) throws CoreException {
         CheckParam cp = new CheckParam();
         String ticketNumber  = ticket.getNumbers();
-        int hitCount = FeoConstants.getRtHeZhiHitCount(ticketNumber, number);
-        if(hitCount >= 1)
+        int[] swimArray = LotteryUtil.getIntArrayFromStrArray(ticketNumber.split(LotteryUtil.POSITION_REG_SEP)[0].split(LotteryUtil.FUSHI_REG_SEP));
+        String chooseNumber = ticketNumber.split(LotteryUtil.POSITION_REG_SEP)[1];
+        int hitSum = 0;
+        boolean hitCount = false;
+        for (int i = 0; i< swimArray.length; i++ ){
+            hitSum += Integer.parseInt(number[swimArray[i]-1]);
+        }
+        String hitSumStr = String.format("%1$02d",hitSum);
+        if (chooseNumber.indexOf(hitSumStr) > -1){
+            hitCount = true;
+        }
+        if(hitCount)
         {
-            super.getPrizeByLevel(cp, Constants.GRADE_LEVEL_SIXTH, hitCount, prizeDescription);
+            super.getPrizeByLevel(cp, Constants.GRADE_LEVEL_SIXTH, 1 , prizeDescription);
         }
         return cp;
     }
