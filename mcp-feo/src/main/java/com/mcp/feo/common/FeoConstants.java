@@ -229,11 +229,44 @@ public class FeoConstants {
 
     }
 
+    public static int getRtHeZhiCount(int[] numberArray){
+        int count = 0;
+        for (int i=0; i<numberArray.length ; i++ ){
+            int sum = numberArray[i];
+            int middle = (sum)/2;
+            for (int j = middle; j > 0 && j<= 8 ; j-- ){
+                if ((sum - j)<=8 && (sum - j) >=1){
+                    if (j == (sum -j)){
+                        count += 1;
+                    }else {
+                        count += 2;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
     public static int getMax (int m, int n){
         if (m < n ){
             return n;
         }else{
             return  m;
         }
+    }
+
+    public static int getRtHeZhiHitCount(String ticketNumber, String[] number) {
+        int[] swimArray = LotteryUtil.getIntArrayFromStrArray(ticketNumber.split(LotteryUtil.POSITION_REG_SEP)[0].split(LotteryUtil.FUSHI_REG_SEP));
+        String chooseNumber = ticketNumber.split(LotteryUtil.POSITION_REG_SEP)[1];
+        int hitSum = 0;
+        int hitCount = 0;
+        for (int i = 0; i< swimArray.length; i++ ){
+            hitSum += Integer.parseInt(number[swimArray[i]-1]);
+        }
+        if (chooseNumber.indexOf(String.format("%1$02d",hitSum)) > -1){
+            int [] hitsum = {hitSum};
+            hitCount = getRtHeZhiCount(hitsum);
+        }
+        return hitCount;
     }
 }

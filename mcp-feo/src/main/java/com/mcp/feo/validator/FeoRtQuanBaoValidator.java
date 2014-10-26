@@ -23,6 +23,7 @@ public class FeoRtQuanBaoValidator extends FeoValidator {
             throw new CoreException(ErrCode.E2033, ErrCode.codeToMsg(ErrCode.E2033));
         }
         int [] intPosArray = LotteryUtil.getIntArrayFromStrArray(posStrArray);
+        LotteryUtil.checkSortFromMinToMaxCanEqual(intPosArray);
         LotteryUtil.checkMargin(intPosArray, FeoConstants.MAX, FeoConstants.MIN);
         int count = FeoConstants.getRTwoNumberQuanBaoCount(intPosArray);
         if(count < 6)
