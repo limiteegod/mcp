@@ -8,6 +8,7 @@ import com.mcp.order.exception.CoreException;
 import com.mcp.order.model.entity.PrizeDescription;
 import com.mcp.order.model.ts.TTicket;
 import com.mcp.order.util.LotteryUtil;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Set;
@@ -15,6 +16,7 @@ import java.util.Set;
 /**
  * Created by CH on 2014/10/26.
  */
+@Component("feoRthQuanBaoCheck")
 public class FeoRthQuanBaoCheck extends FeoCheck {
     @Override
     public CheckParam check(TTicket ticket, String[] number, PrizeDescription prizeDescription) throws CoreException {
@@ -39,11 +41,11 @@ public class FeoRthQuanBaoCheck extends FeoCheck {
             }
         }else if (type == FeoConstants.NUMBER_TYPE_ZOT){
             boolean flag = false;
-            for (int i =0; i< ticketArray.length; i++){
+            for (int i = 0; i< ticketArray.length; i++){
                 if (!dInfo.containsKey(ticketArray[i])){
                     break;
                 }
-                if (dInfo.get(i) == 2 && chooseInfo.get(i) == 2){
+                if (dInfo.get(ticketArray[i]) == 2 && chooseInfo.get(ticketArray[i]) == 2){
                      flag = true;
                 }
                 hitNumber ++;
@@ -60,10 +62,13 @@ public class FeoRthQuanBaoCheck extends FeoCheck {
                 Set<Integer> keys = chooseInfo.keySet();
                 for (Integer key : keys){
                     if (dInfo.containsKey(key)){
-                        if (chooseInfo.get(key) > 2){
+                        if (chooseInfo.get(key) > dInfo.get(key) ){
+                            hitCount = 0;
+                            break;
+                        }else if (chooseInfo.get(key) > 2){
                             hitCount = 1;
                             break;
-                        }else {
+                        }else{
                             hitCount = 3;
                             break;
                         }
@@ -89,6 +94,6 @@ public class FeoRthQuanBaoCheck extends FeoCheck {
         {
             super.getPrizeByLevel(cp, Constants.GRADE_LEVEL_SEVENTH, hitCount, prizeDescription);
         }
-        return null;
+        return cp;
     }
 }
