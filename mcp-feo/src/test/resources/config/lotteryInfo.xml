@@ -1,5 +1,8 @@
 <lotterys>
     <lottery code="T06" type="2" name="新快赢481" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="组选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="feoZxDanShiCheck" validator="com.mcp.feo.validator.FeoZxfDanShiValidator" offset="0"/>
+        </play>
         <play code="01" name="组选24" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoZtfDanShiCheck" validator="com.mcp.feo.validator.FeoZtfDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoZtfFuShiCheck" validator="com.mcp.feo.validator.FeoZtfFuShiValidator" offset="0"/>

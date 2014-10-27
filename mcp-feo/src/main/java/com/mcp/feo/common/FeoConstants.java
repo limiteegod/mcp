@@ -4,6 +4,7 @@
 package com.mcp.feo.common;
 
 import com.mcp.core.util.MathUtil;
+import com.mcp.order.common.Constants;
 import com.mcp.order.exception.CoreException;
 import com.mcp.order.exception.ErrCode;
 import com.mcp.order.util.LotteryUtil;
@@ -284,5 +285,18 @@ public class FeoConstants {
             count = 12;  //A(4,2)
         }
         return count;
+    }
+
+    public static int getPrizeLevel(int type) {
+        if (type == FeoConstants.NUMBER_TYPE_ZF){
+            return Constants.GRADE_LEVEL_FOURTH;
+        }else if (type == FeoConstants.NUMBER_TYPE_ZS){
+            return Constants.GRADE_LEVEL_THIRD;
+        }else if (type == FeoConstants.NUMBER_TYPE_ZOT){
+            return Constants.GRADE_LEVEL_SECOND;
+        }else if (type == FeoConstants.NUMBER_TYPE_ZTF){
+            return Constants.GRADE_LEVEL_FIRST;
+        }
+        return  0;
     }
 }
