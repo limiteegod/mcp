@@ -162,10 +162,17 @@ public class FeoCheckTest {
 	@Test
 	public void testValidator() throws Exception
 	{
-		String playType = "01";
-		String betType = "00";
-		String numbers = "1,2,3,4";
-		BetType bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+
+        String playType = "00";
+        String betType = "00";
+        String numbers = "1,2,3,4;1,1,2,2;1,2,1,3";
+        BetType bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(3, bt.getValidator().validator(numbers));
+
+		playType = "01";
+		betType = "00";
+		numbers = "1,2,3,4";
+		bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
 		assertEquals(1, bt.getValidator().validator(numbers));
 		
 		numbers = "1,2,3,4;2,3,4,5";
@@ -315,13 +322,30 @@ public class FeoCheckTest {
         numbers = "8|1,2|2,3|1";
         bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
         assertEquals(4, bt.getValidator().validator(numbers));
+
+        playType = "09";
+        betType = "00";
+        numbers = "8|_|_|_;8|_|6|_;8|_|6|8;8|1|6|8;";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(4, bt.getValidator().validator(numbers));
+
+        playType = "09";
+        betType = "01";
+        numbers = "4,5|6,8|6,8|6,7";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        assertEquals(16, bt.getValidator().validator(numbers));
 	}
 	
 	@Test
 	public void testCheck() throws Exception
 	{
-        String numbers = "1,2,3,4;1,2,3,4";
-        CheckParam cp = checkTest(numbers, "01", "00", "1,2,3,4");
+
+        String numbers = "1,2,3,4;1,1,3,4;1,1,1,3";
+        CheckParam cp = checkTest(numbers, "00", "00", "1,1,1,3");
+        assertEquals(118700, cp.getBonus());
+
+        numbers = "1,2,3,4;1,2,3,4";
+        cp = checkTest(numbers, "01", "00", "1,2,3,4");
         assertEquals(19700*2, cp.getBonus());
 
         numbers = "1,2,3,4,5";
@@ -443,6 +467,15 @@ public class FeoCheckTest {
         numbers = "4|2|1,2|2,4";
         cp = checkTest(numbers, "08", "01", "4,2,2,2");
         assertEquals(475100, cp.getBonus());
+
+        numbers = "8|_|_|_;8|_|6|_;8|_|6|8;8|1|6|8;";
+        cp = checkTest(numbers, "09", "00", "8,1,6,8");
+        assertEquals(900+7400+59300+475100, cp.getBonus());
+
+
+        numbers = "4|_|1,2|2,4";
+        cp = checkTest(numbers, "09", "01", "4,2,1,4");
+        assertEquals(59300, cp.getBonus());
 
 	}
 }

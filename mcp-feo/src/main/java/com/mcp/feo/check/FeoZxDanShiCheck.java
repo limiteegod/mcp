@@ -24,7 +24,7 @@ public class FeoZxDanShiCheck extends FeoCheck {
             boolean hit = true;
             String[] danshi =items[i].split(LotteryUtil.FUSHI_SEP);
             for (int j=0; j< danshi.length; j ++){
-                if (!danshi[i].equals(number[i])){
+                if (!danshi[j].equals(number[j])){
                     hit = false;
                     break;
                 }
