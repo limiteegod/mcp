@@ -48,6 +48,7 @@
         <play code="09" name="任选" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoRxDanShiCheck" validator="com.mcp.feo.validator.FeoRxDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoRxFuShiCheck" validator="com.mcp.feo.validator.FeoRxFuShiValidator" offset="0"/>
+            <bet code="02" name="组合" status="1" check="feoRxZuHeCheck" validator="com.mcp.feo.validator.FeoRxZuHeValidator" offset="0"/>
         </play>
     </lottery>
 </lotterys>
