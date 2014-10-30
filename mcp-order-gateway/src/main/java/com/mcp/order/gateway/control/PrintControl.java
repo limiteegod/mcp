@@ -566,4 +566,116 @@ public class PrintControl {
         modelMap.put("response", repBody);
         return "plainJsonView";
     }
+
+
+    /**
+     * 投注站获得需要出票的订单id的队列,下的所有票信息
+     * @param head
+     * @param body
+     * @param station
+     * @param modelMap
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/getNewPrintQueen.htm")
+    public String getNewPrintQueen(@JsonHead(value="head",checkChannel=false) Head head, @McpStation Station station, @JsonBody(value="body", cmd="P20") ReqP20Body body,
+                                ModelMap modelMap, HttpServletRequest httpServletRequest) throws Exception {
+        RepP20Body repBody = new RepP20Body();
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "_id"));
+        PageRequest pr = new PageRequest(0, body.getSize(), sort);
+        Page<MgPrint> pageList = this.mgPrintService.find(station.getCode(), pr);
+        List<MgPrint> oList = pageList.getContent();
+        if(oList.size() > 0)
+        {
+            long maxId = oList.get(oList.size() - 1).getId();
+            this.mgPrintService.deleteAllByIdLessThanOrEqualTo(station.getCode(), maxId);
+        }
+        List<TTicket> ticketList = new ArrayList<TTicket>();
+        try {
+            for (MgPrint mgPrint : oList){
+                ticketList.addAll(ticketService.findAllToPrintByOrderId(mgPrint.getOrderId(), station.getId()));
+            }
+        }
+        catch(StaleObjectStateException e)	//如果竞争失败，直接返回空记录
+        {
+            ticketList = new ArrayList<TTicket>();
+        }
+        repBody.setRst(ticketList);
+        repBody.setPi(PageInfoUtil.getPageInfo(pageList));
+        modelMap.put("response", repBody);
+        return "plainJsonView";
+    }
+
+    @RequestMapping(value = "/newPrintBack.htm")
+    public String newPrintBack(@JsonHead(value="head",checkChannel=false) Head head, @McpStation Station station, @JsonBody(value="body", cmd="P21") ReqP21Body body,
+                            ModelMap modelMap, HttpServletRequest httpServletRequest) throws Exception {
+        List<ReqP02Body> reqP02BodyList = body.getReqP02BodyList();
+        RepP21Body repP21Body = new RepP21Body();
+        List<RepP02Body> repP02Bodies = new ArrayList<RepP02Body>();
+        for (ReqP02Body reqP02Body : reqP02BodyList){
+            RepP02Body repBody = new RepP02Body();
+            String ticketId = reqP02Body.getTicketId();
+            int code = reqP02Body.getCode();
+            TTicket ticketBack = ticketService.printBack(ticketId, code, "", null, reqP02Body.getStubInfo(), reqP02Body.getrNumber(), reqP02Body.isPaper());
+            //如果是出票成功，则还需要更新订单状态
+            if(code == Constants.TICKET_PRINT_RECEIPT_SUCCESS)
+            {
+                //保存到mongodb，供算奖使用
+                Game game = LotteryContext.getInstance().getGameByCode(ticketBack.getGameCode());
+                mgTicketService.save(ticketBack, game.getType());
+
+                TOrder torder = null;
+                boolean success = false;
+                int count = 0;
+                while(!success && count < 10)
+                {
+                    try {
+                        torder = orderService.findOne(ticketBack.getOrderId());
+                        success = orderService.incrPrintCount(torder);
+                    }
+                    catch (StaleObjectStateException e)
+                    {
+                        log.error("出票已经成功，订单更新失败，id:" + ticketBack.getOrderId());
+                    }
+                    finally {
+                        count++;
+                    }
+                }
+                if(!success)
+                {
+                    throw new CoreException(ErrCode.E0999);
+                }
+                //print station get the money
+                StationGame sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(ticketBack.getPrinterStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
+                int factor = sg.getpFactor();
+                long amount = ticketBack.getAmount()*factor/10000;
+                moneyService.orderPrintSuccess(ticketBack.getPrinterStationId(), ticketBack.getId(), amount);
+
+                //sale station get the sale percentage
+                sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(torder.getStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
+                int rFactor = sg.getrFactor();
+                if(rFactor > 0)     //如果有转票提成，则收取一定比例费用
+                {
+                    long rAmount = ticketBack.getAmount()*rFactor/10000;
+                    moneyService.orderPrintSuccessSalePercentage(torder.getStationId(), ticketBack.getId(), rAmount);
+                }
+
+                if(torder.getStatus() == OrderState.SUCCESS.getCode())
+                {
+                    //发送出票成功通知
+                    ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(httpServletRequest.getSession().getServletContext());
+                    NotifyUtil.sendN02(context, torder);
+                }
+            }
+            repBody.setTicketId(ticketBack.getId());
+            repBody.setAmount(ticketBack.getAmount());
+            repBody.setCode(code);
+
+            repP02Bodies.add(repBody);
+        }
+        modelMap.put("response", repP21Body);
+        return "plainJsonView";
+    }
+
+
 }

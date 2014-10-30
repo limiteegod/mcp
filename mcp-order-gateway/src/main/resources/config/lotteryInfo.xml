@@ -118,7 +118,10 @@
         </play>
     </lottery>
 
-    <lottery code="T06" type="2" name="新快赢481" status="1" period="" publishDesc="" offset="0">
+    <lottery code="T06" type="2" name="新快赢481" status="1" period="" publishDesc="" offset="180">
+        <play code="00" name="组选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="feoZxDanShiCheck" validator="com.mcp.feo.validator.FeoZxfDanShiValidator" offset="0"/>
+        </play>
         <play code="01" name="组选24" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoZtfDanShiCheck" validator="com.mcp.feo.validator.FeoZtfDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoZtfFuShiCheck" validator="com.mcp.feo.validator.FeoZtfFuShiValidator" offset="0"/>
@@ -128,6 +131,7 @@
             <bet code="00" name="单式" status="1" check="feoZotDanShiCheck" validator="com.mcp.feo.validator.FeoZotDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoZotFuShiCheck" validator="com.mcp.feo.validator.FeoZotFuShiValidator" offset="0"/>
             <bet code="02" name="胆拖" status="1" check="feoZotDanTuoCheck" validator="com.mcp.feo.validator.FeoZotDanTuoValidator" offset="0"/>
+            <bet code="08" name="重胆拖" status="1" check="feoZotChongDanTuoCheck" validator="com.mcp.feo.validator.FeoZotChongDanTuoValidator" offset="0"/>
         </play>
         <play code="03" name="组选6" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoZsDanShiCheck" validator="com.mcp.feo.validator.FeoZsDanShiValidator" offset="0"/>
@@ -138,6 +142,7 @@
             <bet code="00" name="单式" status="1" check="feoZfDanShiCheck" validator="com.mcp.feo.validator.FeoZfDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoZfFuShiCheck" validator="com.mcp.feo.validator.FeoZfFuShiValidator" offset="0"/>
             <bet code="02" name="胆拖" status="1" check="feoZfDanTuoCheck" validator="com.mcp.feo.validator.FeoZfDanTuoValidator" offset="0"/>
+            <bet code="08" name="重胆拖" status="1" check="feoZfChongDanTuoCheck" validator="com.mcp.feo.validator.FeoZfChongDanTuoValidator" offset="0"/>
         </play>
         <play code="05" name="任一" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoRoDanShiCheck" validator="com.mcp.feo.validator.FeoRoDanShiValidator" offset="0"/>
@@ -146,14 +151,23 @@
         <play code="06" name="任二" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoRtDanShiCheck" validator="com.mcp.feo.validator.FeoRtDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoRtFuShiCheck" validator="com.mcp.feo.validator.FeoRtFuShiValidator" offset="0"/>
+            <bet code="09" name="全包" status="1" check="feoRtQuanBaoCheck" validator="com.mcp.feo.validator.FeoRtQuanBaoValidator" offset="0"/>
+            <bet code="03" name="和值" status="1" check="feoRtHeZhiCheck" validator="com.mcp.feo.validator.FeoRtHeZhiValidator" offset="0"/>
+            <bet code="06" name="跨度" status="1" check="feoRtKuaDuCheck" validator="com.mcp.feo.validator.FeoRtKuaDuValidator" offset="0"/>
         </play>
         <play code="07" name="任三" status="1" price="200">
             <bet code="00" name="单式" status="1" check="feoRthDanShiCheck" validator="com.mcp.feo.validator.FeoRthDanShiValidator" offset="0"/>
             <bet code="01" name="复式" status="1" check="feoRthFuShiCheck" validator="com.mcp.feo.validator.FeoRthFuShiValidator" offset="0"/>
+            <bet code="09" name="全包" status="1" check="feoRthQuanBaoCheck" validator="com.mcp.feo.validator.FeoRthQuanBaoValidator" offset="0"/>
         </play>
         <play code="08" name="任四" status="1" price="200">
-            <bet code="00" name="单式" status="1" check="feoRfDanShiCheck" validator="com.mcp.feo.validator.FeoRfDanShiValidator" offset="0"/>
+            <bet code="00" name="单式" status="1" check="feoRfDanShiCheck" validator="com.mcp.feo.validator.FeoRfDanShiValidator" offset="180"/>
             <bet code="01" name="复式" status="1" check="feoRfFuShiCheck" validator="com.mcp.feo.validator.FeoRfFuShiValidator" offset="0"/>
+        </play>
+        <play code="09" name="任选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="feoRxDanShiCheck" validator="com.mcp.feo.validator.FeoRxDanShiValidator" offset="0"/>
+            <bet code="01" name="复式" status="1" check="feoRxFuShiCheck" validator="com.mcp.feo.validator.FeoRxFuShiValidator" offset="0"/>
+            <bet code="02" name="组合" status="1" check="feoRxZuHeCheck" validator="com.mcp.feo.validator.FeoRxZuHeValidator" offset="0"/>
         </play>
     </lottery>
 

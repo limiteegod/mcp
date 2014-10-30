@@ -606,6 +606,18 @@
                 </filter>
             </response>
         </cmd>
+        <cmd code="20" path="print/getNewPrintQueen.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
+        <cmd code="21" path="print/newPrintBack.htm">
+            <response code="01">
+                <filter code="01">
+                </filter>
+            </response>
+        </cmd>
     </group>
 	<group code="Q" package="com.mcp.order.inter.query" req="" rep="">
 	   <cmd code="01">
