@@ -18,8 +18,15 @@ public class FeoRxFuShiValidator extends FeoValidator {
         }
         String[] posStrArray = numbers.split(LotteryUtil.POSITION_REG_SEP);
         FeoConstants.checkRNumber(posStrArray);
-        int count = FeoConstants.getRNumberCount(posStrArray, 4);
-        if(count < 2)
+        int blackCount = 0;
+        for(int i = 0; i < posStrArray.length; i++)
+        {
+            if (posStrArray[i].equals(LotteryUtil.BLANK_SEP)){
+                blackCount ++ ;
+            }
+        }
+        int count = FeoConstants.getRNumberCount(posStrArray, 4-blackCount);
+        if(count < 1 )
         {
             throw new CoreException(ErrCode.E2033, ErrCode.codeToMsg(ErrCode.E2033));
         }

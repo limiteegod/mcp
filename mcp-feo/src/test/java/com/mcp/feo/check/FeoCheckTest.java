@@ -331,9 +331,9 @@ public class FeoCheckTest {
 
         playType = "09";
         betType = "01";
-        numbers = "4,5|6,8|6,8|6,7";
+        numbers = "8|_|_|2,3,4,5,6";
         bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
-        assertEquals(16, bt.getValidator().validator(numbers));
+        assertEquals(5, bt.getValidator().validator(numbers));
 
         playType = "09";
         betType = "02";
