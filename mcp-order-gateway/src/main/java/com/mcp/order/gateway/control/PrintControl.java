@@ -580,6 +580,12 @@ public class PrintControl {
     @RequestMapping(value = "/getNewPrintQueen.htm")
     public String getNewPrintQueen(@JsonHead(value="head",checkChannel=false) Head head, @McpStation Station station, @JsonBody(value="body", cmd="P20") ReqP20Body body,
                                 ModelMap modelMap, HttpServletRequest httpServletRequest) throws Exception {
+        RepP20Body repBody =  Querytitcket(body, station);
+        modelMap.put("response", repBody);
+        return "plainJsonView";
+    }
+
+    private synchronized RepP20Body  Querytitcket(ReqP20Body body, Station station){
         RepP20Body repBody = new RepP20Body();
         Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "_id"));
         PageRequest pr = new PageRequest(0, body.getSize(), sort);
@@ -602,8 +608,7 @@ public class PrintControl {
         }
         repBody.setRst(ticketList);
         repBody.setPi(PageInfoUtil.getPageInfo(pageList));
-        modelMap.put("response", repBody);
-        return "plainJsonView";
+        return repBody;
     }
 
     @RequestMapping(value = "/newPrintBack.htm")
@@ -673,6 +678,7 @@ public class PrintControl {
 
             repP02Bodies.add(repBody);
         }
+        repP21Body.setRepP02BodyList(repP02Bodies);
         modelMap.put("response", repP21Body);
         return "plainJsonView";
     }

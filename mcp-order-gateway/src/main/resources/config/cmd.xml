@@ -609,6 +609,20 @@
         <cmd code="20" path="print/getNewPrintQueen.htm">
             <response code="01">
                 <filter code="01">
+                    <name value="tticket">
+                        <property value="id"/>
+                        <property value="orderId"/>
+                        <property value="seq"/>
+                        <property value="termCode"/>
+                        <property value="gameCode"/>
+                        <property value="betTypeCode"/>
+                        <property value="playTypeCode"/>
+                        <property value="amount"/>
+                        <property value="multiple"/>
+                        <property value="price"/>
+                        <property value="numbers"/>
+                        <property value="termIndexDeadline"/>
+                    </name>
                 </filter>
             </response>
         </cmd>
