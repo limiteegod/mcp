@@ -617,6 +617,7 @@ public class PrintControl {
         List<ReqP02Body> reqP02BodyList = body.getReqP02BodyList();
         RepP21Body repP21Body = new RepP21Body();
         List<RepP02Body> repP02Bodies = new ArrayList<RepP02Body>();
+        repP21Body.setRepP02BodyList(repP02Bodies);
         for (ReqP02Body reqP02Body : reqP02BodyList){
             RepP02Body repBody = new RepP02Body();
             String ticketId = reqP02Body.getTicketId();
@@ -675,10 +676,8 @@ public class PrintControl {
             repBody.setTicketId(ticketBack.getId());
             repBody.setAmount(ticketBack.getAmount());
             repBody.setCode(code);
-
             repP02Bodies.add(repBody);
         }
-        repP21Body.setRepP02BodyList(repP02Bodies);
         modelMap.put("response", repP21Body);
         return "plainJsonView";
     }

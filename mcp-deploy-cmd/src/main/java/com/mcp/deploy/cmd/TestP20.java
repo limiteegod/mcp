@@ -49,7 +49,7 @@ public class TestP20 {
         //查询队列   并取票
         ObjectMapper om = new ObjectMapper();
         ReqP20Body reqP20Body = new ReqP20Body();
-        reqP20Body.setSize(30);
+        reqP20Body.setSize(10);
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P200101"));
         String bodyStr = om.writeValueAsString(reqP20Body);
         log.info(bodyStr);
@@ -89,7 +89,7 @@ public class TestP20 {
         message = TestUtil.getCReqMessage("", stationCode, bodyStr, "P21", key);
         log.info(message);
         content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
-        log.info(content);
+        log.info("P21" + content);
         return true;
     }
 }
