@@ -881,6 +881,8 @@
                         <property value="orderId"/>
                         <property value="termCode"/>
                         <property value="gameCode"/>
+                        <property value="channelCode"/>
+                        <property value="terminalId"/>
                         <property value="betTypeCode"/>
                         <property value="playTypeCode"/>
                         <property value="amount"/>

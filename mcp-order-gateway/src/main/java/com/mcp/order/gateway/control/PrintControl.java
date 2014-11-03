@@ -183,7 +183,7 @@ public class PrintControl {
             while(!success && count < 10)
             {
                 try {
-                    torder = orderService.findOne(ticketBack.getOrderId());
+                    torder = orderService.findOneAndTickets(ticketBack.getOrderId());
                     success = orderService.incrPrintCount(torder);
                 }
                 catch (StaleObjectStateException e)
