@@ -295,6 +295,13 @@
                     	<property value="multiple"/>
                     	<property value="numbers"/>
                     	<property value="dNumber"/>
+                        <property value="tickets"/>
+                    </name>
+                    <name value="tticket">
+                        <property value="id"/>
+                        <property value="rNumber"/>
+                        <property value="channelCode"/>
+                        <property value="terminalId"/>
                     </name>
                 </filter>
             </response>
