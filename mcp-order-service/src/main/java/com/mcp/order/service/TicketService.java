@@ -168,7 +168,7 @@ public class TicketService {
         return ticketPage;
     }
     
-    /**
+      /**
      * 获取需要打印的票
      * 当多个线程竞争失败时，会抛出StaleObjectStateException，TTicket已经加了@Version标签实现乐观锁
      * @param stationId
@@ -176,16 +176,33 @@ public class TicketService {
      */
     @Transactional
     public List<TTicket> findAllToPrintByOrderId(String orderId, String stationId) {
-    	Specifications<TTicket> specs = Specifications.where(TicketSpecification.isStatusEqual(TicketState.WAITING_PRINT.getCode()));
-		specs = specs.and(TicketSpecification.isOrderIdEqual(orderId));
-		
-    	List<TTicket> tList = this.ticketDao.findAll(specs);
-    	Date now = new Date();
-    	for(TTicket t:tList)
-    	{
-    		t.setStatus(TicketState.TAKE_AWAY.getCode());
-    		t.setSysTakeTime(now);
-    	}
+        Specifications<TTicket> specs = Specifications.where(TicketSpecification.isStatusEqual(TicketState.WAITING_PRINT.getCode()));
+        specs = specs.and(TicketSpecification.isOrderIdEqual(orderId));
+
+        List<TTicket> tList = this.ticketDao.findAll(specs);
+        Date now = new Date();
+        for(TTicket t:tList)
+        {
+            t.setStatus(TicketState.TAKE_AWAY.getCode());
+            t.setSysTakeTime(now);
+        }
+        return tList;
+    }
+
+    /**
+     * 获取需要打印的票
+     * 当多个线程竞争失败时，会抛出StaleObjectStateException，TTicket已经加了@Version标签实现乐观锁
+     * @return
+     */
+    @Transactional
+    public List<TTicket> findAllInOrderIds(List<String> orderIds) {
+        List<TTicket> tList = this.ticketDao.findByOrderIdInAndStatus(orderIds, TicketState.WAITING_PRINT.getCode());
+        Date now = new Date();
+        for(TTicket t:tList)
+        {
+            t.setStatus(TicketState.TAKE_AWAY.getCode());
+            t.setSysTakeTime(now);
+        }
         return tList;
     }
 

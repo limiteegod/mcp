@@ -49,7 +49,7 @@ public class TestP20 {
         //查询队列   并取票
         ObjectMapper om = new ObjectMapper();
         ReqP20Body reqP20Body = new ReqP20Body();
-        reqP20Body.setSize(2);
+        reqP20Body.setSize(20);
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("P200101"));
         String bodyStr = om.writeValueAsString(reqP20Body);
         log.info(bodyStr);

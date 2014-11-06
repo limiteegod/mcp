@@ -1,0 +1,11 @@
+{"head": {
+    "ver": "s.1.01",
+    "id": "305df76945a34267943f15535c6ce6cf",
+    "timestamp": "2014-11-03T15:44:06.112+0800",
+    "channelCode": "Q0004",
+    "cmd": "T03",
+    "userId": "",
+    "userType": 0,
+    "digest": "304b16912341857ffc519fee5dfa5dd7",
+    "digestType": "md5"
+}, "body": "{\"flag\":-1,\"uniqueId\":null,\"order\":{\"termCode\":\"2014175\",\"schemeId\":null,\"stationId\":null,\"gameCode\":\"F01\",\"type\":0,\"amount\":200,\"platform\":\"ANDROID\",\"multiple\":1,\"outerId\":\"2a59b38ef96a4deb97aaf041789fea6b\",\"number\":null,\"playType\":null,\"betType\":null,\"tickets\":[{\"betTypeCode\":\"00\",\"playTypeCode\":\"00\",\"amount\":200,\"multiple\":1,\"numbers\":\"09,14,17,18,21,25|15\"}]},\"payType\":1,\"payTypeDes\":null}"}

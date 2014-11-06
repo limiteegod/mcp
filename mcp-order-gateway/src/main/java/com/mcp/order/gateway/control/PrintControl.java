@@ -47,6 +47,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -591,19 +592,25 @@ public class PrintControl {
         PageRequest pr = new PageRequest(0, body.getSize(), sort);
         Page<MgPrint> pageList = this.mgPrintService.find(station.getCode(), pr);
         List<MgPrint> oList = pageList.getContent();
+        List<TTicket> ticketList = new ArrayList<TTicket>();
         if(oList.size() > 0)
         {
             long maxId = oList.get(oList.size() - 1).getId();
             this.mgPrintService.deleteAllByIdLessThanOrEqualTo(station.getCode(), maxId);
-        }
-        List<TTicket> ticketList = new ArrayList<TTicket>();
-        try {
-            for (MgPrint mgPrint : oList){
-                ticketList.addAll(ticketService.findAllToPrintByOrderId(mgPrint.getOrderId(), station.getId()));
+
+            List<String> orderIds = new ArrayList<String>();
+            try {
+                Iterator<MgPrint> iterator = oList.iterator();
+                while(iterator.hasNext()){
+                    orderIds.add(iterator.next().getOrderId());
+                }
+                ticketList.addAll(ticketService.findAllInOrderIds(orderIds));
             }
-        }
-        catch(StaleObjectStateException e)	//如果竞争失败，直接返回空记录
-        {
+            catch(StaleObjectStateException e)	//如果竞争失败，直接返回空记录
+            {
+                ticketList = new ArrayList<TTicket>();
+            }
+        }else {
             ticketList = new ArrayList<TTicket>();
         }
         repBody.setRst(ticketList);

@@ -19,9 +19,9 @@ public class TestT03 {
 	private static Logger log = Logger.getLogger(TestT03.class);
 
 	public static void main(String[] args) throws Exception {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 200; i++)
         {
-            lotF01();
+            lot();
         }
 	}
 
@@ -31,7 +31,7 @@ public class TestT03 {
         ReqT03Body reqT03Body = new ReqT03Body();
         ReqOrder reqOrder = new ReqOrder();
         reqOrder.setGameCode("T01");
-        reqOrder.setTermCode("2014003");
+        reqOrder.setTermCode("2014009");
         reqOrder.setAmount(400);
         reqOrder.setOuterId(CoreUtil.getUUID());
         reqOrder.setPlatform("ANDROID");
@@ -156,7 +156,7 @@ public class TestT03 {
         ReqT03Body reqT03Body = new ReqT03Body();
         ReqOrder reqOrder = new ReqOrder();
         reqOrder.setGameCode("F01");
-        reqOrder.setTermCode("2014175");
+        reqOrder.setTermCode("2014176");
         reqOrder.setAmount(200);
         reqOrder.setOuterId(CoreUtil.getUUID());
         reqOrder.setPlatform("ANDROID");

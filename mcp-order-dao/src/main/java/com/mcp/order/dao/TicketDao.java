@@ -116,4 +116,7 @@ public interface TicketDao extends PagingAndSortingRepository<TTicket, String>, 
 
     public List<TTicket> findAllByTerminalIdAndGameCodeAndTermCodeAndReceiptStatusAndBigBonusOrderByAcceptTimeAsc(
             String terminalId, String gameCode, String termCode, int receiptStatus, boolean bigBonus, Pageable pageable);
+
+
+    public List<TTicket> findByOrderIdInAndStatus(List<String> orderIds , int status);
 }

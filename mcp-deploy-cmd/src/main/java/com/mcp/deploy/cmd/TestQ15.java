@@ -1,5 +1,6 @@
 package com.mcp.deploy.cmd;
 
+import com.mcp.core.util.CoreUtil;
 import com.mcp.deploy.core.util.RemoteConfig;
 import com.mcp.deploy.core.util.TestUtil;
 import com.mcp.order.common.ConstantValues;
@@ -25,27 +26,29 @@ public class TestQ15 {
 	private static Logger log = Logger.getLogger(TestQ15.class);
 
 	public static void main(String[] args) throws Exception {
+
         ObjectMapper om = new ObjectMapper();
         ReqT03Body reqT03Body = new ReqT03Body();
         ReqOrder reqOrder = new ReqOrder();
-        reqOrder.setGameCode("T05");
-        reqOrder.setTermCode("2013101009");
+        reqOrder.setGameCode("T01");
+        reqOrder.setTermCode("2014008");
         reqOrder.setAmount(200);
+        reqOrder.setOuterId(CoreUtil.getUUID());
         reqOrder.setPlatform("ANDROID");
         List<ReqTicket> tickets = new ArrayList<ReqTicket>();
         ReqTicket ticket = new ReqTicket();
         ticket.setAmount(200);
-        ticket.setPlayTypeCode("23");
+        ticket.setPlayTypeCode("00");
         ticket.setBetTypeCode("00");
         ticket.setMultiple(1);
-        ticket.setNumbers("01,02,03");
+        ticket.setNumbers("01,07,08,22,23|01,02");
         tickets.add(ticket);
         reqOrder.setTickets(tickets);
         reqT03Body.setOrder(reqOrder);
 
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("T030101"));
         String bodyStr = om.writeValueAsString(reqT03Body);
-        String message = TestUtil.getCReqMessage("", "Q0003", bodyStr, "T03", "123456");
+        String message = TestUtil.getCReqMessage("", "Q0004", bodyStr, "T03", "123456");
         log.info(message);
         String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
         log.info(content);
@@ -60,7 +63,7 @@ public class TestQ15 {
 
         om.setFilters(CmdContext.getInstance().getFilterProviderByCode("Q150101"));
         bodyStr = om.writeValueAsString(reqQ15Body);
-        message = TestUtil.getCReqMessage("", "Q0003", bodyStr, "Q15", "123456");
+        message = TestUtil.getCReqMessage("", "Q0004", bodyStr, "Q15", "123456");
         log.info(message);
         content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
         log.info(content);

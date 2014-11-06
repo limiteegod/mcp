@@ -46,7 +46,7 @@ public class TicketSpecification {
 			}
 		};
 	}
-	
+
 	/**
 	 * 终端机号是否一致
 	 * @param terminalId
