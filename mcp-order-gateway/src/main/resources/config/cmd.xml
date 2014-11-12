@@ -300,7 +300,7 @@
                     <name value="tticket">
                         <property value="id"/>
                         <property value="rNumber"/>
-                        <property value="channelCode"/>
+                        <property value="stationId"/>
                         <property value="terminalId"/>
                     </name>
                 </filter>
