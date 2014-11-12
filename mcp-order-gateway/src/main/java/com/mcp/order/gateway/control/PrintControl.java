@@ -170,7 +170,7 @@ public class PrintControl {
 
 		String ticketId = body.getTicketId();
 		int code = body.getCode();
-		TTicket ticketBack = ticketService.printBack(ticketId, code, "", null, body.getStubInfo(), body.getrNumber(), body.isPaper());
+		TTicket ticketBack = ticketService.printBack(ticketId, code, body.getTerminalCode(), null, body.getStubInfo(), body.getrNumber(), body.isPaper());
 		//如果是出票成功，则还需要更新订单状态
 		if(code == Constants.TICKET_PRINT_RECEIPT_SUCCESS)
 		{
@@ -629,7 +629,7 @@ public class PrintControl {
             RepP02Body repBody = new RepP02Body();
             String ticketId = reqP02Body.getTicketId();
             int code = reqP02Body.getCode();
-            TTicket ticketBack = ticketService.printBack(ticketId, code, "", null, reqP02Body.getStubInfo(), reqP02Body.getrNumber(), reqP02Body.isPaper());
+            TTicket ticketBack = ticketService.printBack(ticketId, code, reqP02Body.getTerminalCode() , null, reqP02Body.getStubInfo(), reqP02Body.getrNumber(), reqP02Body.isPaper());
             //如果是出票成功，则还需要更新订单状态
             if(code == Constants.TICKET_PRINT_RECEIPT_SUCCESS)
             {

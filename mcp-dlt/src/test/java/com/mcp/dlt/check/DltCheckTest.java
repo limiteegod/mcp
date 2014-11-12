@@ -265,8 +265,8 @@ public class DltCheckTest {
         assertEquals(63000, cp.getBonusBeforeTax());
 
         //复式
-        numbers = "09,13,16,20,22,27,30|01,02,03,04,05,06,07,08,09,10,11,12";
-        cp = checkTest("02,11,17,27,30|03,04", numbers, "00", "01");
+        numbers = "01,02,03,04,05,06,07|04,05";
+        cp = checkTest("01,02,03,04,05|04,05", numbers, "00", "01");
         assertEquals(115500, cp.getBonusBeforeTax());
 	}
 
