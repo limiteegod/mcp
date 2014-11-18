@@ -34,7 +34,7 @@
     <import resource="classpath:applicationContext-bean.xml"/>
     
     <import resource="classpath:applicationContext-mdb.xml"/>
-    <import resource="classpath:applicationContext-rmi.xml"/>
+    <!--<import resource="classpath:applicationContext-rmi.xml"/>-->
     
     <import resource="classpath:applicationContext-jpa.xml"/>
     <import resource="classpath:applicationContext-service.xml"/>
