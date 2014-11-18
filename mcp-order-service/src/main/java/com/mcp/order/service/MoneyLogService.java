@@ -16,6 +16,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -37,14 +39,13 @@ public class MoneyLogService {
 	
 	/**
 	 * 彩民交易流水查询
-	 * @param customerId
-	 * @param handlerCode
 	 * @param startTime
 	 * @param endTime
 	 * @param startIndex
 	 * @param size
 	 * @return
 	 */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public Page<MoneyLog> customerQueryRecord(List<String> entityIds, String accountType, Date startTime, Date endTime, int startIndex, int size)
 	{
 		Sort sort = new Sort(new Order(Direction.DESC, "createTimeStamp"));

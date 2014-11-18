@@ -7,6 +7,7 @@ import com.mcp.order.dao.CustomerAccountDao;
 import com.mcp.order.model.ts.CustomerAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -20,7 +21,8 @@ public class CustomerAccountService {
 	
 	@Autowired
 	private CustomerAccountDao customerAccountDao;
-	
+
+    @Transactional(propagation = Propagation.NOT_SUPPORTED , readOnly = true)
 	public List<CustomerAccount> findAllByCustomerId(String customerId)
 	{
 		return this.customerAccountDao.findAllByCustomerId(customerId);

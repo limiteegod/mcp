@@ -7,6 +7,8 @@ import com.mcp.order.dao.GameDao;
 import com.mcp.order.model.ts.Game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,6 +31,11 @@ public class GameService {
 	{
 		return this.gameDao.findAllByStatusOrderByCodeDesc(status);
 	}
+    @Transactional(propagation = Propagation.NOT_SUPPORTED ,readOnly = true)
+    public List<Game> findAllByStatusNew(int status)
+    {
+        return this.gameDao.findAllByStatus(status);
+    }
     public List<Game> findAll()
     {
         return this.gameDao.findAll();

@@ -15,23 +15,27 @@ import com.mcp.order.gateway.annotation.McpStation;
 import com.mcp.order.gateway.annotation.McpUser;
 import com.mcp.order.inter.Head;
 import com.mcp.order.inter.PageInfo;
+import com.mcp.order.inter.common.CmdContext;
 import com.mcp.order.inter.query.*;
 import com.mcp.order.inter.util.PageInfoUtil;
 import com.mcp.order.model.admin.ClientFileVersion;
 import com.mcp.order.model.admin.Station;
 import com.mcp.order.model.jc.JOdds;
+import com.mcp.order.model.mongo.MgJcTermCache;
 import com.mcp.order.model.mongo.MgNotifyMsg;
 import com.mcp.order.model.mongo.MgTermSeal;
 import com.mcp.order.model.ts.*;
+import com.mcp.order.mongo.service.MgJcTermCaCheService;
 import com.mcp.order.mongo.service.MgNotifyMsgService;
 import com.mcp.order.mongo.service.MgOddsService;
 import com.mcp.order.mongo.service.MgTermSealService;
 import com.mcp.order.service.*;
-import com.mcp.order.service.js.JOddsService;
 import com.mcp.order.status.OrderState;
 import com.mcp.order.status.TermState;
 import com.mcp.order.util.DateTimeUtil;
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.MappingIterator;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -90,6 +94,9 @@ public class QueryControl {
 
     @Autowired
     private MgTermSealService mgTermSealService;
+
+    @Autowired
+    private MgJcTermCaCheService mgJcTermCaCheService;
 
     @Autowired
     private MgNotifyMsgService mgNotifyMsgService;
@@ -414,7 +421,7 @@ public class QueryControl {
     public String getGamesByStatus(@JsonHead(value="head",checkChannel=false) Head head, @JsonBody(value="body", cmd="Q11") ReqQ11Body body, 
     		ModelMap modelMap) throws Exception {
     	RepQ11Body repBody = new RepQ11Body();
-    	List<Game> gameList = gameService.findAllByStatus(body.getStatus());
+    	List<Game> gameList = gameService.findAllByStatusNew(body.getStatus());
     	for(int i = 0; i < gameList.size(); i++)
     	{
     		Game g = gameList.get(i);
@@ -462,7 +469,26 @@ public class QueryControl {
     	RepQ14Body repBody = new RepQ14Body();
     	String gameCode = body.getGameCode();
     	String matchCode = body.getMatchCode();
-    	List<Term> mList = termService.query(gameCode, matchCode, body.getStatus(), body.getExStatus(), new Sort(Sort.Direction.ASC, "code"));
+        String id = gameCode + matchCode ;
+        MgJcTermCache mgJcTermCache = mgJcTermCaCheService.findOne(id);
+        ObjectMapper om = new ObjectMapper();
+        List<Term> mList = null;
+        if (mgJcTermCache == null) {
+            mList = termService.query(gameCode, matchCode, body.getStatus(), body.getExStatus(), new Sort(Sort.Direction.ASC, "code"));
+            if (mList != null && !mList.isEmpty() ){
+                mgJcTermCache = new MgJcTermCache();
+                mgJcTermCache.setId(id);
+                mgJcTermCache.setCreateTime(new Date());
+                repBody.setRst(mList);
+                om.setFilters(CmdContext.getInstance().getFilterProviderByCode("Q140101"));
+                mgJcTermCache.setValue(om.writeValueAsString(repBody));
+                mgJcTermCaCheService.save(mgJcTermCache);
+            }
+        }else {
+            repBody = om.readValue(mgJcTermCache.getValue(), RepQ14Body.class);
+            mList = repBody.getRst();
+        }
+
     	List<String> oCodeList = body.getOddsCode();
     	List<String> playTypeList = body.getPlayTypeCode();
     	List<String> suffixKeyList = new ArrayList<String>();

@@ -25,6 +25,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -206,6 +207,7 @@ public class TicketService {
         return tList;
     }
 
+    @Transactional(propagation= Propagation.NOT_SUPPORTED,readOnly=true)
     public List<TTicket> findAllByOrderId(String orderId) {
         return this.ticketDao.findAllByOrderId(orderId);
     }

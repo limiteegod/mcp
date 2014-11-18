@@ -200,8 +200,30 @@
             <value>0/10 * * * * ?</value>
         </property>
     </bean>
-    
-	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+
+
+    <!-- 删除 -->
+    <bean id="removeCacheTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="removeCacheTask" />
+        </property>
+        <!-- 每5分钟扫描一次 -->
+        <property name="cronExpression">
+            <value>0 0/5 * * * ?</value>
+        </property>
+    </bean>
+
+    <!-- 日结 -->
+    <bean id="removeCacheTask"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>removeCache</value>
+        </property>
+    </bean>
+    <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
 	<bean id="startQuertz" lazy-init="false" autowire="no"
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
@@ -215,6 +237,7 @@
 				<ref bean="auditTime" />
 				<ref bean="sealTime" />
 				<ref bean="dailyClearTime" />
+				<ref bean="removeCacheTime" />
 			</list>
 		</property>
 	</bean>

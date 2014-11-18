@@ -23,6 +23,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -206,6 +207,7 @@ public class TermService {
      * @param gameCode
      * @return
      */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
     public Term findFirstSaleTerm(String gameCode) {
     	Sort sort = new Sort(Direction.ASC, "code");
     	PageRequest pr = new PageRequest(0, 1, sort);
@@ -284,6 +286,7 @@ public class TermService {
      * @param exStatus
      * @return
      */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
     public List<Term> query(String gameCode, String matchCode, List<Integer> status, List<Integer> exStatus, Sort sort)
     {
     	Specifications<Term> specs = Specifications.where(TermSpecification.isGameCodeEqual(gameCode));
@@ -319,6 +322,7 @@ public class TermService {
      * @param exStatus
      * @return
      */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
     public Page<Term> query(String gameCode, String termCode, List<Integer> status, List<Integer> exStatus, Pageable page)
     {
         Specifications<Term> specs = Specifications.where(TermSpecification.isGameCodeEqual(gameCode));

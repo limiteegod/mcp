@@ -5,6 +5,7 @@ import com.mcp.order.dao.specification.TermSpecification;
 import com.mcp.order.model.common.LotteryContext;
 import com.mcp.order.model.ts.Game;
 import com.mcp.order.model.ts.Term;
+import com.mcp.order.mongo.service.MgJcTermCaCheService;
 import com.mcp.order.service.OrderService;
 import com.mcp.order.service.TermService;
 import com.mcp.order.status.TermState;
@@ -90,7 +91,14 @@ public class QuartzJob {
             }
         }
 	}
-	
+
+    /**
+     * remove cache
+     */
+    public void removeCache()throws Exception{
+        MgJcTermCaCheService mgJcTermCaCheService = SchedulerContext.getInstance().getBean("mgJcTermCaCheService", MgJcTermCaCheService.class);
+        mgJcTermCaCheService.removeByCreateTime(5);
+    }
 	/**
      * 开始销售到时间点的奖期
      */

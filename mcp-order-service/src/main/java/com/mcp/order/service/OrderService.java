@@ -26,6 +26,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
@@ -560,6 +561,7 @@ public class OrderService {
      *
      * @return
      */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
     public List<TOrder> stationQuery(Station station, String orderId, String outerId) {
         Specifications<TOrder> specs;
         specs = Specifications.where(OrderSpecification.isChannelCodeEqual(station.getCode()));
@@ -655,6 +657,7 @@ public class OrderService {
      *
      * @return
      */
+    @Transactional(propagation= Propagation.NOT_SUPPORTED,readOnly=true)
     public Page<TOrder> userQuery(Object user, String gameCode, String orderId, String schemeId, int schemeType, String stationId, String status, String exOrderStatus, Pageable p) {
         Specifications<TOrder> specs;
         if (user instanceof Customer) {
