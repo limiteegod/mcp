@@ -845,6 +845,7 @@
             <response code="01">
                 <filter code="01">
                 	<name value="term">
+                        <property value="gameCode" />
 			            <property value="code"/>
 			            <property value="openTime"/>
 			            <property value="endTime"/>
