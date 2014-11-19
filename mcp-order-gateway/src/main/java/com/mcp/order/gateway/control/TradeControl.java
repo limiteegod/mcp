@@ -398,21 +398,24 @@ public class TradeControl {
 		
 		//设置订单的类型为渠道订单
 		order.setType(TOrderType.CHANNEL);
-		
+
 		long recharge = 0;
 		boolean afford = false;
-		try {
-			MoneyLog mLog = moneyService.stationLot(stationId, order.getId(), order.getAmount());
-			afford = true;
-			recharge = mLog.getStateAfter();
-		} 
-		catch (NoMoneyException e)
-		{
-			recharge = e.getBalance();
-			repBody.setRepCode(ErrCode.E1007);
-			repBody.setDescription(ErrCode.codeToMsg(ErrCode.E1007));
-		}
-		
+        if(!station.getCode().equals("BJJG") ){
+            try {
+                MoneyLog mLog = moneyService.stationLot(stationId, order.getId(), order.getAmount());
+                afford = true;
+                recharge = mLog.getStateAfter();
+            }
+            catch (NoMoneyException e)
+            {
+                recharge = e.getBalance();
+                repBody.setRepCode(ErrCode.E1007);
+                repBody.setDescription(ErrCode.codeToMsg(ErrCode.E1007));
+            }
+        }else {
+            afford = true;
+        }
 		//设置余额信息
 		RepStation repStation = new RepStation();
 		repStation.setId(stationId);

@@ -199,20 +199,20 @@ public class PrintControl {
             {
                 throw new CoreException(ErrCode.E0999);
             }
-            //print station get the money
+         /*   //print station get the money
             StationGame sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(ticketBack.getPrinterStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
             int factor = sg.getpFactor();
             long amount = ticketBack.getAmount()*factor/10000;
-            moneyService.orderPrintSuccess(ticketBack.getPrinterStationId(), ticketBack.getId(), amount);
+            moneyService.orderPrintSuccess(ticketBack.getPrinterStationId(), ticketBack.getId(), amount);*/
 
-            //sale station get the sale percentage
+         /*   //sale station get the sale percentage
             sg = stationGameService.findOneByStationIdAndGameCodeAndStatus(torder.getStationId(), torder.getGameCode(), ConstantValues.StationGame_Status_Open.getCode());
             int rFactor = sg.getrFactor();
             if(rFactor > 0)     //如果有转票提成，则收取一定比例费用
             {
                 long rAmount = ticketBack.getAmount()*rFactor/10000;
                 moneyService.orderPrintSuccessSalePercentage(torder.getStationId(), ticketBack.getId(), rAmount);
-            }
+            }*/
 
             if(torder.getStatus() == OrderState.SUCCESS.getCode())
 			{
