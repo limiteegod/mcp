@@ -132,9 +132,9 @@ public class CheckTasklet implements Tasklet {
                 t.setBetTypeCode((String)obj.get("betTypeCode"));
                 t.setNumbers((String)obj.get("numbers"));
                 t.setrNumber((String)obj.get("rNumber"));
-                t.setMultiple((Integer)obj.get("multiple"));
+                t.setMultiple(Integer.valueOf(obj.get("multiple").toString()));
                 t.setChannelCode((String)obj.get("channelCode"));
-                t.setAmount((Long) obj.get("amount"));
+                t.setAmount(Long.valueOf(obj.get("amount").toString()));
                 t.setPrinterStationId((String) obj.get("printerStationId"));
 
                 String checkCode = getCheckCode(t);

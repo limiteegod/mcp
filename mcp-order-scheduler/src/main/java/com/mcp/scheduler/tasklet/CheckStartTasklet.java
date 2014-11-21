@@ -69,7 +69,7 @@ public class CheckStartTasklet implements Tasklet {
             cur = cur.snapshot();
             while (cur.hasNext()) {
                 DBObject obj = cur.next();
-                long id = (Long) obj.get("_id");
+                long id = Long.valueOf(obj.get("_id").toString());
                 String ticketTermCode = (String) obj.get("termCode");
                 String ticketId = (String) obj.get("ticketId");
                 int hitIndex = ticketTermCode.indexOf(this.termCode);

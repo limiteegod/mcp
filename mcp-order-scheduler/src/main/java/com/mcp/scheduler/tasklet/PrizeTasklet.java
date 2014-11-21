@@ -75,9 +75,9 @@ public class PrizeTasklet implements Tasklet {
             String id = (String)obj.get("_id");
             String customerId = (String)obj.get("customerId");
             String stationId = (String)obj.get("stationId");
-            int type = (Integer)obj.get("type");
-            long bonus = (Long)obj.get("bonus");
-            int schemeType = (Integer)obj.get("schemeType");
+            int type = Integer.valueOf(obj.get("type").toString());
+            long bonus = Long.valueOf(obj.get("bonus").toString());
+            int schemeType = Integer.valueOf(obj.get("schemeType").toString());
 
             if(schemeType == ConstantValues.TScheme_Type_Default.getCode() || schemeType == ConstantValues.TScheme_Type_Follow.getCode())
             {

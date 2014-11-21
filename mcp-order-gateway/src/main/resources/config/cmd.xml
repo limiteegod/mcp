@@ -902,6 +902,7 @@
                         <property value="createTime"/>
                         <property value="bonus"/>
                         <property value="bonusBeforeTax"/>
+                        <property value="status"/>
                     </name>
                 </filter>
             </response>

@@ -87,8 +87,8 @@ public class CheckUpdateSchemeTasklet implements Tasklet {
         while (cur.hasNext()) {
             DBObject obj = cur.next();
             String id = (String)obj.get("_id");
-            long bonus = (Long)obj.get("bonus");
-            long bonusBeforeTax = (Long)obj.get("bonusBeforeTax");
+            long bonus = Long.valueOf(obj.get("bonus").toString());
+            long bonusBeforeTax = Long.valueOf(obj.get("bonusBeforeTax").toString());
             SchemeZh scheme = this.schemeZhService.incrNewOrder(id, bonus, bonusBeforeTax, this.nextTermCode);
             //如果方案还在进行中，则生成下一期的订单
             if(scheme.getStatus() == SchemeState.RUNNING.getCode())

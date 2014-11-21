@@ -71,8 +71,8 @@ public class CheckUpdateTicketTasklet implements Tasklet {
             DBObject obj = cur.next();
             String id = (String)obj.get("_id");
             String dNumber = (String)obj.get("dNumber");
-            long bonus = (Long)obj.get("bonus");
-            long bonusBeforeTax = (Long)obj.get("bonusBeforeTax");
+            long bonus = Long.valueOf(obj.get("bonus").toString());
+            long bonusBeforeTax = Long.valueOf(obj.get("bonusBeforeTax").toString());
             int receiptStatus = ReceiptState.NOT_HIT.getCode();
             if(bonus > 0)
             {

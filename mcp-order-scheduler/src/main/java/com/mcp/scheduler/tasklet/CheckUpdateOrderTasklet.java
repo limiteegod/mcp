@@ -82,12 +82,12 @@ public class CheckUpdateOrderTasklet implements Tasklet {
                 String customerId = (String)obj.get("customerId");
                 TOrderType type = TOrderType.values()[(Integer)obj.get("type")];
                 String stationId = (String)obj.get("stationId");
-                long bonus = (Long)obj.get("bonus");
-                long bonusBeforeTax = (Long)obj.get("bonusBeforeTax");
-                int ticketCount = (Integer)obj.get("ticketCount");
-                int finishedTicketCountInDb = (Integer)obj.get("finishedTicketCountInDb");
-                int ticketCountInDb = (Integer)obj.get("ticketCountInDb");
-                int schemeType = (Integer)obj.get("schemeType");
+                long bonus = Long.valueOf(obj.get("bonus").toString());
+                long bonusBeforeTax = Long.valueOf(obj.get("bonusBeforeTax").toString());
+                int ticketCount = Integer.valueOf(obj.get("ticketCount").toString());
+                int finishedTicketCountInDb = Integer.valueOf(obj.get("finishedTicketCountInDb").toString());
+                int ticketCountInDb = Integer.valueOf(obj.get("ticketCountInDb").toString());
+                int schemeType = Integer.valueOf(obj.get("schemeType").toString());
                 String outerId = (String)obj.get("outerId");
                 if(ticketCount + finishedTicketCountInDb >= ticketCountInDb)
                 {
