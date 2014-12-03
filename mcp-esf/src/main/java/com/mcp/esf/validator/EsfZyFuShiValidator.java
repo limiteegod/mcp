@@ -14,7 +14,7 @@ public class EsfZyFuShiValidator extends EsfValidator {
 			throw new CoreException(ErrCode.E2026, ErrCode.codeToMsg(ErrCode.E2026));
 		}
 		String item = items[0];
-		if(!item.matches("^\\d{2}(,\\d{2}){1,}$"))
+		if(!item.matches("^\\d{2}(,\\d{2}){0,}$"))
 		{
 			throw new CoreException(ErrCode.E2033, ErrCode.codeToMsg(ErrCode.E2033));
 		}
