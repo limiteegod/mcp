@@ -4,9 +4,12 @@ import com.mcp.core.util.CoreUtil;
 import com.mcp.order.batch.check.Check;
 import com.mcp.order.batch.check.CheckParam;
 import com.mcp.order.common.Constants;
+import com.mcp.order.model.common.LotteryContext;
+import com.mcp.order.model.entity.BetType;
 import com.mcp.order.model.entity.PrizeDescription;
 import com.mcp.order.model.ts.GameGrade;
 import com.mcp.order.model.ts.TTicket;
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +26,8 @@ public class FsdCheckTest {
 	private String gameCode = "F02";
 	
 	private PrizeDescription pd;
+
+    public static Logger log = Logger.getLogger(FsdCheckTest.class);
 
 	@Before
 	public void initPD() throws Exception
@@ -102,6 +107,19 @@ public class FsdCheckTest {
 	@Test
 	public void testValidator() throws Exception
 	{
+        String playType = "02";
+        String betType = "00";
+        String numbers = "1,1,2;2,2,3";
+        BetType bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
+        log.info(bt.getValidator().validator(numbers));
+
+        numbers = "4,4,6";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + "02" + "00");
+        log.info(bt.getValidator().validator(numbers));
+
+        numbers = "1,2,3;4,5,6";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + "03" + "00");
+        log.info(bt.getValidator().validator(numbers));
 	}
 	
 	@Test
@@ -111,5 +129,17 @@ public class FsdCheckTest {
         String numbers = "1|7|7";
         CheckParam cp = checkTest(numbers, "01", "00");
         assertEquals(104000, cp.getBonus());
+
+        numbers = "1,7,7";
+        cp = checkTest(numbers, "02", "00");
+        assertEquals(34600, cp.getBonus());
+
+        numbers = "1,1,7";
+        cp = checkTest(numbers, "02", "00");
+        assertEquals(000, cp.getBonus());
+
+        numbers = "1,2,7";
+        cp = checkTest(numbers, "03", "00");
+        assertEquals(000, cp.getBonus());
 	}
 }

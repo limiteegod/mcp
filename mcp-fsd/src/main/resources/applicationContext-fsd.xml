@@ -17,7 +17,13 @@
     <bean id="fsdZuSanFuShiCheck" class="com.mcp.fsd.check.FsdZuSanFuShiCheck"></bean>    
    
     <!-- 组六复式算奖 -->
-    <bean id="fsdZuLiuFuShiCheck" class="com.mcp.fsd.check.FsdZuLiuFuShiCheck"></bean>    
+    <bean id="fsdZuLiuFuShiCheck" class="com.mcp.fsd.check.FsdZuLiuFuShiCheck"></bean>
+
+    <!-- 组三单式算奖 -->
+    <bean id="fsdZuSanDanShiCheck" class="com.mcp.fsd.check.FsdZuSanDanShiCheck"></bean>
+
+    <!-- 组六单式算奖 -->
+    <bean id="fsdZuLiuDanShiCheck" class="com.mcp.fsd.check.FsdZuLiuDanShiCheck"></bean>
    
     <!-- 组选和值算奖 -->
     <bean id="fsdZuXuanHeZhiCheck" class="com.mcp.fsd.check.FsdZuXuanHeZhiCheck"></bean>

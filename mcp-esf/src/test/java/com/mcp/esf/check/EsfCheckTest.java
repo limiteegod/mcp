@@ -8,6 +8,7 @@ import com.mcp.order.model.entity.BetType;
 import com.mcp.order.model.entity.PrizeDescription;
 import com.mcp.order.model.ts.GameGrade;
 import com.mcp.order.model.ts.TTicket;
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +26,8 @@ public class EsfCheckTest {
 	private String gameCode = "T05";
 	
 	private PrizeDescription pd;
+
+    public static Logger log = Logger.getLogger(EsfCheckTest.class);
 
 	@Before
 	public void initPD() throws Exception
@@ -231,6 +234,10 @@ public class EsfCheckTest {
 		String numbers = "01,02|02,03|03";
 		BetType bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + playType + betType);
 		bt.getValidator().validator(numbers);
+
+        numbers = "01";
+        bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + "21" + "01");
+        log.info(bt.getValidator().validator(numbers));
 	}
 	
 	@Test
@@ -244,6 +251,10 @@ public class EsfCheckTest {
 		numbers = "04,05";
 		cp = checkTest(numbers, "21", "01");
 		assertEquals(000, cp.getBonus());
+
+        numbers = "01";
+        cp = checkTest(numbers, "21", "01");
+        assertEquals(1300, cp.getBonus());
 		
 		//任二单式
 		numbers = "04,05";
