@@ -171,6 +171,10 @@ public class QuartzJob {
         	{
         		continue;
         	}
+            if(gameCode.equals("F01"))  //ssq算奖，交给nodejs处理，不再在这儿处理
+            {
+                continue;
+            }
         	Page<Term> termsToDraw;
         	try {
         		Specifications<Term> specs = where(TermSpecification.isStatusEqual(TermState.DRAW.getCode()));
