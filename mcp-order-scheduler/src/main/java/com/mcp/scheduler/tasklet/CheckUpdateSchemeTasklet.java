@@ -81,32 +81,43 @@ public class CheckUpdateSchemeTasklet implements Tasklet {
 	@Override
 	public RepeatStatus execute(StepContribution contribution,
 			ChunkContext chunkContext) throws Exception {
-        DBCollection drawColl = mgCheckService.getCollByName(this.mgCheckService.getSchemeColl(gameCode, termCode, SchemeType.SEQ_FOLLOW));
+        String colName = this.mgCheckService.getSchemeColl(gameCode, termCode, SchemeType.SEQ_FOLLOW);
+        log.info(colName);
+        DBCollection drawColl = mgCheckService.getCollByName(colName);
         DBCursor cur = drawColl.find();
         cur = cur.snapshot();
         while (cur.hasNext()) {
             DBObject obj = cur.next();
             String id = (String)obj.get("_id");
-            long bonus = Long.valueOf(obj.get("bonus").toString());
-            long bonusBeforeTax = Long.valueOf(obj.get("bonusBeforeTax").toString());
-            SchemeZh scheme = this.schemeZhService.incrNewOrder(id, bonus, bonusBeforeTax, this.nextTermCode);
-            //如果方案还在进行中，则生成下一期的订单
-            if(scheme.getStatus() == SchemeState.RUNNING.getCode())
-            {
-                TOrder oldOrder = this.orderService.findOneBySchemeIdAndTermCode(id, this.termCode, true);
-                TOrder newOrder = oldOrder.clone();
-                newOrder.setTermCode(this.nextTermCode);
-                List<TTicket> tList = newOrder.getTickets();
-                for(TTicket t:tList)
+            try {
+                long bonus = Long.valueOf(obj.get("bonus").toString());
+                long bonusBeforeTax = Long.valueOf(obj.get("bonusBeforeTax").toString());
+                log.info("scheme:" + id + ",bonus:" + bonus + ",bonusBeforeTax:" + bonusBeforeTax);
+                SchemeZh scheme = this.schemeZhService.incrNewOrder(id, bonus, bonusBeforeTax, this.nextTermCode);
+                //如果方案还在进行中，则生成下一期的订单
+                if(scheme.getStatus() == SchemeState.RUNNING.getCode())
                 {
-                    t.setTermCode(this.nextTermCode);
-                }
+                    TOrder oldOrder = this.orderService.findOneBySchemeIdAndTermCode(id, this.termCode, true);
+                    TOrder newOrder = oldOrder.clone();
+                    newOrder.setTermCode(this.nextTermCode);
+                    List<TTicket> tList = newOrder.getTickets();
+                    for(TTicket t:tList)
+                    {
+                        t.setTermCode(this.nextTermCode);
+                    }
 
-                //设置订单状态，并发送出票通知
-                Term t = termService.findOneByGameCodeAndCode(gameCode, this.nextTermCode);
-                OrderStateUtil.updateOrderStatus(newOrder, true, t.getStatus());
-                this.orderService.save(newOrder);
-                PrintUtil.newOrder(SchedulerContext.getInstance().getSpringContext(), newOrder);
+                    //设置订单状态，并发送出票通知
+                    Term t = termService.findOneByGameCodeAndCode(gameCode, this.nextTermCode);
+                    OrderStateUtil.updateOrderStatus(newOrder, true, t.getStatus());
+                    this.orderService.save(newOrder);
+                    PrintUtil.newOrder(SchedulerContext.getInstance().getSpringContext(), newOrder);
+                }
+            }
+            catch (Exception e)
+            {
+                log.error("处理追号方案过程中出现错误,id:" + id);
+                log.error(e.getMessage());
+                e.printStackTrace();
             }
         }
         cur.close();

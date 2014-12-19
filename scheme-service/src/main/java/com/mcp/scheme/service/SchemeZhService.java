@@ -52,6 +52,10 @@ public class SchemeZhService {
 	public SchemeZh incrNewOrder(String id, long bonus, long bonusBeforeTax, String nextTermCode)
 	{
 		SchemeZh scheme = this.schemeZhDao.findOne(id);
+        if(scheme == null)
+        {
+            return null;
+        }
         scheme.setBonus(scheme.getBonus() + bonus);
         scheme.setBonusBeforeTax(scheme.getBonusBeforeTax() + bonusBeforeTax);
         if(scheme.getFinishedOrderCount() + scheme.getCancelOrderCount() >= scheme.getOrderCount())
