@@ -27,4 +27,7 @@
    
     <!-- 组选和值算奖 -->
     <bean id="fsdZuXuanHeZhiCheck" class="com.mcp.fsd.check.FsdZuXuanHeZhiCheck"></bean>
+
+    <!-- 组选单式算奖 -->
+    <bean id="fsdZuXuanDanShiCheck" class="com.mcp.fsd.check.FsdZuXuanDanShiCheck"></bean>
 </beans>

@@ -14,6 +14,7 @@
             <bet code="01" name="复式" status="1" check="fsdZuLiuFuShiCheck" validator="com.mcp.fsd.validator.FsdZuLiuFuShiValidator" offset="0"/>
         </play>
         <play code="04" name="组选" status="1" price="200">
+            <bet code="00" name="单式" status="1" check="fsdZuXuanDanShiCheck" validator="com.mcp.fsd.validator.FsdZuXuanDanShiValidate" offset="180"/>
             <bet code="03" name="和值" status="1" check="fsdZuXuanHeZhiCheck" validator="com.mcp.fsd.validator.FsdZuXuanHeZhiValidator" offset="180"/>
         </play>
     </lottery>

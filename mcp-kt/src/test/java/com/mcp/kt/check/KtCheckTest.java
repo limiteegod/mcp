@@ -309,7 +309,7 @@ public class KtCheckTest {
 		BetType bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + "01" + "00");
 		log.info(bt.getValidator().validator(numbers));
 
-        numbers = "1,1,2";
+        numbers = "1,1,2;1,1,2";
         bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + "02" + "00");
         bt.getValidator().validator(numbers);
 
@@ -321,7 +321,7 @@ public class KtCheckTest {
         bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + "03" + "00");
         log.info(bt.getValidator().validator(numbers));
 
-        numbers = "4,10";
+        numbers = "4,4,4";
         bt = LotteryContext.getInstance().getBetTypeByCode(gameCode + "04" + "01");
         log.info(bt.getValidator().validator(numbers));
 
