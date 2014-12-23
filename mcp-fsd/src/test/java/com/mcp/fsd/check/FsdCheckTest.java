@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 public class FsdCheckTest {
 	
-	private String drawNumber = "1|7|7";
+	private String drawNumber = "8|3|8";
 	
 	private String gameCode = "F02";
 	
@@ -128,18 +128,22 @@ public class FsdCheckTest {
         //4|9|5|0|4|6|3
         String numbers = "1|7|7";
         CheckParam cp = checkTest(numbers, "01", "00");
-        assertEquals(104000, cp.getBonus());
+        assertEquals(000, cp.getBonus());
 
         numbers = "1,7,7";
         cp = checkTest(numbers, "02", "00");
-        assertEquals(34600, cp.getBonus());
+        assertEquals(000, cp.getBonus());
 
-        numbers = "1,1,7";
+        numbers = "2|2|8;8|3|8";
         cp = checkTest(numbers, "02", "00");
         assertEquals(000, cp.getBonus());
 
         numbers = "1,2,7";
         cp = checkTest(numbers, "03", "00");
+        assertEquals(000, cp.getBonus());
+
+        numbers = "1|7|7";
+        cp = checkTest(numbers, "04", "00");
         assertEquals(000, cp.getBonus());
 	}
 }

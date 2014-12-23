@@ -15,12 +15,13 @@ public class FsdZuSanDanShiValidator extends FsdValidator {
         for(int i = 0; i < items.length; i++)
         {
             String item = items[i];
+            item = item.replaceAll("\\|" ,",");
             if(!item.matches("^\\d{1}(,\\d{1}){2}$"))
             {
                 throw new CoreException(ErrCode.E2033, ErrCode.codeToMsg(ErrCode.E2033));
             }
             int[] num = LotteryUtil.getIntArrayFromStrArray(item.split(","));
-            LotteryUtil.checkSortFromMinToMaxCanEqual(num);
+            //LotteryUtil.checkSortFromMinToMaxCanEqual(num);
             super.checkMargin(num, FsdConstants.MAX, FsdConstants.MIN);
             if(FsdConstants.getNubmerType(num) != FsdConstants.NUMBER_TYPE_ZUSAN)
             {

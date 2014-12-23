@@ -29,6 +29,7 @@ public class FsdZuSanDanShiCheck extends FsdCheck {
             for(int i = 0; i < items.length; i++)
             {
                 String item = items[i];
+                item = item.replaceAll("\\|" ,",");
                 int[] itemIntArray = LotteryUtil.getIntArrayFromStrArray(item.split(LotteryUtil.FUSHI_SEP));
                 Map<Integer, Integer> itemInfo = LotteryUtil.getInfo(itemIntArray);
                 boolean hit = true;

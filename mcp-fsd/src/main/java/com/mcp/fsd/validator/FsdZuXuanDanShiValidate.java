@@ -18,6 +18,7 @@ public class FsdZuXuanDanShiValidate extends FsdValidator {
         String[] numArrays = numbers.split(";");
         String reg = "^\\d(\\|\\d){2}$";
         for (String item  : numArrays ){
+            item = item.replaceAll(",", "\\|");
             if (!item.matches(reg)){
                 throw new CoreException(ErrCode.E2026, ErrCode.codeToMsg(ErrCode.E2026));
             }
@@ -30,7 +31,7 @@ public class FsdZuXuanDanShiValidate extends FsdValidator {
             if (type == FsdConstants.NUMBER_TYPE_BAOZI){
                 throw new CoreException(ErrCode.E2026, ErrCode.codeToMsg(ErrCode.E2026));
             }
-            this.checkSort(intArray);
+            //this.checkSort(intArray);
             super.checkMargin(intArray, FsdConstants.MAX, FsdConstants.MIN);
         }
         return numArrays.length;

@@ -19,6 +19,7 @@ public class FsdZuXuanDanShiCheck extends  FsdCheck {
         int[] intNumber = new int[]{Integer.parseInt(number[0]), Integer.parseInt(number[1]), Integer.parseInt(number[2])};
         String[] ticketArray = ticketNumber.split(";");
         for (String items : ticketArray){
+            items = items.replaceAll("," , "\\|");
             String[] numArray = items.split("\\|");
             int[] intTicketNumberArray = new int[]{Integer.parseInt(numArray[0]), Integer.parseInt(numArray[1]), Integer.parseInt(numArray[2])};
             if(intNumber[0] == intTicketNumberArray[0] && intNumber[1] == intTicketNumberArray[1] && intNumber[2] == intTicketNumberArray[2])

@@ -25,6 +25,7 @@ public class FsdZuLiuDanShiCheck extends FsdCheck {
             for(int i = 0; i < items.length; i++)
             {
                 String item = items[i];
+                item=item.replaceAll("\\|",",");
                 int[] itemIntArray = LotteryUtil.getIntArrayFromStrArray(item.split(LotteryUtil.FUSHI_SEP));
                 int hitCount = LotteryUtil.getHitCount(intNumber, itemIntArray);
                 if(hitCount == 3)
