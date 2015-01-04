@@ -98,7 +98,7 @@ public class ExportTicketTasklet implements Tasklet {
 				TTicket t = it.next();
                 log.info("出票失败,id:" + t.getId());
 				try {
-                    if(this.gameType == ConstantValues.Game_Type_Gaopin.getCode())
+                   /* if(this.gameType == ConstantValues.Game_Type_Gaopin.getCode())
                     {
                         TTicket ticketBack = ticketService.printBack(t.getId(), Constants.TICKET_PRINT_RECEIPT_SUCCESS, "SYSTEM", null, "SYSTEM", "SYSTEM", false);
                         mgTicketService.save(ticketBack, this.gameType);
@@ -110,9 +110,9 @@ public class ExportTicketTasklet implements Tasklet {
                         }
                     }
                     else
-                    {
+                    {*/
                         PrintUtil.fail(SchedulerContext.getInstance().getSpringContext(), t, this.termCode);
-                    }
+                   // }
                 }
                 catch(Exception e)
                 {
