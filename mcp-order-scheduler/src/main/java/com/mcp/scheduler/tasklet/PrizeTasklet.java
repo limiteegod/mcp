@@ -8,6 +8,7 @@ import com.mcp.order.mongo.service.MgPrizeService;
 import com.mcp.order.service.MoneyService;
 import com.mcp.order.service.OrderService;
 import com.mcp.order.status.OrderState;
+import com.mongodb.Bytes;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -69,6 +70,7 @@ public class PrizeTasklet implements Tasklet {
         DBCollection drawColl = mgPrizeService.getCollByName(this.mgPrizeService.getOrderColl(gameCode, termCode, BonusLevelType.LITTLE_HIT));
         int count = 0, allCount = 0;
         DBCursor cur = drawColl.find();
+        cur.setOptions(Bytes.QUERYOPTION_NOTIMEOUT);
         cur = cur.snapshot();
         while (cur.hasNext()) {
             DBObject obj = cur.next();

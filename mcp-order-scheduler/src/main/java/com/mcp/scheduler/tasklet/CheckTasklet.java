@@ -17,6 +17,7 @@ import com.mcp.order.service.TicketService;
 import com.mcp.rmi.inter.SchemeInter;
 import com.mcp.scheduler.common.SchedulerContext;
 import com.mcp.scheme.service.SchemeZhService;
+import com.mongodb.Bytes;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -119,6 +120,7 @@ public class CheckTasklet implements Tasklet {
 			ChunkContext chunkContext) throws Exception {
         DBCollection drawColl = this.mgTicketService.getDrawCollection(gameCode, termCode);
         DBCursor cur = drawColl.find();
+        cur.setOptions(Bytes.QUERYOPTION_NOTIMEOUT);
         cur = cur.snapshot();
         while (cur.hasNext()) {
             DBObject obj = cur.next();
