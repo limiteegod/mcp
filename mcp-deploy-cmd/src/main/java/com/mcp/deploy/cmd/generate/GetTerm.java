@@ -20,7 +20,7 @@ public class GetTerm {
 
     public static void main(String[] args) throws Exception
     {
-        getT04();
+        getF01();
     }
 
     public static void getF04()
@@ -213,9 +213,9 @@ public class GetTerm {
     public static void getF01()
     {
         String gameCode = "F01";
-        int curTermCode = 2014001;
+        int curTermCode = 2015001;
         long startDate = new Date().getTime();
-        long gap = 60*60*1000;
+        long gap = 4*60*60*1000;
         String pDes = "{\"grades\":[{\"id\":\"40623ae3da4945a2b8482435f0578d37\",\"gameCode\":\"F01\",\"code\":\"LV1\",\"name\":\"一等奖\",\"gLevel\":1,\"bonus\":400000000,\"status\":1,\"gCount\":2,\"fixedBonus\":false},{\"id\":\"b44a2be235d74f158326635506aea278\",\"gameCode\":\"F01\",\"code\":\"LV2\",\"name\":\"二等奖\",\"gLevel\":2,\"bonus\":200000000,\"status\":1,\"gCount\":20,\"fixedBonus\":false},{\"id\":\"5c1221410f564bbf9648a9744e92e5f0\",\"gameCode\":\"F01\",\"code\":\"LV3\",\"name\":\"三等奖\",\"gLevel\":3,\"bonus\":300000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"86eef4a5a927450e80fb805f536b9d59\",\"gameCode\":\"F01\",\"code\":\"LV4\",\"name\":\"四等奖\",\"gLevel\":4,\"bonus\":20000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"4da3a2e9599f410aafbab45ee2cadd8f\",\"gameCode\":\"F01\",\"code\":\"LV5\",\"name\":\"五等奖\",\"gLevel\":5,\"bonus\":1000,\"status\":1,\"gCount\":0,\"fixedBonus\":true},{\"id\":\"57cbe76695b049858340d0363f2bfd3e\",\"gameCode\":\"F01\",\"code\":\"LV6\",\"name\":\"六等奖\",\"gLevel\":6,\"bonus\":500,\"status\":1,\"gCount\":0,\"fixedBonus\":true}]}";
         String wNum = "09,12,14,30,32,33|02";
         for(int i = 0; i < 200; i++)
@@ -225,7 +225,7 @@ public class GetTerm {
             sql += curTermCode + ",'" + curTermCode + "'," + nextTermCode + ",'" + gameCode + "','" + dateFormat.format(new Date(startDate)) + "',";
             startDate += gap;
             sql += "'" + dateFormat.format(new Date(startDate)) + "','" + pDes + "',0," + 1100 + ",0,0,'" + wNum + "');";
-            System.out.print(sql);
+            System.out.println(sql);
             curTermCode++;
         }
     }

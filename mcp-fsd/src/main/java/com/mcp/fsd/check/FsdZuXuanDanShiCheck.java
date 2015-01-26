@@ -22,7 +22,8 @@ public class FsdZuXuanDanShiCheck extends  FsdCheck {
             items = items.replaceAll("," , "\\|");
             String[] numArray = items.split("\\|");
             int[] intTicketNumberArray = new int[]{Integer.parseInt(numArray[0]), Integer.parseInt(numArray[1]), Integer.parseInt(numArray[2])};
-            if(intNumber[0] == intTicketNumberArray[0] && intNumber[1] == intTicketNumberArray[1] && intNumber[2] == intTicketNumberArray[2])
+            int count = getCount(intTicketNumberArray, intNumber);
+            if(count >= 3)
             {
                 if(FsdConstants.getNubmerType(intNumber) == FsdConstants.NUMBER_TYPE_ZUSAN)
                 {
@@ -37,4 +38,35 @@ public class FsdZuXuanDanShiCheck extends  FsdCheck {
         }
         return cp;
     }
+
+    private int getCount(int[] drawNumberArray,int[] numberArray)
+    {
+        int count = 0;
+        selectSort(drawNumberArray);
+        selectSort(numberArray);
+        for(int i = 0; i < drawNumberArray.length; i++)
+        {
+           if (drawNumberArray[i] == numberArray[i]){
+               count++;
+           }
+        }
+        return count;
+    }
+
+    private void selectSort(int[] intArray){
+        for(int  i = 0 ; i < intArray.length-1; i++){
+            int index = i;
+            for(int j = i + 1; j < intArray.length; j++){
+                if(intArray[j] < intArray[index]){
+                    index = j;
+                }
+            }
+            if(index != i){
+                int temp = intArray[i];
+                intArray[i] = intArray[index];
+                intArray[index] = temp;
+            }
+        }
+    }
+
 }
