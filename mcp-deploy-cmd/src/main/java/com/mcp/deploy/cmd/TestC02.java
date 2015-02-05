@@ -31,8 +31,6 @@ public class TestC02 {
 		log.info(message);
 		String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
 		log.info(content);
-
-        String content2 = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
-        log.info(content2);
+		
 	}
 }
