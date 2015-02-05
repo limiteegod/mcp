@@ -27,7 +27,7 @@ public class TestC02 {
 		
 		om.setFilters(CmdContext.getInstance().getFilterProviderByCode("C020101"));
 		String bodyStr = om.writeValueAsString(reqC02Body);
-		String message = TestUtil.getCReqMessage("", "Q0003", bodyStr, "C02", "CePEYAR/Snc=");
+		String message = TestUtil.getCReqMessage("", Station.CODE, bodyStr, "C02", Station.KEY );
 		log.info(message);
 		String content = HttpClientUtil.request(RemoteConfig.IP, RemoteConfig.PORT, RemoteConfig.PATH, message, HttpClientUtil.POST, null);
 		log.info(content);
