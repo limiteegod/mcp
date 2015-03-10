@@ -10,6 +10,7 @@ import com.mcp.order.dao.finance.AccountOperatorType;
 import com.mcp.order.dao.finance.MoneyHandler;
 import com.mcp.order.exception.CoreException;
 import com.mcp.order.exception.ErrCode;
+import com.mcp.order.exception.NoMoneyException;
 import com.mcp.order.model.admin.Station;
 import com.mcp.order.model.ts.Customer;
 import com.mcp.order.model.ts.CustomerAccount;
@@ -516,10 +517,26 @@ public class MoneyService {
     	List<MoneyLog> logList = new ArrayList<MoneyLog>();
     	
     	CustomerAccount ca = customerAccountDao.findOneByCustomerIdAndStationId(customerId, stationId);
-    	String op = "RU0210000";
-    	AccountOperatorType type = AccountOperator.getInstance().getAccountOperatorType(op);
-    	logList.add(moneyHandlerRU02100.handle(customer, ca.getId(), "", ca.getId(), "", amount, orderId, type));
-    	
+    	if(ca.getPrize() >= amount)
+        {
+            String op = "RU0210000";
+            AccountOperatorType type = AccountOperator.getInstance().getAccountOperatorType(op);
+            logList.add(moneyHandlerRU02100.handle(customer, ca.getId(), "", ca.getId(), "", amount, orderId, type));
+        }
+        else if(ca.getRecharge() + ca.getPrize() >= amount)
+        {
+            String op = "RU0210000";
+            AccountOperatorType type = AccountOperator.getInstance().getAccountOperatorType(op);
+            logList.add(moneyHandlerRU02100.handle(customer, ca.getId(), "", ca.getId(), "", ca.getPrize(), orderId, type));
+
+            String reOp = "RU0010100";
+            AccountOperatorType reType = AccountOperator.getInstance().getAccountOperatorType(reOp);
+            logList.add(moneyHandlerRU00101.handle(customer, ca.getId(), "", ca.getId(), "", amount - ca.getPrize(), orderId, reType));
+        }
+        else
+        {
+            throw new NoMoneyException(ErrCode.E1007, ErrCode.codeToMsg(ErrCode.E1007), ca.getRecharge() + ca.getPrize(), amount);
+        }
     	return logList;
     }
     

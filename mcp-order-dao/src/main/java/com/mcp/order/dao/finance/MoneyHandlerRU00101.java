@@ -27,8 +27,7 @@ public class MoneyHandlerRU00101 extends AbstractMoneyHandler {
 	public MoneyLog handle(Object user, String fromEntityId, String fromFlag, String toEntityId, String toFlag,
 			long amount, String orderId, AccountOperatorType type)
 			throws CoreException {
-		Station station = (Station)user;
-		String userId = station.getId();
+        String userId = AccountConstants.SYSTEM_USER_ID;
 		CustomerAccount ca = customerAccountDao.findOne(fromEntityId);
 		if(ca.getRecharge() < amount)
 		{
